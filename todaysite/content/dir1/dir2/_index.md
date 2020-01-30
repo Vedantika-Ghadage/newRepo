@@ -6,4 +6,4 @@ title = "Dir 2"
 
 +++
 
-This is inside the index
+This is inside the index {{ <changeText /> }}

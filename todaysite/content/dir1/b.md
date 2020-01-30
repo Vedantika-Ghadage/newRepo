@@ -6,4 +6,4 @@ title = "B"
 
 +++
 
-This is b in dir1
+This is b in dir1 {{< changeText />}}
