@@ -1,0 +1,1013 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>PrivateEditions on Your Site Title</title>
+    <link>/privateedition/</link>
+    <description>Recent content in PrivateEditions on Your Site Title</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© 2015 Copyright Text</copyright>
+    <atom:link href="/privateedition/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Install Nirmata PE</title>
+      <link>/privateedition/how_to_install_nirmata_pe/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/privateedition/how_to_install_nirmata_pe/_index/</guid>
+      <description>
+
+&lt;h4 id=&#34;introduction:3976528693a0108357f4928017600865&#34;&gt;Introduction&lt;/h4&gt;
+
+&lt;p&gt;Nirmata Private Edition (PE) can be easily installed using nadm  tool in single host or high-availability configuration. Nirmata PE uses Kubernetes as orchestration engine to deploy its components.&lt;/p&gt;
+
+&lt;h4 id=&#34;prerequisites:3976528693a0108357f4928017600865&#34;&gt;Prerequisites&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Hosts with internet access to download Nirmata images from Docker Hub and Google Container Repository.&lt;/li&gt;
+&lt;li&gt;For the basic install,  a host with with following spec - 8 vCPU, 32GB memory, 200Gb SSD storage.&lt;/li&gt;
+&lt;li&gt;For HA install, 3 hosts with following spec - 8 vCPU, 32GB memory, 200Gb SSD storage.&lt;/li&gt;
+&lt;li&gt;Disable swap using the Disable Swap command.
+&lt;code&gt;
+$sudo swapoff -a
+Remove any swap entries from:  /etc/fstab
+&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Install Docker Engine version 18.09.2. Instructions to install Docker are available &lt;a href=&#34;https://docs.docker.com/install/&#34;&gt;here&lt;/a&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&#34;install-and-check-load-balancer:3976528693a0108357f4928017600865&#34;&gt;Install and Check Load Balancer&lt;/h4&gt;
+
+&lt;p&gt;To start, setup a Load Balancer for the Kubernetes API server.&lt;/p&gt;
+
+&lt;p&gt;Next, ensure that the Load Balancer is accessible from all hosts. Verify accessibility with nc and curl by using the Check Load Balancer Command.&lt;/p&gt;
+
+&lt;p&gt;Check Load Balancer Command (nc):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;root@nadmtest30:~# nc -v haproxy0.lab.nirmata.io 6443
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Check Load Balancer Command (curl):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;root@nadmtest30:~# curl -k https://haproxy0.lab.nirmata.io:6443
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If the Load Balancer is accessible the nc and curl commands will return a success message:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Connection to nadmtest10.lab.nirmata.io 6443 port [tcp/*] succeeded!
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If the Load Balancer is not accessible, a Service Unavailable message will return:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;503 Service Unavailable
+No server is available to handle this request.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;configure-proxy-for-docker:3976528693a0108357f4928017600865&#34;&gt;Configure Proxy for Docker&lt;/h4&gt;
+
+&lt;p&gt;Configure proxy for Docker if you are using Proxy in your infrastructure.. The Docker daemon uses the HTTP_PROXY, HTTPS_PROXY, and NO_PROXY environmental variables in its start-up environment to configure HTTP or HTTPS proxy behavior.&lt;/p&gt;
+
+&lt;p&gt;To configure proxy for Docker:
+1. Create a systemd drop-in directory for the docker service:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ sudo mkdir -p /etc/systemd/system/docker.service.d
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Create a file called /etc/systemd/system/docker.service.d/http-proxy.conf that adds the HTTP_PROXY environment variable:&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;pre&gt;&lt;code&gt;[Service]
+	Environment=&amp;quot;HTTP_PROXY=http://nibr1:3128/&amp;quot;  &amp;quot;NO_PROXY=localhost,127.0.0.1,nibr1,nibr2.nibr3&amp;quot;
+Environment=&amp;quot;HTTPS_PROXY=http://nibr1:3128/&amp;quot; &amp;quot;NO_PROXY=localhost,127.0.0.1,nibr1,nibr2,nibr3&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Flush changes using the Flush Changes command.
+Flush Changes Command:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ sudo systemctl daemon-reload
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Restart Docker using the Restart Docker command.
+Restart Docker Command:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ sudo systemctl restart docker
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;After Docker restarts, verify that the configuration loaded using the Verify Configuration command.
+Verify Configuration Command:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ systemctl show --property=Environment docker
+Environment=HTTPS_PROXY=https://proxy.example.com:443/
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&#34;install-nirmata:3976528693a0108357f4928017600865&#34;&gt;Install Nirmata&lt;/h4&gt;
+
+&lt;p&gt;Nirmata uses nadm tool to install the base Kubernetes cluster and deploys Nirmata on it. nadm toolset simplifies Nirmata deployment by provisioning both base and Nirmata with few simple parameters for the deployment.&lt;/p&gt;
+
+&lt;p&gt;Download the Nirmata install binary and run the appropriate version.&lt;/p&gt;
+
+&lt;h5 id=&#34;nirmata-release-2-8-2:3976528693a0108357f4928017600865&#34;&gt;Nirmata Release 2.8.2&lt;/h5&gt;
+
+&lt;p&gt;Curl -LO &lt;a href=&#34;https://nadm-release.s3-us-west-1.amazonaws.com/nadm-2.8.2.tar.gz&#34;&gt;https://nadm-release.s3-us-west-1.amazonaws.com/nadm-2.8.2.tar.gz&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;To install Nirmata, run nadm install on any one of the Kubernetes master-nodes. To configure the base cluster and nirmata properly following parameters will be requested -&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Image registry for Nirmata images - use default unless you have downloaded Nirmata images to your local repository.&lt;/li&gt;
+&lt;li&gt;username/password for repository access - Use Nirmata provided credentials or use your own if using private repository.&lt;/li&gt;
+&lt;li&gt;Nirmata URL - Provide URL for Nirmata services. You can use default HTTPS port (443) or 31443.&lt;/li&gt;
+&lt;li&gt;Certificates - Provide your own CA certs or let Nirmata create self-signed certificates.&lt;/li&gt;
+&lt;li&gt;The volume used by Nirmata services requires a minimum of 80G of storage.&lt;/li&gt;
+&lt;li&gt;Option to install Kubernetes cluster for Nirmata - If installing on hosts with no existing Kubernetes cluster, choose “yes”.&lt;/li&gt;
+&lt;li&gt;High Availability install - choose yes if installing for HA configuration.&lt;/li&gt;
+&lt;li&gt;Nirmata will install Kubernetes cluster (HA if HA configuration chosen), will configure the storage class, connect with load balancer and setup ports for optimal clusters op].&lt;/li&gt;
+&lt;li&gt;Nirmata install  - Type “yes” to proceed with Nirmata installation;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;The installation process will look as shown below  -&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;root@ciops1# ./nadm install
+*** Setup for your Nirmata install. Hit enter to use default values ***
+No network proxy settings found. Proceed without a proxy? (y/n: y):y
+Registry for Nirmata images [index.docker.io]: [Press Enter]
+Registry (index.docker.io) username: nirmatainstaller
+Registry (index.docker.io) password: NirmataPE
+Registry (index.docker.io) confirm password: 
+Kubernetes namespace for Nirmata [nirmata]:
+URL for Nirmata (e.g. https://nirmata.company.com):https://&amp;lt;your-ip&amp;gt;:31443 (URL for Nirmata)
+[ Generate a self-signed certificate for Nirmata? (y/n: y):y
+Generating default certificate and key...Generating a 2048 bit RSA private key
+...................................................+++
+.........................................................................................................................................+++
+writing new private key to &#39;/root/.nirmata-nadm/ssl/server.key&#39;
+-----
+Default volume capacity of Elasticsearch is 50Gi. Proceed? (y/n: y): y
+Install a Kubernetes Cluster for Nirmata? (y/n: n):n
+Install for high-availability (requires 3 nodes)? (y/n: n): n
+Nirmata volumes require 80 GB to be available, mount path for Nirmata volumes [/var/nirmata]. Proceed? (y/n: y): y
+
+Proceed to install Nirmata? (y/n: y):y
+[validation-checks] Found cluster:
+CURRENT   NAME                          CLUSTER      AUTHINFO           NAMESPACE
+*         kubernetes-admin@kubernetes   kubernetes   kubernetes-admin   
+[validation-checks] Using cluster context [kubernetes-admin@kubernetes], proceed (y/n: y):y
+namespace/nirmata created
+storageclass hostpath created
+provisioner hostpath created
+secret/nirmata-registry created
+serviceaccount/default configured
+priorityclass.scheduling.k8s.io/nirmata-data-critical created
+priorityclass.scheduling.k8s.io/nirmata-data-lower created
+priorityclass.scheduling.k8s.io/nirmata-app-critical created
+priorityclass.scheduling.k8s.io/nirmata-app-lower created
+zk created, waiting for pod to run...done
+mongodb created, waiting for pod to run...done
+elasticsearch created, waiting for pod to run...done
+kafka created, waiting for pod to run...done
+Volumes patched
+Creating Nirmata services (This might take a few minutes or longer if the Nirmata images have to be pulled)
+activity created, waiting for pod to run...done
+analytics created, waiting for pod to run...done
+catalog created, waiting for pod to run...done
+client-gateway created, waiting for pod to run...done
+cluster created, waiting for pod to run...done
+config created, waiting for pod to run...done
+environments created, waiting for pod to run...done
+host-gateway created, waiting for pod to run...done
+orchestrator created, waiting for pod to run...done
+security created, waiting for pod to run...done
+static-files created, waiting for pod to run...done
+tunnel created, waiting for pod to run...done
+users created, waiting for pod to run...done
+webclient created, waiting for pod to run...done
+haproxy created, waiting for pod to run...done
+Checking connection...
+
+
+	Nirmata is running! You can now login to Nirmata via:
+
+		https://10.10.1.193
+
+
+
+
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Nirmata deploys Kubernetes v1.15.1 as the base cluster.&lt;/p&gt;
+
+&lt;p&gt;Check the status of the install from another term window with command using the Check Status command.&lt;/p&gt;
+
+&lt;p&gt;Check Status Command:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;./nadm status -w -n &amp;lt;namespace&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;uninstall:3976528693a0108357f4928017600865&#34;&gt;Uninstall&lt;/h4&gt;
+
+&lt;p&gt;To uninstall, delete the cluster.&lt;/p&gt;
+
+&lt;p&gt;To delete a cluster, run the kubeadm Reset command on all master nodes.&lt;/p&gt;
+
+&lt;p&gt;Nirmata uninstall Command:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ nadm uninstall
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Next, run the Nirmata Agent Cleanup on the hostgroup using the Nirmata Cleanup command.&lt;/p&gt;
+
+&lt;h4 id=&#34;nirmata-backup-restore-and-upgrade:3976528693a0108357f4928017600865&#34;&gt;Nirmata Backup, Restore and Upgrade&lt;/h4&gt;
+
+&lt;p&gt;Nirmata database can be easily backed up using nadm toolset and the same can be used to restore Nirmata if required.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ nadm backup
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This will backup the database in the /&amp;hellip;/.nirmata-nadm/backup/nirmata-database-yyyy-mm-dd-xx-xx-xx/nirmata-database.gz
+ file.&lt;/p&gt;
+
+&lt;p&gt;To restore the Nirmata database, use following nadm command -&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ nadm restore -d /.../.nirmata-nadm/backup/nirmata-database-yyyy-mm-dd-xx-xx-xx/nirmata-database.gz
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;To upgrade Nirmata, download the latest nadm tool for the new release and in that directtory use following nadm command -&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ ./nadm generate
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This will create necessary necessary yaml files for Nirmata with latest release in yamls directory under .nirmata-nadm folder. Yon can upgrade Nirmata by simply running the command below -&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ kubectl apply -f /root/.nirmata-nadm/yamls-nirmata/yamls-2019-10-15-14-14-40/services/ (yaml files directory) -n nirmata
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Nirmata PE Cluster is Down</title>
+      <link>/privateedition/disasterrecovery/commonfailurescenarios/nirmatapeclusterdown/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/privateedition/disasterrecovery/commonfailurescenarios/nirmatapeclusterdown/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Planning for Disaster Recovery</title>
+      <link>/privateedition/disasterrecovery/achievingdisasterrecovery/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/privateedition/disasterrecovery/achievingdisasterrecovery/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Common Failure Scenarios</title>
+      <link>/privateedition/disasterrecovery/commonfailurescenarios/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/privateedition/disasterrecovery/commonfailurescenarios/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Kubernetes Cluster is Down</title>
+      <link>/privateedition/disasterrecovery/commonfailurescenarios/kubernetesclusterdown/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/privateedition/disasterrecovery/commonfailurescenarios/kubernetesclusterdown/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Disaster Recovery</title>
+      <link>/privateedition/disasterrecovery/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/privateedition/disasterrecovery/_index/</guid>
+      <description>
+
+&lt;h4 id=&#34;introduction:3976528693a0108357f4928017600865&#34;&gt;Introduction&lt;/h4&gt;
+
+&lt;p&gt;Utilize the content in this section to recover Nirmata Private Edition and Kubernetes clusters from a failed tate. After following these steps, high Aaailability configuration will be restored for enterprise-grade deployments.&lt;/p&gt;
+
+&lt;h4 id=&#34;nirmata-private-edition-platform-architecture:3976528693a0108357f4928017600865&#34;&gt;Nirmata Private Edition Platform Architecture&lt;/h4&gt;
+
+&lt;p&gt;Nirmata Private Edition (Nirmata PE) is comprised of two architectural components (service sets):&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Nirmata Core Services: cluster management, application management logic, and UI&lt;/li&gt;
+&lt;li&gt;Nirmata Shared Services: third-party services for messaging, data storage, etc.; such as:&lt;/li&gt;
+&lt;li&gt;Mongodb&lt;/li&gt;
+&lt;li&gt;Zookeeper&lt;/li&gt;
+&lt;li&gt;Kafka&lt;/li&gt;
+&lt;li&gt;ElasticSearch&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Each service set contains multiple containerized microservices.&lt;/p&gt;
+
+&lt;h4 id=&#34;achieving-disaster-recovery:3976528693a0108357f4928017600865&#34;&gt;Achieving Disaster Recovery&lt;/h4&gt;
+
+&lt;p&gt;There are multiple ways in which a disasters occur and each requires specific actions to achieve restoration.&lt;/p&gt;
+
+&lt;p&gt;The three failure scenarios covered represent the most common failures. Each failure scenario provides a description of the failure impact and the steps necessary to backup and restore servic&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/disasterrecovery-1.png&#34; alt=&#34;image&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;common-failure-scenarios:3976528693a0108357f4928017600865&#34;&gt;Common Failure Scenarios&lt;/h2&gt;
+
+&lt;h3 id=&#34;scenario-1-nirmata-pe-cluster-is-down:3976528693a0108357f4928017600865&#34;&gt;Scenario 1 - Nirmata PE Cluster is Down&lt;/h3&gt;
+
+&lt;h4 id=&#34;failure-impact-of-a-down-nirmata-pe-cluster:3976528693a0108357f4928017600865&#34;&gt;Failure Impact of a Down Nirmata PE Cluster&lt;/h4&gt;
+
+&lt;p&gt;When a Nirmata PE cluster loses service the Kubernetes cluster may not go down.&lt;/p&gt;
+
+&lt;p&gt;Nirmata PE manages Kubernetes clusters through an API. Since the Nirmata PE cluster is deployed in a separate node from Kubernetes cluster, the Kubernetes cluster only goes down when the entire Pod or rack system goes down.&lt;/p&gt;
+
+&lt;p&gt;Unless this happens, it is likely that the Kubernetes cluster will maintain service and operation, which means minimal impact to applications.&lt;/p&gt;
+
+&lt;p&gt;Nirmata PE has a microservices based architecture and is built as a set of container services. This ensures that when a component goes down it comes right back up.&lt;/p&gt;
+
+&lt;p&gt;In HA configuration, a Nirmata PE cluster will go down only when all three nodes that form the cluster go down.&lt;/p&gt;
+
+&lt;p&gt;If  a specific component goes down, the Kubernetes cluster recreates the down pd and the service.&lt;/p&gt;
+
+&lt;h4 id=&#34;how-to-perform-a-backup-when-the-nirmata-pe-cluster-is-down:3976528693a0108357f4928017600865&#34;&gt;How to Perform a Backup When the Nirmata PE Cluster is Down&lt;/h4&gt;
+
+&lt;p&gt;To prepare Nirmata PE for recovery, start by backing-up and securing essential Nirmata PE installation configuration and state data.&lt;/p&gt;
+
+&lt;p&gt;Backup the following key components:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Nirmata PE certificates&lt;/li&gt;
+&lt;li&gt;Nirmata PE installation configuration&lt;/li&gt;
+&lt;li&gt;Nirmata PE state - which is stored in the MongoDB database as part of shared services in Nirmata PE&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Use the following process to backup the key components described:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;As a best practice, store certificate files in the installer directory and backup the original certificate files. These files are required to recover Nirmata PE in the correct configuration and will be  restored in the new installer directory.&lt;/li&gt;
+&lt;li&gt;Configuration information is stored in the nirmata.conf file in the installer directory. Create a backup of this file.&lt;/li&gt;
+&lt;li&gt;Nirmata PE utilizes its own CLI command to perform routine backups of the database. Use the Nirmata PE CLI Backup Command as part of a cronjob to force a backup.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;Nirmata PE CLI Backup Command:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;nadm backup -n &amp;lt;install-namespace&amp;gt; -d &amp;lt;backup-dir&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;how-to-recover-from-a-nirmata-pe-cluster-failure:3976528693a0108357f4928017600865&#34;&gt;How to Recover from a Nirmata PE Cluster Failure&lt;/h4&gt;
+
+&lt;p&gt;After performing the backup steps described, complete the following service recovery steps:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Restore the backed-up files and certificates in the installer directory.&lt;/li&gt;
+&lt;li&gt;Install a new instance of Nirmata.&lt;/li&gt;
+&lt;li&gt;Run the Nirmata PE Restore CLI Command to restore the database with th state information of the down cluster.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;Nirmata PE Restore CLI Command:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;nadm restore
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;scenario-2-kubernetes-cluster-is-down:3976528693a0108357f4928017600865&#34;&gt;Scenario 2 - Kubernetes Cluster is Down&lt;/h3&gt;
+
+&lt;h4 id=&#34;failure-impact-of-a-down-kubernetes-cluster:3976528693a0108357f4928017600865&#34;&gt;Failure Impact of a Down Kubernetes Cluster&lt;/h4&gt;
+
+&lt;p&gt;If a Kubernetes cluster is installed in a High Availability configuration, the Kubernetes cluster will continue to operate until the last master node goes down.&lt;/p&gt;
+
+&lt;p&gt;Even when the master node goes down, worker nodes may continue to operate and run the containers orchestrated on those nodes. If certain applications or pods were running on those master nodes, those applications and pods will go down. However, if another master node exists, Kubernetes will look to recreate those pods on other available nodes.&lt;/p&gt;
+
+&lt;p&gt;Recovering from a master node failure is more complex than recovering from a worker node failure. However, master node failure does not mean that the cluster and all workloads are lost.&lt;/p&gt;
+
+&lt;p&gt;The cluster and all workloads will continue running with exactly the same configuration as before the failure. Applications running in the Kubernetes cluster will still be usable. However, it is not possible to create new deployments or to recover from node failures without the master node.&lt;/p&gt;
+
+&lt;h4 id=&#34;how-to-perform-a-backup-when-a-kubernetes-cluster-is-down:3976528693a0108357f4928017600865&#34;&gt;How to Perform a Backup When a Kubernetes Cluster is Down&lt;/h4&gt;
+
+&lt;p&gt;There are several components required to recover a master node on a Kubernetes cluster:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Certificates&lt;/li&gt;
+&lt;li&gt;Secrets&lt;/li&gt;
+&lt;li&gt;etcd Database&lt;/li&gt;
+&lt;li&gt;Persistent Volumes (stateful containers only)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&#34;how-to-recover-from-a-kubernetes-cluster-failure:3976528693a0108357f4928017600865&#34;&gt;How to Recover from a Kubernetes Cluster Failure&lt;/h4&gt;
+
+&lt;p&gt;Currently, Kubernetes has the latest release 1.12 with snapshot and recovery capability in beta.&lt;/p&gt;
+
+&lt;p&gt;Nirmata PE will support these features for backup and restore capability as they become generally available. Until snapshot recovery is available, Nirmata recommends using &lt;a href=&#34;https://labs.consol.de/kubernetes/2018/05/25/kubeadm-backup.html&#34;&gt;kubeadm&lt;/a&gt; to recover.&lt;/p&gt;
+
+&lt;h3 id=&#34;scenario-3-site-hosting-nirmata-pe-and-kubernetes-cluster-is-down:3976528693a0108357f4928017600865&#34;&gt;Scenario 3 - Site Hosting Nirmata PE and Kubernetes Cluster is Down&lt;/h3&gt;
+
+&lt;h4 id=&#34;failure-impact-of-a-down-site-with-nirmata-pe-and-kubernetes-cluster:3976528693a0108357f4928017600865&#34;&gt;Failure Impact of a Down Site with Nirmata PE and Kubernetes Cluster&lt;/h4&gt;
+
+&lt;p&gt;When the site hosting Nirmata PE and the Kubernetes cluster goes down, both Nirmata PE  and the Kubernetes Cluster must be restored.&lt;/p&gt;
+
+&lt;h4 id=&#34;how-to-perform-a-backup-when-the-site-hosting-nirmata-pe-and-the-kubernetes-cluster-goes-down:3976528693a0108357f4928017600865&#34;&gt;How to Perform a Backup When the Site Hosting Nirmata PE and the Kubernetes Cluster Goes Down&lt;/h4&gt;
+
+&lt;p&gt;When a site goes down and Nirmata PE and Kubernetes, are hosted in the site,
+backups for both Nirmata PE and Kubernetes cluster master nodes are required to restore the entire setup.&lt;/p&gt;
+
+&lt;p&gt;As a best practice, store backups for Nirmata PE and Kubernetes clusters in more than one distinct data center across different regions. This ensures that disaster recovery is possible even when a region is down.&lt;/p&gt;
+
+&lt;p&gt;Refer to:
+[How to Perform a Backup When the Nirmata PE Cluster is Down(Disaster_Recovery/Common_Failure_Scenarios/Scenario_1_Nirmata_Cluster_is_Down/_index.md)
+&lt;a href=&#34;Disaster_Recovery/Common_Failure_Scenarios/Scenario_2_Kubernetes_Cluster_is_Down/_index.md&#34;&gt;How to Perform a Backup When a Kubernetes PE Cluster is Down&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;how-to-recover-from-failure-when-the-site-hosting-nirmata-pe-and-the-kubernetes-cluster-goes-down:3976528693a0108357f4928017600865&#34;&gt;How to Recover from Failure When the Site Hosting Nirmata PE and the Kubernetes Cluster Goes Down&lt;/h4&gt;
+
+&lt;p&gt;When a site goes down and Nirmata PE and Kubernetes, are hosted in the site,
+both Nirmata PE and Kubernetes cluster master nodes must be recovered.&lt;/p&gt;
+
+&lt;p&gt;Refer to:
+&lt;a href=&#34;Disaster_Recovery/Common_Failure_Scenarios/Scenario_1_Nirmata_Cluster_is_Down/_index.md&#34;&gt;How to Recover from a Nirmata PE Cluster Failure&lt;/a&gt;
+&lt;a href=&#34;Disaster_Recovery/Common_Failure_Scenarios/Scenario_2_Kubernetes_Cluster_is_Down/_index.md&#34;&gt;How to Recover from a Kubernetes Cluster Failure&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;how-to-install-a-new-instance-of-nirmata-private-edition:3976528693a0108357f4928017600865&#34;&gt;How To Install a New Instance of Nirmata Private Edition&lt;/h2&gt;
+
+&lt;p&gt;Nirmata PE can be installed on virtual or physical servers&lt;/p&gt;
+
+&lt;h3 id=&#34;prerequisites:3976528693a0108357f4928017600865&#34;&gt;Prerequisites&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.ubuntu.com/download&#34;&gt;Ubuntu 16.04+&lt;/a&gt; (bare-metal)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.docker.com/get-started&#34;&gt;Docker 17.03&lt;/a&gt; (recommended); Docker 1.11, 1.12, or 1.13 (minimum)&lt;/li&gt;
+&lt;li&gt;Each node requires access to AWS S3 bucket and &lt;a href=&#34;https://www.nirmata.com/&#34;&gt;www.nirmata.com&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;step-1-download-nirmata-pe-installer:3976528693a0108357f4928017600865&#34;&gt;Step 1: Download Nirmata PE Installer&lt;/h3&gt;
+
+&lt;p&gt;Download the install package on a node. Un-archive the contents of the package:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;tar xvf nirmata-pe-k8s-installer.tgz
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;step-2-install-nirmata-private-edition:3976528693a0108357f4928017600865&#34;&gt;Step 2: Install Nirmata Private Edition&lt;/h3&gt;
+
+&lt;p&gt;Nirmata PE can be installed as a single replica, a multi-node Kubernetes Cluster, or as a High Availability Configuration on a 3-node cluster.&lt;/p&gt;
+
+&lt;h4 id=&#34;install-nirmata-pe-as-a-single-cell-replica:3976528693a0108357f4928017600865&#34;&gt;Install Nirmata PE as a Single Cell Replica&lt;/h4&gt;
+
+&lt;p&gt;To install a single node Kubernetes cluster, run the Install Single Node Kubernetes Cluster Command.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Install Single Node Kubernetes Command:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;nadm init
+nadm -n kube-system status -w
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Verify that all pods are running by checking the system status.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/disasterrecovery-2.png&#34; alt=&#34;image&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Next, install Nirmata PE on single node cluster by running the Install Nirmata PE on Single Node Cluster Command. Replace the namespace �sandbox� to reflect the applicable configuration.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Install Nirmata PE on Single Node Cluster Command:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;nadm install -n sandbox
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Check the pod status by running the Check Pod Status Command.  Replace the namespace �sandbox� to reflect the applicable configuration.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Check Pod Status Command:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;nadm status -n sandbox
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/disasterrecovery-3.png&#34; alt=&#34;image&#34; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;install-nirmata-pe-as-a-multi-node-kubernetes-cluster:3976528693a0108357f4928017600865&#34;&gt;Install Nirmata PE as a Multi-Node Kubernetes Cluster&lt;/h4&gt;
+
+&lt;p&gt;To install Nirmata PE as a multi-node Kubernetes cluster, run the Install Multi-Node Kubernetes Cluster Command on the master node.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Install Multi-Node Kubernetes Cluster Command:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$nadm init
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;It may take several minutes for the command to run. When complete, the output will display successful start message.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/disasterrecovery-4.png&#34; alt=&#34;image&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;To add new nodes to the cluster, run the command that was output by �nadm init.�&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/disasterrecovery-5.png&#34; alt=&#34;image&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;After a node is added to the cluster, a confirmation message will display.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/disasterrecovery-6.png&#34; alt=&#34;image&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;To confirm that all of the components are running on the Kubernetes cluster, run a Check Status on Master Node command.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Check Status on Master Node Command:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;nadm -n kube-system status -w
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;After all pods have started, review the output to verify that all pods are running.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/disasterrecovery-7.png&#34; alt=&#34;image&#34; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;install-nirmata-pe-as-a-high-availability-configuration-on-a-3-node-cluster:3976528693a0108357f4928017600865&#34;&gt;Install Nirmata PE as a High-Availability Configuration on a 3-Node Cluster&lt;/h4&gt;
+
+&lt;p&gt;Before installing Nirmata PE as a High Availability Configuration on a 3-Node Cluster, verify that a 3-Node cluster exists by running Nirmata PE Node Status Command.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Nirmata PE Node Status Command:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;nadm status node
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If three a 3-node cluster exists, the command will return an output that shows three nodes in &lt;em&gt;Ready&lt;/em&gt; status.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/disasterrecovery-8.png&#34; alt=&#34;image&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Generate three replica YAMLs for Nirmata PE by running the Replicate Nirmata PE Command.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Replicate Nirmata PE  Command:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;nadm generate --replicas=3
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Verify that the three replica YAMLs generated in: opt/niramta/yamls-generate/&lt;/p&gt;
+
+&lt;p&gt;Next, install Nirmata PE using the Install Nirmata PE Command and the path to the three newly generated replica YAMLs, i.e.: /opt/nirmata/yamls-generate/yamls-xx-xx-xx-xx/, in place of $PATH.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Install Nirmata PE Command:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;nadm install -d $PATH
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;After installing NirmataPE , check the pod status using the Check Pod Status Command.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Check Pod Status Command:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;nadm status -n nirmata
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;uninstall-nirmata-private-edition:3976528693a0108357f4928017600865&#34;&gt;Uninstall Nirmata Private Edition&lt;/h2&gt;
+
+&lt;p&gt;Nirmata PE can be uninstalled from a directory or from the namespace using the Uninstall Nirmata PE Command.&lt;/p&gt;
+
+&lt;p&gt;If installed as a Single Cell Replica or Multi-Node Kubernetes Cluster, uninstall Nirmata PE from the namespace.&lt;/p&gt;
+
+&lt;p&gt;If installed as a High-Availability 3-Node Cluster, uninstall Nirmata PE from the directory.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Uninstall Nirmata PE Command (namespace):&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;nadm uninstall -n sandbox --all  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Remember&lt;/em&gt;&lt;/strong&gt;: Replace the namespace &lt;em&gt;sandbox&lt;/em&gt; to reflect the applicable configuration.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Uninstall Nirmata PE Command (directory):&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ nadm uninstall -n sandbox -d $PATH
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Remember&lt;/em&gt;:&lt;/strong&gt; $PATH is the path to the three generated replica YAMLs, i.e.: /opt/nirmata/yamls-generate/yamls-xx-xx-xx-xx/, in place of $PATH.&lt;/p&gt;
+
+&lt;p&gt;After uninstalling Nirmata PE, clean-up the cluster by running the Cluster Reset Command.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Cluster Reset Command:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;nadm reset
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;step-3-install-a-x509-certificate-high-availability-configuration-only:3976528693a0108357f4928017600865&#34;&gt;Step 3: Install a x509 Certificate (High-Availability Configuration ONLY)&lt;/h3&gt;
+
+&lt;p&gt;When installed as a High- Availability Configuration on a 3-Node Cluster, Nirmata PE utilizes a load-balancer to communicate with Kubernetes clusters and users.&lt;/p&gt;
+
+&lt;p&gt;The load-balancer requires a valid certificate for the URL that is used to access Nirmata PE. If a certificate is not available, generate a self-signed certificate.&lt;/p&gt;
+
+&lt;p&gt;To generate a self-signed certificate, SSH to the node that will be used to run Nirmata Services. Then, create a directory to store the generated certificate.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Directory to Store Generated Certificate:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout certificates/nginx.key -out certificates/nginx.crt
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Create Certificate Command:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo mkdir certificates
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Enter the required parameters:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Country Name (2 letter code) [AU]:US&lt;/li&gt;
+&lt;li&gt;State or Province Name (full name) [Some-State]:New York&lt;/li&gt;
+&lt;li&gt;Locality Name (eg, city) []:New York City&lt;/li&gt;
+&lt;li&gt;Organization Name (eg, company) [Internet Widgits Pty Ltd]:Acme&lt;/li&gt;
+&lt;li&gt;Organizational Unit Name (eg, section) []:I.T&lt;/li&gt;
+&lt;li&gt;Common Name (e.g. server FQDN or YOUR name) []:server_IP_address or DNS&lt;/li&gt;
+&lt;li&gt;Email Address []:admin@your_domain.com&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;step-4-login-to-nirmata-pe:3976528693a0108357f4928017600865&#34;&gt;Step 4: Login to Nirmata PE&lt;/h3&gt;
+
+&lt;p&gt;When installed as a High- Availability Configuration on a 3-Node Cluster, Nirmata PE utilizes a load-balancer to communicate with Kubernetes clusters and users.&lt;/p&gt;
+
+&lt;p&gt;The load-balancer requires a valid certificate for the URL that is used to access Nirmata PE. If a certificate is not available, generate a self-signed certificate.&lt;/p&gt;
+
+&lt;p&gt;To generate a self-signed certificate, SSH to the node that will be used to run Nirmata Services. Then, create a directory to store the generated certificate.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Directory to Store Generated Certificate:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout certificates/nginx.key -out certificates/nginx.crt
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Create Certificate Command:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo mkdir certificates
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Enter the required parameters:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Country Name (2 letter code) [AU]:US&lt;/li&gt;
+&lt;li&gt;State or Province Name (full name) [Some-State]:New York&lt;/li&gt;
+&lt;li&gt;Locality Name (eg, city) []:New York City&lt;/li&gt;
+&lt;li&gt;Organization Name (eg, company) [Internet Widgits Pty Ltd]:Acme&lt;/li&gt;
+&lt;li&gt;Organizational Unit Name (eg, section) []:I.T&lt;/li&gt;
+&lt;li&gt;Common Name (e.g. server FQDN or YOUR name) []:server_IP_address or DNS&lt;/li&gt;
+&lt;li&gt;Email Address []:admin@your_domain.com&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;step-5-add-the-nirmata-pe-license:3976528693a0108357f4928017600865&#34;&gt;Step 5:  Add the Nirmata PE License&lt;/h3&gt;
+
+&lt;p&gt;After logging in to Nirmata PE, navigate to Account and select Settings. Update the license key.&lt;/p&gt;
+
+&lt;p&gt;When a valid license key is added, the &lt;em&gt;Trial&lt;/em&gt; message is removed.&lt;/p&gt;
+
+&lt;h4 id=&#34;docker-ce-installation-on-rhel-7:3976528693a0108357f4928017600865&#34;&gt;Docker CE Installation on RHEL 7&lt;/h4&gt;
+
+&lt;p&gt;Before installing Docker CE on RHEL 7, disable to firewall to prevent interference with Docker.&lt;/p&gt;
+
+&lt;p&gt;To disable the firewall, run the Disable Firewall Command.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Disable Firewall Command:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo systemctl disable firewalld
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;After disabling the firewall, setup the Docker CE repository on RHEL.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo yum install -y yum-utils
+sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+sudo yum makecache fast
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Next, install the latest supported version of Docker CE on RHEL or a specified version of Docker CE.&lt;/p&gt;
+
+&lt;p&gt;To install the latest supported version of Docker CE on RHEL, use the following command:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo yum -y install docker-ce-17.06.0.ce-1.fc25
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;To specify a version of Docker CE, use the following command and replace &lt;em&gt;version&lt;/em&gt; and &lt;em&gt;release&lt;/em&gt; with the appropriate version and release identifiers:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo yum -y install docker-ce-&amp;lt;version&amp;gt;-&amp;lt;release&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;After installing Docker CE, start Docker using the Start Docker CE Command.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Start Docker CE Command:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo systemctl start docker
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Verify that the Docker CE installation is complete using the Test Docker CE Installation Command.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Test Docker CE Installation Command:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo docker run hello-world
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If SELinux is not already installed, use the following command instead to install SELinux and Docker CE:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# pre-requisite for container-selinux-2.9-4.el7.noarch.rpm
+sudo yum install policycoreutils-python
+
+wget http://mirror.centos.org/centos/7/extras/x86_64/Packages/container-selinux-2.9-4.el7.noarch.rpm
+sudo rpm -i container-selinux-2.9-4.el7.noarch.rpm
+
+#Set up the Docker CE repository on RHEL:
+sudo yum install -y yum-utils
+sudo yum install -y device-mapper-persistent-data lvm2
+sudo yum-config-manager --enable rhel-7-server-extras-rpms
+sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+sudo yum makecache fast
+
+# Install the latest supported version of Docker CE on RHEL:
+sudo yum -y install docker-ce-17.06.0.ce-1.fc25
+
+#Start Docker:
+sudo systemctl start docker
+
+#Test your Docker CE installation:
+sudo docker run hello-world
+
+# configure Docker to start on boot
+sudo systemctl enable docker
+
+# add user to the Docker group
+sudo usermod -aG docker jethro
+
+# install Docker Compose:
+# install python-pip
+wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+
+sudo yum install ./epel-release-latest-7.noarch.rpm
+sudo yum install -y python-pip
+
+sudo pip install docker-compose
+
+# upgrade your Python packages:
+sudo yum upgrade python*
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;how-to-set-log-limits-on-docker-ce-container-logs:3976528693a0108357f4928017600865&#34;&gt;How to Set Log Limits on Docker CE Container Logs&lt;/h4&gt;
+
+&lt;p&gt;By default, container logs are not configured to rotate data or store to a limited maximum size. In some, long-running containers, a log file can grow so large that it compromises disk space.&lt;/p&gt;
+
+&lt;p&gt;To set log limits for the containers on a host, configure &lt;code&gt;--log-opt&lt;/code&gt; with a &lt;code&gt;max-size&lt;/code&gt; and &lt;code&gt;max-file&lt;/code&gt;. When configured this way, container logs are rolled over after reaching the specified limit and only the specified number of files are saved.&lt;/p&gt;
+
+&lt;p&gt;To generate a list of the largest files to confirm that the log files are using a large percent of the disk space run the File List Command.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;File List Command:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# find /var/lib/docker/ -name &amp;quot;*.log&amp;quot; -exec ls -sh {} \; | sort -n -r | head -20
+# du -aSh /var/lib/docker/ | sort -n -r | head -n 10
+To remove a log file on the host, run the Remove File Command to clear the contents and reduce the file size.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Remove File Command:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# cat /dev/null &amp;gt; /var/lib/docker/containers/CONTAINER_ID/CONTAINER_ID-json.log
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;OR&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# cat /dev/null &amp;gt;  $(docker inspect --format=&#39;{{.LogPath}}&#39;  CONTAINER_ID)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Use the Configure File Size Command to specify maximum file size and number.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Configure File Size Command:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# cat /etc/sysconfig/docker 
+OPTIONS=&#39;--insecure-registry=172.30.0.0/16 --selinux-enabled --log-opt max-size=50m --log-opt max-file=5&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;File size configuration changes will take effect after a Docker CE restart. To restart Docker CE, use the Restart Docker CE Command.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Restart Docker CE Command:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# systemctl restart docker 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;For more information on setting file log limits, click &lt;a href=&#34;https://access.redhat.com/solutions/2334181#&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h4 id=&#34;troubleshooting-nirmata-pe-installation:3976528693a0108357f4928017600865&#34;&gt;Troubleshooting Nirmata PE Installation&lt;/h4&gt;
+
+&lt;p&gt;To troubleshooting a Nirmata PE installation check through the following common issues. Contact Nirmata Support if the problem persists.&lt;/p&gt;
+
+&lt;h4 id=&#34;kafka-container-fails-to-start-or-keeps-restarting:3976528693a0108357f4928017600865&#34;&gt;Kafka Container Fails to Start or Keeps Restarting&lt;/h4&gt;
+
+&lt;p&gt;Kafka containers experience failure or restart issues when Kafka cannot connect to Zookeeper.&lt;/p&gt;
+
+&lt;p&gt;First, verify that Zookeeper is running using check Zookeeper Command.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Check Zookeeper Command:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;kubectl exec zookeeper-0 -n nirmata-shared bin/zkServer.sh status
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If Zookeeper is running, the command will return the following:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/disasterrecovery-9.png&#34; alt=&#34;image&#34; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;web-console-cannot-be-reached:3976528693a0108357f4928017600865&#34;&gt;Web Console Cannot Be Reached&lt;/h4&gt;
+
+&lt;p&gt;Verify that all the services are running using &lt;code&gt;docker ps&lt;/code&gt; or &lt;code&gt;kubectl get pods&lt;/code&gt; command.&lt;/p&gt;
+
+&lt;p&gt;Restart any services that are not running.&lt;/p&gt;
+
+&lt;p&gt;Verify that the  the frontend load balancer is reachable using the Curl Command.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Curl Command:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;curl https://&amp;lt;nirmata-url&amp;gt;/webclient
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Review the frontend load balancer logs for errors. To view the logs run the View Logs Command.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;View Logs Command:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;docker logs -f nginx
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If errors are found, restart the load balancer,&lt;/p&gt;
+
+&lt;p&gt;If the any services or the load balancer cannot be restarted, contact Nirmata Support.&lt;/p&gt;
+
+&lt;h4 id=&#34;unable-to-login-to-nirmata-pe:3976528693a0108357f4928017600865&#34;&gt;Unable to login to Nirmata PE&lt;/h4&gt;
+
+&lt;p&gt;Verify that all the services are running using &lt;code&gt;docker ps&lt;/code&gt; or &lt;code&gt;kubectl get pods&lt;/code&gt; command.&lt;/p&gt;
+
+&lt;p&gt;Review User Service and Security Service logs for errors. Restart any User Service or Security Service with errors.&lt;/p&gt;
+
+&lt;p&gt;If the User Service or Security Service cannot be restarted, contact Nirmata Support.&lt;/p&gt;
+
+&lt;h5 id=&#34;setup-virtual-machine-template:3976528693a0108357f4928017600865&#34;&gt;Setup Virtual Machine Template&lt;/h5&gt;
+
+&lt;p&gt;To setup a virtual machine (VM) template, run the Skip Broken and Install Commands.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Skip Broken Command:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;yum update --skip-broken -y
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Install Command:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;yum install net-tools
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Before saving the VM as a template, remove the file: _/opt/nirmata/conf/host&lt;em&gt;agent.id and the directory: /opt/nirmata/db/&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;/etc/sysconfig/network-scripts/ifcfg-&lt;em&gt;nameofmaininterface&lt;/em&gt; and remove the UUID&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;The configuration line should look like - UUID=&amp;ldquo;&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;Next, install Docker and the Nirmata agent using the Docker.sh Command.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Docker.sh Command:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#!/bin/bash -x
+# Install Docker
+sudo yum update -y
+
+sudo tee /etc/yum.repos.d/docker.repo &amp;lt;&amp;lt;-&#39;EOF&#39;
+[dockerrepo]
+name=Docker Repository
+baseurl=https://yum.dockerproject.org/repo/main/centos/7/
+enabled=1
+gpgcheck=1
+gpgkey=https://yum.dockerproject.org/gpg
+EOF
+
+sudo mount -o remount,rw &#39;/sys/fs/cgroup&#39;
+sudo ln -s /sys/fs/cgroup/cpu,cpuacct /sys/fs/cgroup/cpuacct,cpu
+
+sudo yum install -y docker-engine
+sudo systemctl enable docker.service
+sudo systemctl start docker
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;After installing Docker and the Nirmata agent, run an Install Cleanup Command.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Install Cleanup Command:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# Stop and remove any running containers
+sudo docker stop $(sudo docker ps | grep &amp;quot;flannel&amp;quot; | gawk &#39;{print $1}&#39;)
+sudo docker stop $(sudo docker ps | grep &amp;quot;nirmata&amp;quot; | gawk &#39;{print $1}&#39;)
+
+sudo docker stop $(sudo docker ps | grep &amp;quot;kube&amp;quot; | gawk &#39;{print $1}&#39;)
+sudo docker rm  $(sudo docker ps -a | grep &amp;quot;Exit&amp;quot; |gawk &#39;{print $1}&#39;)
+
+# Remove any cni plugins
+sudo rm -rf /etc/cni/*
+sudo rm -rf /opt/cni/*
+
+# Clear IP Tables
+sudo iptables --flush
+sudo iptables -tnat --flush
+
+# Restart docker
+sudo systemctl stop docker
+sudo systemctl start docker
+sudo docker ps
+
+# Deletes the cni interface
+sudo ifconfig cni0 down
+sudo brctl delbr cni0
+sudo ifconfig flannel.1 down
+sudo ip link delete cni0
+sudo ip link delete flannel.1
+
+# Remove cluster database
+sudo rm -rf /data
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If setting up CentOS or RHEL, disable SELinux and setup iptables.&lt;/p&gt;
+
+&lt;p&gt;To disable SELinux, navigate to: edit/etc/selinux/config&lt;/p&gt;
+
+&lt;p&gt;Set
+SELINUX=disabled&lt;/p&gt;
+
+&lt;p&gt;Reboot for the changes to take effect.&lt;/p&gt;
+
+&lt;p&gt;Verify that SELinux is disabled using a Sestatus Command:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;SELinux Status Command:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sestatus
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Configure the iptables on the VM template node with following commands:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo iptables --policy INPUT ACCEPT
+sudo iptables --policy OUTPUT ACCEPT
+sudo iptables --policy FORWARD ACCEPT
+sudo iptables -Z
+sudo iptables -F
+sudo iptables -X
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Finally, configure disk enable.UUID=TRUE in the VM Configuration.&lt;/p&gt;
+
+&lt;p&gt;For more information on enabling disk UUID on virtual machines, &lt;a href=&#34;https://sort.veritas.com/public/documents/sfha/6.2/vmwareesx/productguides/html/sfhas_virtualization/ch10s05s01.htm&#34;&gt;click here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h4 id=&#34;more-nirmata-setup-help:3976528693a0108357f4928017600865&#34;&gt;More Nirmata Setup Help&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://docs.nirmata.io/cloudproviders/&#34;&gt;Setup vSphere Private Cloud-Provider&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://docs.nirmata.io/cloudproviders/vmware_vsphere_cloud_provider/&#34;&gt;Setup a vSphere private-cloud provider&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://docs.nirmata.io/hostgroups/vmware_vsphere_host_group/&#34;&gt;Setup vSphere Host-Group&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://docs.nirmata.io/clusters/high_availability_ha_clusters/&#34;&gt;Setup Nodes and Load-Balancer for HA configuration&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://docs.nirmata.io/clusters/cluster_policies/&#34;&gt;Configure Storage-Class for vSphere Cluster Policy&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://docs.nirmata.io/clusters/create_a_new_kubernetes_cluster/&#34;&gt;Configure Kubernetes Cluster on vSphere&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Add Storage Class Template:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;metadata:
+  name: filesystem
+  selfLink: /apis/storage.k8s.io/v1/storageclasses/filesystem
+  labels:
+    nirmata.io/storageclass.name: filesystem
+provisioner: kubernetes.io/vsphere-volume
+apiVersion: storage.k8s.io/v1
+reclaimPolicy: Retain
+kind: StorageClass
+parameters:
+  diskformat: thin
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Hosting Site is Down</title>
+      <link>/privateedition/disasterrecovery/commonfailurescenarios/hostingsitedown/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/privateedition/disasterrecovery/commonfailurescenarios/hostingsitedown/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>More Nirmata Setup Help</title>
+      <link>/privateedition/disasterrecovery/morehelp/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/privateedition/disasterrecovery/morehelp/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Private Edition</title>
+      <link>/privateedition/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/privateedition/_index/</guid>
+      <description>&lt;p&gt;Nirmata is designed using cloud-native principles and architected as a set of containerized microservices. Nirmata is available in the following deployment models:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Nirmata SaaS&lt;/strong&gt;: a highly-secure and scalable multi-tenant cloud service operated and managed by the Nirmata team&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Nirmata Private Edition (Nirmata PE)&lt;/strong&gt;: a private copy of the Nirmata solution that runs in your (i.e. the customer&amp;rsquo;s) private cloud or data center and is managed by your operations team.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This section provides documentation on the Nirmata Private Editon:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;No page found with path or logical name &#34;How_To_Install_Nirmata_PE&#34;.
+&#34;&gt;Installing Nirmata Private Edition&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;No page found with path or logical name &#34;DisasterRecovery&#34;.
+&#34;&gt;Planning for Disaster Recovery&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

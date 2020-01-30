@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Introductions on Your Site Title</title>
+    <link>/introduction/</link>
+    <description>Recent content in Introductions on Your Site Title</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© 2015 Copyright Text</copyright>
+    <atom:link href="/introduction/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>About Nirmata</title>
+      <link>/introduction/about_nirmata/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/introduction/about_nirmata/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Applications</title>
+      <link>/introduction/core_concepts/applications/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/introduction/core_concepts/applications/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Introduction</title>
+      <link>/introduction/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/introduction/_index/</guid>
+      <description>
+
+&lt;h4 id=&#34;about-nirmata:3976528693a0108357f4928017600865&#34;&gt;About Nirmata&lt;/h4&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Application Components</title>
+      <link>/introduction/core_concepts/application_components/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/introduction/core_concepts/application_components/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Solution Overview</title>
+      <link>/introduction/solution_overview/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/introduction/solution_overview/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Deployment Models</title>
+      <link>/introduction/deployment_models/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/introduction/deployment_models/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Environments</title>
+      <link>/introduction/core_concepts/environments/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/introduction/core_concepts/environments/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Clusters</title>
+      <link>/introduction/core_concepts/clusters/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/introduction/core_concepts/clusters/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Core Concepts</title>
+      <link>/introduction/core_concepts/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/introduction/core_concepts/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Getting Started</title>
+      <link>/introduction/getting_started/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/introduction/getting_started/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Policies</title>
+      <link>/introduction/core_concepts/policies/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/introduction/core_concepts/policies/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Cloud Providers</title>
+      <link>/introduction/core_concepts/cloud_providers/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/introduction/core_concepts/cloud_providers/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Quick Start</title>
+      <link>/introduction/quick_start/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/introduction/quick_start/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Host Groups</title>
+      <link>/introduction/core_concepts/host_groups/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/introduction/core_concepts/host_groups/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Containers</title>
+      <link>/introduction/core_concepts/containers/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/introduction/core_concepts/containers/_index/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

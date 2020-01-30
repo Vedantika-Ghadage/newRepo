@@ -1,0 +1,458 @@
+
+<!doctype html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+  <title>Velero Installation</title>
+  <script src="//bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+  <link rel="import" href="//bower_components/iron-icons/iron-icons.html">
+  <link rel="import" href="//bower_components/paper-drawer-panel/paper-drawer-panel.html">
+  <link rel="import" href="//bower_components/paper-icon-button/paper-icon-button.html">
+  <link rel="import" href="//bower_components/paper-toolbar/paper-toolbar.html">
+  <link rel="import" href="//bower_components/paper-scroll-header-panel/paper-scroll-header-panel.html">
+  <link rel="import" href="//bower_components/paper-fab/paper-fab.html">
+  <link rel="import" href="//bower_components/paper-item/paper-item.html">
+  <link rel="import" href="//bower_components/paper-menu/paper-menu.html">
+  <link rel="import" href="//bower_components/iron-image/iron-image.html">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/default.min.css">
+  <style is="custom-style">
+    body {
+      font-family: 'Roboto', sans-serif;
+    }
+    .nav {
+      border-right: 1px solid #ccc;
+    }
+    
+    paper-scroll-header-panel {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: var(--paper-grey-200, #eee);
+       
+      --paper-scroll-header-panel-full-header: {
+        background-image: url(//images/cover.png);
+      };
+       
+      --paper-scroll-header-panel-condensed-header: {
+        background-image: url(//images/cover.png);
+      };
+    }
+    
+    paper-toolbar {
+       
+      height: 256px;
+      background-color: transparent;
+    }
+    .profile{
+      width: 100%;
+      padding-bottom: 20px;
+    }
+    .photo{
+      margin: 20px;
+      display: inline-block;
+      height: 64px; width: 64px;
+      border-radius: 50%;
+    }
+    .article{
+      border: 1px solid #bebebe;
+      padding: 16px;
+      margin: 16px;
+      border-radius: 5px;
+      background-color: #fff;
+    }
+    .title{
+      font-size: 22px;
+      padding: 8px 0 16px;
+    }
+    .description{
+      font-size: 16px;
+      padding-bottom: 8px;
+    }
+    .author{
+      font-size: 16px;
+      padding-left: 20px;
+      color: white;
+    }
+    .design{
+      font-size: 14px;
+    }
+    .copyright{
+      font-size: 16px;
+    }
+    paper-menu a {
+      text-decoration: none;
+      color: #212121;
+    }
+  </style>
+
+</head>
+<body>
+  <paper-drawer-panel id="drawerPanel" responsive-width="1280px">
+    <div class="nav scroll" drawer>
+    
+      <iron-image class="profile" sizing="cover" src="//images/profile.png">
+    
+        
+          <iron-image class="photo" sizing="cover" src="//images/photo.png"></iron-image>
+        
+          <div class="author">Your Name</div>
+      </iron-image>
+      <paper-menu>
+        <a href="/"><paper-item>
+          <iron-icon icon="home"></iron-icon>　<div class="flex">Home</div>
+          <iron-icon icon="chevron-right"></iron-icon>
+        </paper-item></a>
+        <a href="//categories/"><paper-item>
+          <iron-icon icon="drafts"></iron-icon>　<div class="flex">Categories</div>
+          <iron-icon icon="chevron-right"></iron-icon>
+        </paper-item></a>
+        <a href="//tags/"><paper-item>
+          <iron-icon icon="loyalty"></iron-icon>　<div class="flex">Tags</div>
+          <iron-icon icon="chevron-right"></iron-icon>
+        </paper-item></a>
+      </paper-menu>
+    </div>
+
+    <paper-scroll-header-panel main condenses header-height="256" condensed-header-height="64">
+
+      <paper-toolbar>
+
+        <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
+        <div class="bottom title">Your Site Title</div>
+        <div class="flex"></div>
+        
+          <a href="https://www.facebook.com/Your%20facebook%20Name"><paper-icon-button src="//images/facebook-dreamstale25.png"></paper-icon-button></a>
+        
+        
+          <a href="https://twitter.com/Your%20Twitter%20Name"><paper-icon-button src="//images/twitter-dreamstale71.png"></paper-icon-button></a>
+        
+        
+          <a href="https://google.com/+Your%20Google&#43;%20Name"><paper-icon-button src="//images/google+-dreamstale37.png"></paper-icon-button></a>
+        
+        
+          <a href="https://www.linkedin.com/in/Your%20linkedin%20Name"><paper-icon-button src="//images/linkedin-dreamstale45.png"></paper-icon-button></a>
+        
+        
+          <a href="https://github.com/Your%20Github%20Name"><paper-icon-button src="//images/github2-dreamstale35.png"></paper-icon-button></a>
+        
+          <a href="//index.xml"><paper-icon-button src="//images/feed-dreamstale27.png"></paper-icon-button></a>
+      
+      </paper-toolbar>
+
+
+
+<div class="content">
+
+  <div class="article">
+    <div class="title">Velero Installation</div>
+     
+    <div class="description">
+
+<p>Applications deployed in Kubernetes can be fairly complex and are typically composed of several resources such as - Deployments, Statefulsets, ConfigMaps, Secrets, volumes etc. All of these resources need to be saved so that the application can be completely restored when needed.</p>
+
+<p>Velero (previously known as ARK) is an open source tool that helps automate backup and restore of Kubernetes clusters, including any application and its data.</p>
+
+<p>Velero, has become the de-facto number tool for Kubernetes backup and recovery. Velero is also an incubator project in CNCF and has a vibrant community. To learn more about features and use cases supported by Velero, check out the latest release documentation.</p>
+
+<p>Velero enables the following use cases:</p>
+
+<ul>
+<li>Disaster recovery - backup of cluster and restore in case of a disaster.</li>
+<li>Application migration - migrate application along with its data from one cluster to another.</li>
+<li>Application cloning - replicating production environments for testing and debugging.</li>
+</ul>
+
+<p>Also, Velero is fully integrated into the Nirmata Kubernetes management plane and available as add-on for every cluster in Nirmata, so that backups can be easily scheduled, and applications can be quickly recovered when needed.</p>
+
+<p>Nirmata supports Amazon Web Services (AWS), Azure, and Google Cloud Platform (GCP). The next section describes how to create an S3 Bucket on AWS.</p>
+
+<h2 id="create-aws-bucket:3976528693a0108357f4928017600865">Create AWS Bucket</h2>
+
+<ol>
+<li><p>Log in to your AWS account.</p></li>
+
+<li><p>Click on Amazon S3.</p></li>
+
+<li><p>Click the Create bucket button. The Create Bucket overlay appears.</p>
+
+<p><img src="/images/aws_create_bucket_overlay.png" style="max-width:80%;
+height: auto;"></p></li>
+
+<li><p>Enter a unique Bucket Name.</p></li>
+
+<li><p>Select the closet Region to your location from the drop down list.</p></li>
+
+<li><p>To copy settings from an existing bucket:</p>
+
+<ol>
+<li><p>Click the Select Bucket drop down list.</p></li>
+
+<li><p>Click inside the search widget and type the first few letters of an existing bucket. Matching buckets will appear in the list below.</p></li>
+
+<li><p>Select an existing bucket from the list to copy its settings.</p></li>
+</ol></li>
+
+<li><p>Click the Next button. The overlay transitions to the Configure Options panel.</p>
+
+<p><img src="/images/aws_create_bucket_options.png" style="max-width:80%;
+height: auto;"></p></li>
+
+<li><p>Modify any of the configuration options as required, then click the Next button. The overlay transitions to the Set Permissions panel.</p>
+
+<p><img src="/images/aws_create_bucket_permissions.png" style="max-width:80%;
+height: auto;"></p></li>
+
+<li><p>Do not block any access. Click the Next button. The overlay transitions to the Review panel.</p>
+
+<p><img src="/images/aws_create_bucket_review.png" style="max-width:80%;
+height: auto;"></p></li>
+
+<li><p>Review the settings for the new bucket. Click the Previous button to go back and make any changes.</p></li>
+
+<li><p>Click the Create bucket button to continue.</p></li>
+</ol>
+
+<h2 id="installing-velero:3976528693a0108357f4928017600865">Installing Velero</h2>
+
+<ol>
+<li><p>To install Velero on a cluster go to the Clusters panel and click on the cluster you wish to configure.</p></li>
+
+<li><p>Click Add-ons.</p>
+
+<p><img src="/images/cluster_addon.png" style="max-width:80%;
+height: auto;"></p></li>
+
+<li><p>Click the Add button on the right and select Add Velero from the menu.</p>
+
+<p><img src="/images/cluster_add_velero.png" style="max-width:50%;
+height: auto;"></p></li>
+
+<li><p>To create the Velero add-on using AWS:</p>
+
+<ol>
+<li>Select the provider from the drop-down list (AWS in this instance).</li>
+<li>Enter an AWS Access key.</li>
+<li>Enter an AWS Secret.</li>
+</ol>
+
+<p><img src="/images/create_velero_addon.png" style="max-width:80%;
+height: auto;"></p></li>
+
+<li><p>Click Create Add-on to continue or click Cancel to return to the previous page.</p>
+
+<p>Kubernetes provides a status for the Velero installation and indicates when it’s complete.</p></li>
+
+<li><p>Click the Close button on the overlay when the installation is completed.</p></li>
+</ol>
+
+<p>After deploying the Velero add-on you will return to the Add-ons page. You can view Velero&rsquo;s run status from here.</p>
+
+<p><img src="/images/velero_run_status.png" style="max-width:80%;
+  height: auto;"></p>
+
+<h2 id="velero-configuration-and-setup:3976528693a0108357f4928017600865">Velero Configuration and Setup</h2>
+
+<p>Configure Velero by setting up and configuring a Backup Storage Location and setting up a Backup.</p>
+
+<h3 id="configure-backup-and-storage-location:3976528693a0108357f4928017600865">Configure Backup and Storage Location</h3>
+
+<ol>
+<li><p>Click velero in the Add-on list.</p></li>
+
+<li><p>Click Configure Backup and Snapshot Location in the Backup Storage Location section.</p>
+
+<p><img src="/images/velero_add_backup_location.png" style="max-width:80%; height: auto;"></p>
+
+<p>The Add Backup Storage Location overlay appears.</p>
+
+<p><img src="/images/velero_add_backup_location_overlay.png" style="max-width:100%; height: auto;"></p></li>
+
+<li><p>Enter the Name of the Backup Storage and Location.</p></li>
+
+<li><p>Select another Region if you wish to change the default selection.</p></li>
+
+<li><p>Enter the name of the AWS S3 bucket created earlier in Bucket Name.</p></li>
+
+<li><p>Enter a Prefix for the directory that will store your backups.</p>
+
+<p>For example, using <code>prod</code> as a prefix will place all namespace and cluster backups below the prod directory.</p></li>
+
+<li><p>Click Add when completed or click Cancel to return to the previous page.</p></li>
+</ol>
+
+<p>Nirmata displays the newly added Backup Storage and Volume Snapshot Location on the Add-ons page.</p>
+
+<p><img src="/images/velero_backup_location.png" style="max-width:80%; height: auto;"></p>
+
+<p>You can verify the configuration is correct by reviewing the Backup storage location manifest.</p>
+
+<ol>
+<li><p>Click the name of the newly created Backup Storage Location under Name. The Storage Location Manifest overlay appears.</p>
+
+<p><img src="/images/storage_location_manifest.png" style="max-width:80%; height: auto;"></p></li>
+
+<li><p>Note the Status section and the <code>lastSyncedTime</code>. The presence of a status and timestamp indicates the backup location setup and configuration were completed successfully.</p></li>
+</ol>
+
+<h3 id="create-backup:3976528693a0108357f4928017600865">Create Backup</h3>
+
+<ol>
+<li><p>To create backups for the cluster or a cluster namespace click Create Backups on the Backup/Restore Details page.</p>
+
+<p><img src="/images/velero_add_backup.png" style="max-width:80%; height: auto;"></p>
+
+<p>The Add Backup overlay appears.</p>
+
+<p><img src="/images/velero_add_backup_overlay.png" style="max-width:80%; height: auto;"></p></li>
+
+<li><p>Enter a Name for the backup.</p></li>
+
+<li><p>Select a Type of backup from the drop down menu: Cluster or Namespace.</p></li>
+
+<li><p>Click Included Namespaces.</p></li>
+
+<li><p>Select default from the Included Namespaces drop down list, or choose a specific namespace as required.</p>
+
+<p><strong>Note:</strong> the Kubernetes and Nirmata namespaces are automatically excluded. Click the x next to a namespace you wish to include in backups.</p>
+
+<p>Storage Location should be automatically populated using the location created in the previous step (see <a href="http://docs.nirmata.io/integrations/backup-and-dr/velero/#configure-backup-and-storage-location">Configure Backup and Storage Location</a>).</p></li>
+
+<li><p>Check Snapshot Volumes if you wish to enable the volume snapshot capability.</p>
+
+<ol>
+<li>Select your Volume Snapshot Location from the drop-down list.</li>
+<li>Enter key/value pairs for Label Selector.</li>
+<li>Choose the type (String, Number, or Object) from the drop-down list for the key/value pair.</li>
+</ol></li>
+
+<li><p>Click Add Item if you wish to enter more key/value pairs.</p></li>
+
+<li><p>Enter the number of Hours To Keep or leave the default of 168h0m0s. Use the notation provided in the default if you change this value.</p></li>
+
+<li><p>Click Add to complete or click cancel to return to the Back/Restore Details page.</p>
+
+<p>The backup should automatically begin, indicated by the Status column of the Backups in the Backup &amp; Restore section of the Add-ons page.</p>
+
+<p><img src="/images/new_backup_status.png" style="max-width:80%; height: auto;"></p>
+
+<p>You will see the status of the newly created backup in the Backup &amp; Restore section of the page. The Status changes to Completed when the backup has finished.</p></li>
+
+<li><p>Click the name of your backup to open the backup details overlay.</p>
+
+<p><img src="/images/backup_details_overlay.png" style="max-width:80%; height: auto;"></p>
+
+<p>Note the Status section indicates a successfully completed backup.</p></li>
+
+<li><p>Click the Close button to return to the Backup/Restore page.</p></li>
+</ol>
+
+<h3 id="schedule-backup:3976528693a0108357f4928017600865">Schedule Backup</h3>
+
+<ol>
+<li><p>To schedule a backup for a cluster or namespace click Schedules on the Backup/Restore Details page.</p>
+
+<p><img src="/images/velero_schedule_backup.png" style="max-width:60%; height: auto;"></p>
+
+<p>The Add Schedule overlay appears.</p>
+
+<p><img src="/images/backup_add_schedule_overlay.png" style="max-width:100%; height: auto;"></p></li>
+
+<li><p>Enter a Name for the scheduled backup.</p></li>
+
+<li><p>Select a Type of scheduled backup from the drop down menu: Cluster or Namespace.</p></li>
+
+<li><p>Schedule uses standard <a href="https://en.wikipedia.org/wiki/Cron#Overview">cron notation</a>. Set your backup schedule to occur at the time and on the days of your choosing.</p></li>
+
+<li><p>Select default from the Included Namespaces drop down list, or choose a specific namespace as required.</p>
+
+<p><strong>Note:</strong> the Kubernetes and Nirmata namespaces are automatically excluded. Click the x next to a namespace you wish to include in backups.</p>
+
+<p>Storage Location should be automatically populated using the location created in the previous step (see <a href="http://docs.nirmata.io/integrations/backup-and-dr/velero/#configure-backup-and-storage-location">Configure Backup and Storage Location</a>).</p></li>
+
+<li><p>Check Snapshot Volumes if you wish to enable the volume snapshot capability.</p></li>
+
+<li><p>Select your Volume Snapshot Location from the drop-down list. It should be the same as Storage Location.</p></li>
+
+<li><p>Enter the number of Hours To Keep or leave the default of 168h0m0s. Use the notation provided in the default if you change this value.</p></li>
+
+<li><p>Click Add to complete or click Cancel to return to the Backup/Restore Details page.</p>
+
+<p>The newly added backup schedule appears in the Backup section of the Backup/Restore Details page.</p>
+
+<p><img src="/images/scheduled_backup.png" style="max-width:80%; height: auto;"></p>
+
+<p>Note the scheduled backup&rsquo;s attributes listed on the screen:</p>
+
+<ul>
+<li>Schedule</li>
+<li>Last Backup<br /></li>
+<li>Status</li>
+</ul>
+
+<p>Status should indicate <em>Enabled</em>.</p></li>
+
+<li><p>Click the name of your scheduled backup to open the scheduled backup details overlay.</p>
+
+<p><img src="/images/scheduled_backup_details_overlay.png" style="max-width:80%; height: auto;"></p>
+
+<p>Note the Status section at the bottom indicating the time of last backup and state of the schedule, which should be <em>Enabled.</em></p></li>
+</ol>
+</div>
+    <div class="tags">
+      1 Jan 0001
+       
+    </div>
+    
+      <div id="disqus_thread"></div>
+<script type="text/javascript">
+     
+    var disqus_shortname = 'Your Disqus Name';
+    
+     
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    
+  </div>
+
+</div>
+
+<paper-item>
+  
+    <a href="/hostgroups/aws_host_groups/using_auto_scaling_groups/_index/"><paper-fab icon="chevron-left"><a></a></paper-fab></a>
+  
+    <div class="flex"></div>
+  
+    <a href="/restapi/common_endpoints/ancestors/_index/"><paper-fab icon="chevron-right"></paper-fab></a>
+  
+</paper-item>
+
+      <paper-item>
+        <div class="copyright">© 2015 Copyright Text</div>
+        <div class="flex"></div>
+        <div class="design">Design <a href="http://pdevty.github.io/blog/">pdevty</a></div>
+      </paper-item>
+    </paper-scroll-header-panel>
+  </paper-drawer-panel>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'Your Analytics User Id', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</body>
+</html>

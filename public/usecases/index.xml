@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>UseCases on Your Site Title</title>
+    <link>/usecases/</link>
+    <description>Recent content in UseCases on Your Site Title</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© 2015 Copyright Text</copyright>
+    <atom:link href="/usecases/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Wordpress-MySQL</title>
+      <link>/usecases/wordpress-mysql-application-installation-on-kubernetes-cluster-with-vmware-vsphere/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/usecases/wordpress-mysql-application-installation-on-kubernetes-cluster-with-vmware-vsphere/_index/</guid>
+      <description>
+
+&lt;h4 id=&#34;introduction:3976528693a0108357f4928017600865&#34;&gt;Introduction&lt;/h4&gt;
+
+&lt;p&gt;VMware vSphere streamlines virtual machine and virtual environment management. When applied to a Kubernetes cluster running a MySQL-Wordpress application, updates, revisions, and general management is faster and more accessible.&lt;/p&gt;
+
+&lt;p&gt;Nirmata allows users to bring together each of these services to configure and control behavior in one location.&lt;/p&gt;
+
+&lt;h4 id=&#34;prerequisites:3976528693a0108357f4928017600865&#34;&gt;Prerequisites&lt;/h4&gt;
+
+&lt;p&gt;Before starting, ensure that the following is available:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Three (3) VM&amp;rsquo;s with 2vCPUs, 16GB memory, and 300GB storage accessible from the Internet.&lt;/li&gt;
+&lt;li&gt;Access to the load-balancer and firewall.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&#34;setup-vmware-vsphere:3976528693a0108357f4928017600865&#34;&gt;Setup VMware vSphere&lt;/h4&gt;
+
+&lt;p&gt;First, setup VMware vSphere and configure it to allow for a Nirmata-managed Kubernetes cluster.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://pubs.vmware.com/vsphere-4-esx-vcenter/index.jsp?topic=/com.vmware.vsphere.resourcemanagement.doc_40/managing_resource_pools/t_create_resource_pools.html&#34;&gt;Click here for instructions on configuring a resource pool for the Nirmata managed Kubernetes cluster in vCenter.&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;After configuring the resource pool, setup a VM template.&lt;/p&gt;
+
+&lt;h4 id=&#34;how-to-setup-a-vm-template:3976528693a0108357f4928017600865&#34;&gt;How to Setup a VM Template&lt;/h4&gt;
+
+&lt;p&gt;To setup a VM Template, run the update and install commands.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Update and Install Commands:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;yum update --skip-broken -y
+yum install net-tools
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Next, install Docker and the Nirmata agent using the Install Docker and Nirmata Agent command.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; Remove the file: &lt;code&gt;/opt/nirmata/conf/host_agent.id&lt;/code&gt; and the directory: &lt;code&gt;/opt/nirmata/db/prior&lt;/code&gt; to saving the VM as a template.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;/etc/sysconfig/network-scripts/ifcfg-*nameofmaininterface*&lt;/code&gt; and remove the UUID&lt;/p&gt;
+
+&lt;p&gt;The configuration line should look like - &lt;code&gt;UUID=&amp;quot;&amp;quot;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Install Docker and Nirmata Agent Command (Docker.sh):&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#!/bin/bash -x
+# Install Docker
+sudo yum update -y
+
+sudo tee /etc/yum.repos.d/docker.repo &amp;lt;&amp;lt;-&#39;EOF&#39;
+[dockerrepo]
+name=Docker Repository
+baseurl=https://yum.dockerproject.org/repo/main/centos/7/
+enabled=1
+gpgcheck=1
+gpgkey=https://yum.dockerproject.org/gpg
+EOF
+
+sudo mount -o remount,rw &#39;/sys/fs/cgroup&#39;
+sudo ln -s /sys/fs/cgroup/cpu,cpuacct /sys/fs/cgroup/cpuacct,cpu
+
+sudo yum install -y docker-engine
+sudo systemctl enable docker.service
+sudo systemctl start docker
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;After installing Docker and the Nirmata agent, run the clean-up command.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Clean Up Command (cleanup.sh):&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# Stop and remove any running containers
+sudo docker stop $(sudo docker ps | grep &amp;quot;flannel&amp;quot; | gawk &#39;{print $1}&#39;)
+sudo docker stop $(sudo docker ps | grep &amp;quot;nirmata&amp;quot; | gawk &#39;{print $1}&#39;)
+
+sudo docker stop $(sudo docker ps | grep &amp;quot;kube&amp;quot; | gawk &#39;{print $1}&#39;)
+sudo docker rm  $(sudo docker ps -a | grep &amp;quot;Exit&amp;quot; |gawk &#39;{print $1}&#39;)
+
+# Remove any cni plugins
+sudo rm -rf /etc/cni/*
+sudo rm -rf /opt/cni/*
+
+# Clear IP Tables
+sudo iptables --flush
+sudo iptables -tnat --flush
+
+# Restart docker
+sudo systemctl stop docker
+sudo systemctl start docker
+sudo docker ps
+
+# Deletes the cni interface
+sudo ifconfig cni0 down
+sudo brctl delbr cni0
+sudo ifconfig flannel.1 down
+sudo ip link delete cni0
+sudo ip link delete flannel.1
+
+# Remove cluster database
+sudo rm -rf /data
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If running on CentOS or RHEL, disable SE Linux and setup ip tables.&lt;/p&gt;
+
+&lt;p&gt;To setup IP tables, edit  /etc/selinux/config.&lt;/p&gt;
+
+&lt;p&gt;Set SELINUX=disabled&lt;/p&gt;
+
+&lt;p&gt;After completing the edits, shutdown and reboot.&lt;/p&gt;
+
+&lt;p&gt;Using a SE Status command, confirm that SELinux is disabled.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;SE Status Command:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sestatus
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Configure the IP Tables on the VM template node with the VM Template IP Tables commands.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;VM Template IP Tables Commands:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo iptables --policy INPUT ACCEPT
+sudo iptables --policy OUTPUT ACCEPT
+sudo iptables --policy FORWARD ACCEPT
+sudo iptables -Z
+sudo iptables -F
+sudo iptables -X
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;After creating a VMware vSphere template, &lt;a href=&#34;https://sort.veritas.com/public/documents/sfha/6.2/vmwareesx/productguides/html/sfhas_virtualization/ch10s05s01.htm&#34;&gt;setup a vSphere account and provide access to the Resource Pool and VM template for Nirmata to use.&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;vmware-vsphere-in-nirmata:3976528693a0108357f4928017600865&#34;&gt;VMware vSphere in Nirmata&lt;/h4&gt;
+
+&lt;p&gt;After setting up VMware vSphere, the next step is to setup vSphere inside Nirmata.&lt;/p&gt;
+
+&lt;h3 id=&#34;how-to-setup-vmware-vsphere-in-nirmata:3976528693a0108357f4928017600865&#34;&gt;How to Setup VMware vSphere in Nirmata&lt;/h3&gt;
+
+&lt;p&gt;First, setup a vSphere Private Cloud. &lt;a href=&#34;https://docs.nirmata.io/cloudproviders/private_cloud/&#34;&gt;Click here for instructions.&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Next, setup a vSphere Private Cloud Provider. &lt;a href=&#34;https://docs.nirmata.io/cloudproviders/vmware_vsphere_cloud_provider/&#34;&gt;Click here for instructions.&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Then setup a vSphere Host Group. &lt;a href=&#34;https://docs.nirmata.io/hostgroups/vmware_vsphere_host_group/&#34;&gt;Click here for instructions.&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;After setting up the Host Group, setup the Nodes and Load-Balancer in a High-Availability configuration. &lt;a href=&#34;https://docs.nirmata.io/clusters/high_availability_ha_clusters/&#34;&gt;Click here for instructions.&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Then configure the Storage Class for the vSphere Cluster Policy. &lt;a href=&#34;https://docs.nirmata.io/clusters/cluster_policies/&#34;&gt;Click here for instructions on creating a Cluster Policy.&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Next, create a Storage Class for the vSphere Cluster Policy.&lt;/p&gt;
+
+&lt;p&gt;Use the following template to create the Storage Class for the vSphere Cluster Policy.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Storage Class for the vSphere Cluster Policy Template:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;metadata:
+  name: filesystem
+  selfLink: /apis/storage.k8s.io/v1/storageclasses/filesystem
+  labels:
+    nirmata.io/storageclass.name: filesystem
+provisioner: kubernetes.io/vsphere-volume
+apiVersion: storage.k8s.io/v1
+reclaimPolicy: Retain
+kind: StorageClass
+parameters:
+  diskformat: thin
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;To add the Storage Class to the vSphere Cluster Policy, select &lt;em&gt;Policies&lt;/em&gt; and then &lt;em&gt;Cluster Policies&lt;/em&gt; from the sidebar menu.&lt;/p&gt;
+
+&lt;p&gt;Open the vSphere Cluster Policy and scroll to the &lt;em&gt;Storage Class&lt;/em&gt; section.&lt;/p&gt;
+
+&lt;p&gt;Click the + icon to add a new Storage Class.&lt;/p&gt;
+
+&lt;p&gt;Drop the vSphere Cluster Policy Storage Class YAML file into the upload box or select the file from the directory.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/mysqlvsphere-1.png&#34; alt=&#34;image&#34; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;configure-kubernetes-cluster-on-vsphere:3976528693a0108357f4928017600865&#34;&gt;Configure Kubernetes Cluster on vSphere&lt;/h4&gt;
+
+&lt;p&gt;The final step is to configure the Kubernetes Cluster on VMware vSphere.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://docs.nirmata.io/clusters/create_a_new_kubernetes_cluster/&#34;&gt;Click here for instructions on creating a new Kubernetes Cluster in Nirmata.&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Kubernetes Audit Logging with Nirmata</title>
+      <link>/usecases/kubernetes-audit-logging-with-nirmata/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/usecases/kubernetes-audit-logging-with-nirmata/_index/</guid>
+      <description>
+
+&lt;h4 id=&#34;audit-logging-on-kubernetes:3976528693a0108357f4928017600865&#34;&gt;Audit Logging on Kubernetes&lt;/h4&gt;
+
+&lt;p&gt;Set the parameters for apiserver, pass the file path for the audit log yaml inside the container(can be any path you want)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/Audit-Logging0.png&#34; alt=&#34;image&#34; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Create a cluster using your custom cluster policy&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;While cluster is deploying, go to this page by clicking on &lt;code&gt;view details&lt;/code&gt; of components (double gear icon)&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/Audit-Logging1.png&#34; alt=&#34;image&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Click on the second &lt;code&gt;settings&lt;/code&gt; icon from the top, you will see components details, find the &lt;code&gt;volumes&lt;/code&gt; chart&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/Audit-Logging2.png&#34; alt=&#34;image&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Click &lt;code&gt;edit&lt;/code&gt;  for apiserver, specify the folder you want to mount to this container&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/Audit-Logging3.png&#34; alt=&#34;image&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Redeploy apiserver, this path will mount to the container and you can load the audit policy.&lt;/p&gt;
+
+&lt;p&gt;By exec into the kubeapi you can now tail the kube-audit log we have created.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/Audit-Logging4.png&#34; alt=&#34;image&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Use Cases</title>
+      <link>/usecases/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/usecases/_index/</guid>
+      <description>
+
+&lt;h4 id=&#34;introduction:3976528693a0108357f4928017600865&#34;&gt;Introduction&lt;/h4&gt;
+
+&lt;p&gt;There are hundreds of ways that our customers are using Nirmata to streamline the management of Kubernetes clusters. In this section we highlight a few of those use cases and provide detailed instructions for replicating their success.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

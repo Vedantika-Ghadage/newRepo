@@ -1,0 +1,499 @@
+
+<!doctype html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+  <title>Vault by HashiCorp</title>
+  <script src="//bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+  <link rel="import" href="//bower_components/iron-icons/iron-icons.html">
+  <link rel="import" href="//bower_components/paper-drawer-panel/paper-drawer-panel.html">
+  <link rel="import" href="//bower_components/paper-icon-button/paper-icon-button.html">
+  <link rel="import" href="//bower_components/paper-toolbar/paper-toolbar.html">
+  <link rel="import" href="//bower_components/paper-scroll-header-panel/paper-scroll-header-panel.html">
+  <link rel="import" href="//bower_components/paper-fab/paper-fab.html">
+  <link rel="import" href="//bower_components/paper-item/paper-item.html">
+  <link rel="import" href="//bower_components/paper-menu/paper-menu.html">
+  <link rel="import" href="//bower_components/iron-image/iron-image.html">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/default.min.css">
+  <style is="custom-style">
+    body {
+      font-family: 'Roboto', sans-serif;
+    }
+    .nav {
+      border-right: 1px solid #ccc;
+    }
+    
+    paper-scroll-header-panel {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: var(--paper-grey-200, #eee);
+       
+      --paper-scroll-header-panel-full-header: {
+        background-image: url(//images/cover.png);
+      };
+       
+      --paper-scroll-header-panel-condensed-header: {
+        background-image: url(//images/cover.png);
+      };
+    }
+    
+    paper-toolbar {
+       
+      height: 256px;
+      background-color: transparent;
+    }
+    .profile{
+      width: 100%;
+      padding-bottom: 20px;
+    }
+    .photo{
+      margin: 20px;
+      display: inline-block;
+      height: 64px; width: 64px;
+      border-radius: 50%;
+    }
+    .article{
+      border: 1px solid #bebebe;
+      padding: 16px;
+      margin: 16px;
+      border-radius: 5px;
+      background-color: #fff;
+    }
+    .title{
+      font-size: 22px;
+      padding: 8px 0 16px;
+    }
+    .description{
+      font-size: 16px;
+      padding-bottom: 8px;
+    }
+    .author{
+      font-size: 16px;
+      padding-left: 20px;
+      color: white;
+    }
+    .design{
+      font-size: 14px;
+    }
+    .copyright{
+      font-size: 16px;
+    }
+    paper-menu a {
+      text-decoration: none;
+      color: #212121;
+    }
+  </style>
+
+</head>
+<body>
+  <paper-drawer-panel id="drawerPanel" responsive-width="1280px">
+    <div class="nav scroll" drawer>
+    
+      <iron-image class="profile" sizing="cover" src="//images/profile.png">
+    
+        
+          <iron-image class="photo" sizing="cover" src="//images/photo.png"></iron-image>
+        
+          <div class="author">Your Name</div>
+      </iron-image>
+      <paper-menu>
+        <a href="/"><paper-item>
+          <iron-icon icon="home"></iron-icon>　<div class="flex">Home</div>
+          <iron-icon icon="chevron-right"></iron-icon>
+        </paper-item></a>
+        <a href="//categories/"><paper-item>
+          <iron-icon icon="drafts"></iron-icon>　<div class="flex">Categories</div>
+          <iron-icon icon="chevron-right"></iron-icon>
+        </paper-item></a>
+        <a href="//tags/"><paper-item>
+          <iron-icon icon="loyalty"></iron-icon>　<div class="flex">Tags</div>
+          <iron-icon icon="chevron-right"></iron-icon>
+        </paper-item></a>
+      </paper-menu>
+    </div>
+
+    <paper-scroll-header-panel main condenses header-height="256" condensed-header-height="64">
+
+      <paper-toolbar>
+
+        <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
+        <div class="bottom title">Your Site Title</div>
+        <div class="flex"></div>
+        
+          <a href="https://www.facebook.com/Your%20facebook%20Name"><paper-icon-button src="//images/facebook-dreamstale25.png"></paper-icon-button></a>
+        
+        
+          <a href="https://twitter.com/Your%20Twitter%20Name"><paper-icon-button src="//images/twitter-dreamstale71.png"></paper-icon-button></a>
+        
+        
+          <a href="https://google.com/+Your%20Google&#43;%20Name"><paper-icon-button src="//images/google+-dreamstale37.png"></paper-icon-button></a>
+        
+        
+          <a href="https://www.linkedin.com/in/Your%20linkedin%20Name"><paper-icon-button src="//images/linkedin-dreamstale45.png"></paper-icon-button></a>
+        
+        
+          <a href="https://github.com/Your%20Github%20Name"><paper-icon-button src="//images/github2-dreamstale35.png"></paper-icon-button></a>
+        
+          <a href="//index.xml"><paper-icon-button src="//images/feed-dreamstale27.png"></paper-icon-button></a>
+      
+      </paper-toolbar>
+
+
+
+<div class="content">
+
+  <div class="article">
+    <div class="title">Vault by HashiCorp</div>
+     
+    <div class="description">
+
+<h4 id="secrets-management-overview:3976528693a0108357f4928017600865">Secrets Management Overview</h4>
+
+<p>Secrets are any sensitive data in the application; including passwords, certificates, and keys.
+Whenever possible, it is best to de-couple secrets from an application and deliver the secret at the last possible moment.</p>
+
+<p><strong>Secrets Management Tactics to Avoid:</strong></p>
+
+<ul>
+<li>Hard coded secrets</li>
+<li>Secrets packaged with code</li>
+<li>Secrets inserted via build or configuration management tools</li>
+<li>Exposing or configuring secrets as an image in the environment variables</li>
+</ul>
+
+<p><strong>What Secrets Management Does Kubernetes Provide?</strong></p>
+
+<ul>
+<li>API Object to define secrets</li>
+<li>Values are based on 64 encoded</li>
+<li>Secrets are namespaced</li>
+<li>Secrets can be mounted as volumes</li>
+<li>Secrets can be used as environment variable inside a container</li>
+</ul>
+
+<p><strong>What is missing in Kubernetes Secrets Management?</strong></p>
+
+<ul>
+<li>Encryption at rest (available in 1.130.0 and etcd v3) – API object provides encryption for sensitive data</li>
+<li>Secrets are created as shared (static) pieces of data and configured within the cluster or namespace for the application; it is difficult to make changes and secrets are not dynamic</li>
+<li>No leases, rotation, etc.</li>
+</ul>
+
+<h5 id="vault-by-hashicorp-and-secrets-management:3976528693a0108357f4928017600865">Vault by HashiCorp and Secrets Management</h5>
+
+<p>Vault by HashiCorp (Vault) is a tool for securely accessing secrets. A secret is anything that requires tightly controlled access, such as API keys, passwords, and certificates. HashiCorp Vault provides a unified interface to any secret, tight access control, and detailed audit logs.</p>
+
+<p>Vault is designed to be secure by default. It is can be used with several different storage backends to provide dynamic secrets management.</p>
+
+<p>Vault integrates with all major cloud providers.</p>
+
+<p>A modern system requires access to a multitude of secrets: database credentials, API keys for external services, credentials for service-oriented architecture communication, etc. Understanding who is accessing which secrets is complex and platform-specific. Adding on key rolling, secure storage, and detailed audit logs is almost impossible without a custom solution. HashiCorp Vault solves this need.</p>
+
+<h6 id="what-is-a-dynamic-secret:3976528693a0108357f4928017600865">What is a Dynamic Secret</h6>
+
+<p>Secrets should be created just-in-time and delivered only when requested. Each credential (secret) should be applied only to the client, account, or user that has requested the secret.</p>
+
+<p>When a secret is assigned by Vault, a lease is assigned to the secret. If the secret is not used, the client goes away, or the application stops working the lease is not renewed and it is automatically deleted.</p>
+
+<p>Vault automates some of the hardest parts of managing security across a large span of applications – making secret management elegant by employing and configuring best practices to automate many security aspects.</p>
+
+<h6 id="how-does-vault-integrate-into-kubernetes:3976528693a0108357f4928017600865">How Does Vault Integrate into Kubernetes</h6>
+
+<p>Vault uses the Kubernetes API to authenticate the JSON Web Token (JWT) of the Kubernetes Service Account. Vault checks the namespace and service account name of the token to verify that the pod making the authentication request is valid.</p>
+
+<p>Kubernetes allows for the use of a separate container to manage passing the secret from Vault to the applications that need it. By using sidecar and Init Containers, the secret can pass from Vault and into a shared repository that is accessible by all of the applications that need access to the secret.</p>
+
+<p><img src="/images/vault-1.png" alt="image" /></p>
+
+<h5 id="using-hashicorp-vault-to-manage-secrets-in-kubernetes:3976528693a0108357f4928017600865">Using HashiCorp Vault to Manage Secrets in Kubernetes</h5>
+
+<p>Vault uses the Service Account name and JWT to authenticate the application and provide the requested secret.</p>
+
+<ol>
+<li>The application sends a role request to Vault using the Service Account name. The Service Account Name and Role must match what is configured for the requesting application in Vault.</li>
+<li>If the Service Account name and Role are associated with the requesting application, Vault returns a Token granting the requested role.</li>
+<li>The application calls back into Vault with the Token and the Role to fetch the secret.</li>
+</ol>
+
+<p>This demo uses Nirmata’s Open Source Init Container project store the secrets fetched from Vault.</p>
+
+<p><img src="/images/vault-2.png" alt="image" /></p>
+
+<h5 id="how-are-secrets-from-vault-applied-to-applications-in-nirmata:3976528693a0108357f4928017600865">How Are Secrets from Vault Applied to Applications in Nirmata?</h5>
+
+<p>Applications in Nirmata are based on hyper-flexible policies that utilize label and based-on selectors.</p>
+
+<p>To use a Vault-stored secret in an application in Nirmata, the application’s policy mutates the YAML and injects the appropriate service account, pod settings, init container, and a shared transient volume.</p>
+
+<p>The init container communicates with Vault and fetches the secret. The transient storage is only available within the container and houses the secret obtained from Vault.</p>
+
+<h4 id="integrating-hashicorp-vault-with-nirmata:3976528693a0108357f4928017600865">Integrating HashiCorp Vault with Nirmata</h4>
+
+<p>Integrating Vault with Nirmata allows clusters and applications managed in Nirmata to access secrets stored in Vault.</p>
+
+<p>The integration requires just a few steps:</p>
+
+<p><img src="/images/vault-3.png" alt="image" /></p>
+
+<h5 id="prerequisites-for-this-demo:3976528693a0108357f4928017600865">Prerequisites for this Demo</h5>
+
+<p>Before beginning this demo, ensure that the following is in place:</p>
+
+<ol>
+<li>Create a <a href="https://learn.hashicorp.com/vault/getting-started/first-secret">Secret in Vault</a></li>
+<li>Configure <a href="https://docs.nirmata.io/cloudproviders/">Cloud Provider in Nirmata</a></li>
+<li>Create <a href="https://docs.nirmata.io/hostgroups/">Host Group</a> within Cloud Provider in Nirmata</li>
+<li>Deploy a <a href="https://docs.nirmata.io/clusters/">Cluster</a> in Nirmata</li>
+<li>Make the Cluster available by creating an <a href="https://docs.nirmata.io/environments/">Environment</a> in Nirmata</li>
+</ol>
+
+<h5 id="defining-secrets-in-vault:3976528693a0108357f4928017600865">Defining Secrets in Vault</h5>
+
+<p>This demo uses key value store secrets; however, most uses cases will require a combination of secret backends.</p>
+
+<p>To define secrets in Vault, set an authentication method for each cluster. Vault requires certificates and keys to communicate with the cluster.</p>
+
+<p>Within the authentication method, create a role for each application that must access the secret.</p>
+
+<p>As a best practice, manage Service Accounts for each application role in Kubernetes. This allows Vault to check JWT validity against each application that accesses Vault since each application identifies itself with its own Service Account name.</p>
+
+<p>It is possible to use the Vault API to fetch the secret and make it available to the application directly. However, in many cases, it is best not to code the call to the Vault API directly into the application.</p>
+
+<p>Nirmata provides the Kubernetes Host, Kubernetes CA Certificate, and Token Reviewer JWT requirements for configuring a Kubernetes Authentication Method in Vault.</p>
+
+<p>To access the requirements, select <em>Cluster</em> from the sidebar menu, then select a <em>Cluster</em>.</p>
+
+<p>Click the gear icon to open the <em>Cluster Settings</em> menu and select <em>Enable Vault</em>. The requirements are displayed in the <em>Configure Vault</em> window.</p>
+
+<p><img src="/images/vault-4.png" alt="image" /></p>
+
+<p>After retrieving the Kubernetes Authentication Method requirements, login to Vault Secrets Service.</p>
+
+<p>A list of secrets is displayed. This demo uses the secret <strong>ghost/</strong>.</p>
+
+<p><img src="/images/vault-5.png" alt="image" /></p>
+
+<p>The Kubernetes Authentication Method for each cluster is configured in <em>Access</em>.</p>
+
+<p>This configuration allows Vault to communicate with the cluster via the API.</p>
+
+<p>Select <em>View Configuration</em> from the ellipsis menu button.</p>
+
+<p><img src="/images/vault-6.png" alt="image" /></p>
+
+<p>Verify that <em>Configuration</em> shows a Kubernetes Authentication Method (Path and Accessor) configured for the cluster.</p>
+
+<p><img src="/images/vault-7.png" alt="image" /></p>
+
+<p>Next, setup roles in Vault in the backend for the application that will access the secret. In this demo, the <strong>ghost</strong> application will access the secret and run in various environments in the cluster</p>
+
+<p>Using a command line, retrieve nodes and namespaces and workloads.</p>
+
+<p><strong>Retrieve Nodes Command:</strong></p>
+
+<pre><code>kubectl get nodes
+</code></pre>
+
+<p><strong>Retrieve Namespaces and Workloads Command:</strong></p>
+
+<pre><code>kubectl get ns
+</code></pre>
+
+<p><img src="/images/vault-8.png" alt="image" /></p>
+
+<p>The results show that there is a three-node cluster running on AWS deployed through Nirmata and lists the namespaces and workloads running on the cluster, which includes the demo application <strong>ghost</strong> running in two environments,<strong>prod</strong> and <strong>staging</strong>.</p>
+
+<h5 id="enter-vault-settings-in-nirmata:3976528693a0108357f4928017600865">Enter Vault Settings in Nirmata</h5>
+
+<p>In this demo, the Cloud Provider is <strong>AWS</strong>; the name of the Cluster is <strong>aws-demo</strong> and the two Environments are <strong>aws-demo-prod</strong> and <strong>aws-demo-staging</strong>.
+To enter Vault Settings in Nirmata, return to the <em>Configure Vault</em> window and complete the required information.</p>
+
+<p>Enter the <em>Vault Address</em> and <em>Kubernetes Authentication Path</em>.</p>
+
+<p><em><strong>Vault Address:</strong></em> IP address of the Vault service containing the secrets</p>
+
+<p><strong><em>Kubernetes Authentication Path:</em></strong> backend access method configured in Vault (Vault &gt; Access &gt; View Configuration &gt; Path)</p>
+
+<p><img src="/images/vault-9.png" alt="image" /></p>
+
+<h5 id="create-secrets-policy-in-nirmata:3976528693a0108357f4928017600865">Create Secrets Policy in Nirmata</h5>
+
+<p>Policies allow secrets to apply to specific Environments and Applications. A Policy can be set to match a single application, a number of applications, or a custom label.</p>
+
+<p><em><strong>Custom Label:</strong></em> a grouping applied to a family of applications</p>
+
+<p>In this demo, the two policies are <strong>ghost-prod</strong> and <strong>ghost-staging</strong>.</p>
+
+<p>To create a new Secrets Policy, choose <em>Policies</em> from the sidebar menu and select <em>Secrets</em>.</p>
+
+<p>Click the <em>+Add Secret Policy</em> button.</p>
+
+<p>In <em>General</em>, enter the name of the policy and select <em>Vault</em> as the <em>Secrets Manager</em>. Click <em>Next</em>.</p>
+
+<p><img src="/images/vault-10.png" alt="image" /></p>
+
+<p>Configure each field in <em>Settings</em>.</p>
+
+<p><strong><em>Pod Selector:</em></strong> enter the Application name and Environment name to which the Secret Policy applies; a Policy can apply to a number of applications or a family of applications using a Custom Label.</p>
+
+<p><strong><em>Kuberenetes Auth Role:</em></strong> configured in Vault Kubernetes Authentication Method</p>
+
+<p><strong><em>Service Account:</em></strong> each role configured in Vault may apply to specific namespaces and service accounts; in this demo the service account is <strong>ghost-prod</strong>.</p>
+
+<p><em><em>Secrets File Path:</em></em> the path in which secrets will be stored; this setting allows secrets to be stored in a specific path in the container. Nirmata has released an open source Init Container project that creates a container in the Cluster for storing secrets. In this demo, the <em>Secrets File Path</em> is <strong>/var/run/vault</strong>.</p>
+
+<p><em><em>Secrets:</em></em> to add items to Secrets, click the +Add Item button. In the Vault Path field, specify the full path to the secrets or an individual key.</p>
+
+<p>If the <strong>full path</strong> to the secret is entered, the Init Container will fetch every key value in the path and store it in the <em>Secrets File Path</em>.</p>
+
+<p>If an <strong>individual key</strong> is specified, the Init Container will only retrieve the specified key. To rename the key in the file, enter the new name in the <em>Key (in file)</em> field. This allows the application to use a common name when consuming the key from the file.</p>
+
+<p><img src="/images/vault-11.png" alt="image" /></p>
+
+<p>The <strong>ghost</strong> application runs in both <strong>staging</strong> and <strong>prod</strong> environments. The configuration of the container determines which secrets are fetched based on the environment in which the application is running.</p>
+
+<p>The staging secret policy (<strong>ghost-staging</strong>) is very similar to the prod secret policy (<strong>ghost-prod</strong>) with exceptions of <em>Environment</em>, <em>Service Account</em>, and <em>Secrets</em>.</p>
+
+<p><img src="/images/vault-12.png" alt="image" /></p>
+
+<p>Next, verify that each Environment is associated with a unique secret in Vault.</p>
+
+<p>In Vault, View Secrets for <strong>ghost/prod</strong> (Vault&gt;Secrets&gt;ghost&gt;prod) and for <strong>ghost/staging</strong> (Vault&gt;Secrets&gt;ghost&gt;staging); each has a unique value.</p>
+
+<p>When the application runs in the chosen environment (<em>prod</em> or <em>staging</em>), the appropriate password is injected and runs in the container.</p>
+
+<p>When application deploys, Nirmata injects the password that matches the Pod Selector criteria.</p>
+
+<h5 id="run-the-application-in-nirmata:3976528693a0108357f4928017600865">Run the Application in Nirmata</h5>
+
+<p>To run the application, select <em>Environment</em> and then click <em>Run an application</em>.</p>
+
+<p>Enter a <em>Run name</em> and select the <em>Application</em> name. In this demo, the <em>Run name</em> is <strong>ghost2</strong>. Nirmata automatically generates a namespace name. Click <em>Run Application</em>.</p>
+
+<p><img src="/images/vault-13.png" alt="image" /></p>
+
+<p>Nirmata begins deploying the application. Select <em>Tasks</em> for a detailed view of the information Nirmata is sending to the Cluster.</p>
+
+<p><img src="/images/vault-14.png" alt="image" /></p>
+
+<p><img src="/images/vault-15.png" alt="image" /></p>
+
+<h5 id="verify-application-performance:3976528693a0108357f4928017600865">Verify Application Performance</h5>
+
+<p>Open a command line and retrieve namespaces and workloads to confirm that the application is running.</p>
+
+<p><strong>Retrieve Namespaces and Workloads Command:</strong></p>
+
+<pre><code>kubectl get ns
+</code></pre>
+
+<p><img src="/images/vault-16.png" alt="image" /></p>
+
+<p>Next, check the pods running on the namespace using the Get Pods command.</p>
+
+<p><strong>Get Pods Command:</strong></p>
+
+<pre><code>kubectl –n ghost2-aws-demo-staging get pods
+</code></pre>
+
+<p><img src="/images/vault-17.png" alt="image" /></p>
+
+<p>Enter a Describe Pod command to see the details of the pod.</p>
+
+<p><strong>Describe Pod Command:</strong></p>
+
+<pre><code>kubectl –n ghost2-aws-demo-staging describe pods
+</code></pre>
+
+<p><img src="/images/vault-18.png" alt="image" /></p>
+
+<p>Next, view the secret in the pod to ensure the application can read the secret. To do this, retrieve the pod and then execute into the pod.</p>
+
+<p><strong>Get Pods Command:</strong></p>
+
+<pre><code>kubectl –n ghost2-aws-demo-staging get pods
+</code></pre>
+
+<p><strong>Execute into the Pod Command:</strong></p>
+
+<pre><code>kubectl –n ghost2-aws-demo-staging exec -it ghost-787bc9db54-57snb bash
+</code></pre>
+
+<p>Enter the container that contains the secret using <code>cat /var/run/vault</code>.</p>
+
+<p>The secret and the applied renaming conventions are returned. The secret and renaming conventions are available to any container within the pod.</p>
+
+<p><img src="/images/vault-19.png" alt="image" /></p>
+
+<p>Next, run the application in the <strong>prod</strong> Environment and display the secrets in the Init Container.</p>
+
+<p><img src="/images/vault-20.png" alt="image" /></p>
+
+<p>The <strong>prod</strong> Environment secrets are applied.</p>
+
+<p>To view the raw YAML associated with the pod, use the Get YAML Command.</p>
+
+<p><strong>Get YAML Command:</strong></p>
+
+<pre><code>Kubectl -n ghost2-aws-demo-prod get pod -o yaml
+</code></pre>
+</div>
+    <div class="tags">
+      1 Jan 0001
+       
+    </div>
+    
+      <div id="disqus_thread"></div>
+<script type="text/javascript">
+     
+    var disqus_shortname = 'Your Disqus Name';
+    
+     
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    
+  </div>
+
+</div>
+
+<paper-item>
+  
+    <a href="/hostgroups/container_host_setup/using_cloud_init/_index/"><paper-fab icon="chevron-left"><a></a></paper-fab></a>
+  
+    <div class="flex"></div>
+  
+    <a href="/usecases/wordpress-mysql-application-installation-on-kubernetes-cluster-with-vmware-vsphere/_index/"><paper-fab icon="chevron-right"></paper-fab></a>
+  
+</paper-item>
+
+      <paper-item>
+        <div class="copyright">© 2015 Copyright Text</div>
+        <div class="flex"></div>
+        <div class="design">Design <a href="http://pdevty.github.io/blog/">pdevty</a></div>
+      </paper-item>
+    </paper-scroll-header-panel>
+  </paper-drawer-panel>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'Your Analytics User Id', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</body>
+</html>

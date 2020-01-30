@@ -1,0 +1,36 @@
+baseURL = "/"
+
+languageCode = "en-us"
+DefaultContentLanguage = "en"
+title = "Nirmata Documentation"
+theme = "docdock"
+#themesdir = "../.."
+pygmentsCodeFences = true
+pygmentsStyle = "monokailight"
+
+defaultContentLanguage = "en"
+defaultContentLanguageInSubdir= false
+enableMissingTranslationPlaceholders = false
+
+
+
+[params]
+showVisitedLinks = true # default is false
+themeStyle = "flex" # "original" or "flex" # default "flex"
+themeVariant = "blue" # choose theme variant "green", "gold" , "gray", "blue" (default)
+ordersectionsby = "weight" # ordersectionsby = "title"
+disableHomeIcon = false # default is false
+disableSearch = false # default is false
+disableNavChevron = false # set true to hide next/prev chevron, default is false
+highlightClientSide = false # set true to use highlight.pack.js instead of the default hugo chroma highlighter
+menushortcutsnewtab = false # set true to open shortcuts links to a new tab/window
+enableGitInfo = true
+
+[outputs]
+home = [ "HTML", "RSS", "JSON" ]
+
+
+[[menu.shortcuts]]
+name = "<i class='fa fa-house'></i> <label>Nirmata</label>"
+url = "http://nirmata.com"
+weight = 30

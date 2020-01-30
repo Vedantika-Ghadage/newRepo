@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CloudProviders on Your Site Title</title>
+    <link>/cloudproviders/</link>
+    <description>Recent content in CloudProviders on Your Site Title</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© 2015 Copyright Text</copyright>
+    <atom:link href="/cloudproviders/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Direct Connect</title>
+      <link>/cloudproviders/direct_connect/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/cloudproviders/direct_connect/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>AWS Cloud Provider</title>
+      <link>/cloudproviders/aws_cloud_provider/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/cloudproviders/aws_cloud_provider/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>AWS Cloud Provider - Cloud Edition</title>
+      <link>/cloudproviders/aws_cloud_provider/cloud_edition/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/cloudproviders/aws_cloud_provider/cloud_edition/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>AWS Cloud Provider - Private Edition</title>
+      <link>/cloudproviders/aws_cloud_provider/private_edition/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/cloudproviders/aws_cloud_provider/private_edition/_index/</guid>
+      <description>&lt;p&gt;For Nirmata Private Edition, to create cloud procider integration, you will need to create an AWS User with necessary permissions to provision EC2 worker nodes. For the user, you will use the user access id and secret key to configure AWS Cloud Provider in Nirmata.&lt;/p&gt;
+
+&lt;p&gt;First, you need create a policy with specific permissions for the User. login to the AWS Management Console and select IAM Services. Click on Policies under AWS IAM screen and choose &amp;ldquo;Create Policy&amp;rdquo; button.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/Select-Policy-EKS-User.png&#34; alt=&#34;image&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Under Policy, choose JSON, and copy and paste the permissions as highlighted below -&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;{
+    &amp;quot;Version&amp;quot;: &amp;quot;2012-10-17&amp;quot;,
+    &amp;quot;Statement&amp;quot;: [
+        {
+            &amp;quot;Sid&amp;quot;: &amp;quot;VisualEditor0&amp;quot;,
+            &amp;quot;Effect&amp;quot;: &amp;quot;Allow&amp;quot;,
+            &amp;quot;Action&amp;quot;: [
+                &amp;quot;ec2:TerminateInstances&amp;quot;,
+                &amp;quot;ec2:StartInstances&amp;quot;,
+                &amp;quot;ec2:StopInstances&amp;quot;
+            ],
+            &amp;quot;Resource&amp;quot;: &amp;quot;arn:aws:ec2:*:094919933512:instance/*&amp;quot;,
+            &amp;quot;Condition&amp;quot;: {
+                &amp;quot;StringEquals&amp;quot;: {
+                    &amp;quot;ec2:ResourceTag/com.nirmata.createdBy&amp;quot;: &amp;quot;nirmata&amp;quot;
+                }
+            }
+        },
+        {
+            &amp;quot;Sid&amp;quot;: &amp;quot;VisualEditor1&amp;quot;,
+            &amp;quot;Effect&amp;quot;: &amp;quot;Allow&amp;quot;,
+            &amp;quot;Action&amp;quot;: [
+                &amp;quot;iam:GetPolicyVersion&amp;quot;,
+                &amp;quot;autoscaling:Describe*&amp;quot;,
+                &amp;quot;iam:ListInstanceProfilesForRole&amp;quot;,
+                &amp;quot;iam:PassRole&amp;quot;,
+                &amp;quot;iam:SimulateCustomPolicy&amp;quot;,
+                &amp;quot;iam:ListAttachedRolePolicies&amp;quot;,
+                &amp;quot;iam:ListAttachedUserPolicies&amp;quot;,
+                &amp;quot;iam:ListAttachedGroupPolicies&amp;quot;,
+                &amp;quot;iam:ListRolePolicies&amp;quot;,
+                &amp;quot;iam:ListPolicies&amp;quot;,
+                &amp;quot;iam:GetRole&amp;quot;,
+                &amp;quot;iam:GetPolicy&amp;quot;,
+                &amp;quot;iam:ListGroupPolicies&amp;quot;,
+                &amp;quot;ec2:CreateTags&amp;quot;,
+                &amp;quot;iam:ListRoles&amp;quot;,
+                &amp;quot;ec2:RunInstances&amp;quot;,
+                &amp;quot;iam:ListUserPolicies&amp;quot;,
+                &amp;quot;iam:ListInstanceProfiles&amp;quot;,
+                &amp;quot;ec2:Describe*&amp;quot;,
+                &amp;quot;iam:ListPolicyVersions&amp;quot;,
+                &amp;quot;iam:GetUserPolicy&amp;quot;,
+                &amp;quot;iam:ListGroupsForUser&amp;quot;,
+                &amp;quot;iam:ListUsers&amp;quot;,
+                &amp;quot;iam:GetGroupPolicy&amp;quot;,
+                &amp;quot;iam:GetUser&amp;quot;,
+                &amp;quot;iam:GetRolePolicy&amp;quot;,
+                &amp;quot;iam:GenerateCredentialReport&amp;quot;,
+                &amp;quot;iam:GenerateServiceLastAccessedDetails&amp;quot;,
+                &amp;quot;iam:Get*&amp;quot;,
+                &amp;quot;iam:List*&amp;quot;,
+                &amp;quot;iam:SimulateCustomPolicy&amp;quot;,
+                &amp;quot;iam:SimulatePrincipalPolicy&amp;quot;,
+                &amp;quot;iam:GetPolicyVersion&amp;quot;,
+                &amp;quot;iam:SimulateCustomPolicy&amp;quot;,
+                &amp;quot;iam:GenerateCredentialReport&amp;quot;,
+                &amp;quot;iam:GenerateServiceLastAccessedDetails&amp;quot;,
+                &amp;quot;iam:Get*&amp;quot;,
+                &amp;quot;iam:List*&amp;quot;,
+                &amp;quot;iam:SimulateCustomPolicy&amp;quot;,
+                &amp;quot;iam:SimulatePrincipalPolicy&amp;quot;,
+                &amp;quot;iam:CreateRole&amp;quot;,
+                &amp;quot;iam:DeleteRole&amp;quot;,
+                &amp;quot;iam:AttachRolePolicy&amp;quot;,
+                &amp;quot;iam:DetachRolePolicy&amp;quot;,
+                &amp;quot;iam:CreateInstanceProfile&amp;quot;,
+                &amp;quot;iam:DeleteInstanceProfile&amp;quot;,
+                &amp;quot;iam:AddRoleToInstanceProfile&amp;quot;,
+                &amp;quot;iam:RemoveRoleFromInstanceProfile&amp;quot;
+            ],
+            &amp;quot;Resource&amp;quot;: &amp;quot;*&amp;quot;
+        },
+        {
+            &amp;quot;Sid&amp;quot;: &amp;quot;VisualEditor2&amp;quot;,
+            &amp;quot;Effect&amp;quot;: &amp;quot;Allow&amp;quot;,
+            &amp;quot;Action&amp;quot;: [
+                &amp;quot;cloudformation:CreateStack&amp;quot;,
+                &amp;quot;cloudformation:DeleteStack&amp;quot;,
+                &amp;quot;cloudformation:CreateChangeSet&amp;quot;,
+                &amp;quot;cloudformation:UpdateStack&amp;quot;,
+                &amp;quot;cloudformation:ExecuteChangeSet&amp;quot;,
+                &amp;quot;cloudformation:Describe*&amp;quot;,
+                &amp;quot;cloudformation:EstimateTemplateCost&amp;quot;,
+                &amp;quot;cloudformation:Get*&amp;quot;,
+                &amp;quot;cloudformation:List*&amp;quot;,
+                &amp;quot;cloudformation:ValidateTemplate&amp;quot;,
+                &amp;quot;cloudformation:DetectStackDrift&amp;quot;,
+                &amp;quot;cloudformation:DetectStackResourceDrift&amp;quot;
+            ],
+        
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Click &amp;ldquo;Review Policy&amp;rdquo; and then save the policy.&lt;/p&gt;
+
+&lt;p&gt;Now, you can create a User required for EC2 instance management in Nirmata that will use this Policy. For that, login to the AWS Management Console and select IAM Services.&lt;/p&gt;
+
+&lt;p&gt;Select Users and then click on the button to Add a User.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/Add-User-EKS-PE.png&#34; alt=&#34;image&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Select programmatic access and then select &amp;ldquo;Next:Permission&amp;rdquo; button.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/User-EKS-prog-acccess.png&#34; alt=&#34;image&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Choose &amp;ldquo;Attach existing policies directly&amp;rdquo; and select the policy you created above.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/eks_add_user_select_policy.png&#34; alt=&#34;image&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Also add couple of AWS Managed Policies as well -&lt;/p&gt;
+
+&lt;p&gt;AmazonEC2FullAccess
+AmazonEC2ContainerRegistryReadOnly&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/permissions.png&#34; alt=&#34;image&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now click on &amp;ldquo;Security Credentials&amp;rdquo; tab on the User menu and click on &amp;ldquo;Create Access Key&amp;rdquo;. You can download the Access Key Id and secret key. You can add the Access Key ID and Nirmata&lt;/p&gt;
+
+&lt;p&gt;In Nirmata, you will use this role in the EKS ARN role field as shown below.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/AWS-Cloud-Provider-EKS.png&#34; alt=&#34;image&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Cloud Providers</title>
+      <link>/cloudproviders/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/cloudproviders/_index/</guid>
+      <description>
+
+&lt;p&gt;A &lt;strong&gt;Cloud Provider&lt;/strong&gt; is used to provide Nirmata access to your public or
+private cloud resources.&lt;/p&gt;
+
+&lt;p&gt;The setup for any Cloud Provider has the following general flow:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Create the Cloud Provider in Nirmata&lt;/li&gt;
+&lt;li&gt;Prepare a VM template, or similar construct to provision cloud
+    instances, as detailed in the &lt;a href=&#34;#hostgroups&#34;&gt;&lt;code&gt;host-groups&lt;/code&gt;&lt;/a&gt; section.&lt;/li&gt;
+&lt;li&gt;Create one or more Host Groups in Nirmata&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;The setup for private clouds, has one additional step. You will first
+need run the Nirmata Private Cloud Agent and then configure a Cloud
+Provider. See details in the &lt;a href=&#34;/cloudproviders/#private-cloud-setup&#34;&gt;&lt;code&gt;private-cloud-setup&lt;/code&gt;&lt;/a&gt; setup section.&lt;/p&gt;
+
+&lt;h4 id=&#34;direct-connect-provider:3976528693a0108357f4928017600865&#34;&gt;Direct Connect&lt;/h4&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Microsoft Azure Cloud Provider</title>
+      <link>/cloudproviders/microsoft_azure_cloud_provider/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/cloudproviders/microsoft_azure_cloud_provider/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>GCE Cloud Provider</title>
+      <link>/cloudproviders/gce_cloud_provider/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/cloudproviders/gce_cloud_provider/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Oracle Cloud Provider</title>
+      <link>/cloudproviders/oracle_cloud_provider/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/cloudproviders/oracle_cloud_provider/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/cloudproviders/digital_ocean_cloud_provider/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/cloudproviders/digital_ocean_cloud_provider/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>VMware vSphere Cloud Provider</title>
+      <link>/cloudproviders/vmware_vsphere_cloud_provider/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/cloudproviders/vmware_vsphere_cloud_provider/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>OpenStack Cloud Provider</title>
+      <link>/cloudproviders/openstack_cloud_provider/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/cloudproviders/openstack_cloud_provider/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Bare Metal Servers</title>
+      <link>/cloudproviders/bare_metal_servers/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/cloudproviders/bare_metal_servers/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Private Cloud</title>
+      <link>/cloudproviders/private_cloud/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/cloudproviders/private_cloud/_index/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

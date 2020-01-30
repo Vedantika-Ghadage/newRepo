@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ImageRegistries on Your Site Title</title>
+    <link>/imageregistries/</link>
+    <description>Recent content in ImageRegistries on Your Site Title</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© 2015 Copyright Text</copyright>
+    <atom:link href="/imageregistries/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Docker Hub</title>
+      <link>/imageregistries/docker_hub/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/imageregistries/docker_hub/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Docker Private Registry</title>
+      <link>/imageregistries/docker_private_registry/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/imageregistries/docker_private_registry/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Amazon ECR</title>
+      <link>/imageregistries/amazon_ecr/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/imageregistries/amazon_ecr/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>JFrog Artifactory</title>
+      <link>/imageregistries/jfrog_artifactory/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/imageregistries/jfrog_artifactory/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Image Registries</title>
+      <link>/imageregistries/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/imageregistries/_index/</guid>
+      <description>
+
+&lt;p&gt;Nirmata supports the following image registries:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Docker Hub&lt;/li&gt;
+&lt;li&gt;Docker Private Registry&lt;/li&gt;
+&lt;li&gt;Amazon EC2 Container Registry (ECR)&lt;/li&gt;
+&lt;li&gt;JFrog Artifactory&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Docker Image Registries can be managed using Nirmata. By default, the
+Docker Hub is already created. Additional public or private registries
+can also be added.&lt;/p&gt;
+
+&lt;h4 id=&#34;docker-hub:3976528693a0108357f4928017600865&#34;&gt;Docker Hub&lt;/h4&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

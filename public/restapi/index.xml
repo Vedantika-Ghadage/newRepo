@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>RestApis on Your Site Title</title>
+    <link>/restapi/</link>
+    <description>Recent content in RestApis on Your Site Title</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© 2015 Copyright Text</copyright>
+    <atom:link href="/restapi/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>API Compatibility</title>
+      <link>/restapi/api_compatibility/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/restapi/api_compatibility/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Authentication</title>
+      <link>/restapi/api_basics/authentication/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/restapi/api_basics/authentication/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Get all Catalog Applications</title>
+      <link>/restapi/sample_operations/get_all_catalog_applications/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/restapi/sample_operations/get_all_catalog_applications/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>descendants</title>
+      <link>/restapi/common_endpoints/descendants/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/restapi/common_endpoints/descendants/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mode</title>
+      <link>/restapi/url_parameters/mode/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/restapi/url_parameters/mode/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>API Basics</title>
+      <link>/restapi/api_basics/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/restapi/api_basics/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Get Deployment Details</title>
+      <link>/restapi/sample_operations/get_deployment_details/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/restapi/sample_operations/get_deployment_details/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Operations</title>
+      <link>/restapi/api_basics/operations/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/restapi/api_basics/operations/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ancestors</title>
+      <link>/restapi/common_endpoints/ancestors/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/restapi/common_endpoints/ancestors/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>query</title>
+      <link>/restapi/url_parameters/query/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/restapi/url_parameters/query/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Create an Application</title>
+      <link>/restapi/sample_operations/create_an_application/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/restapi/sample_operations/create_an_application/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>HTTP Headers</title>
+      <link>/restapi/http_headers/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/restapi/http_headers/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>HTTP Response Code Status</title>
+      <link>/restapi/api_basics/http_response_status_codes/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/restapi/api_basics/http_response_status_codes/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ancestor</title>
+      <link>/restapi/common_endpoints/ancestor/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/restapi/common_endpoints/ancestor/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>fields</title>
+      <link>/restapi/url_parameters/fields/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/restapi/url_parameters/fields/_index/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>HostGroups on Your Site Title</title>
+    <link>/hostgroups/</link>
+    <description>Recent content in HostGroups on Your Site Title</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© 2015 Copyright Text</copyright>
+    <atom:link href="/hostgroups/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Container Setup</title>
+      <link>/hostgroups/container_host_setup/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/hostgroups/container_host_setup/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Create a VM Template</title>
+      <link>/hostgroups/openstack_host_groups/create_a_vm_template/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/hostgroups/openstack_host_groups/create_a_vm_template/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Setup a Resource Pool in vCenter</title>
+      <link>/hostgroups/vmware_vsphere_host_group/setup_a_resource_pool_in_vcenter/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/hostgroups/vmware_vsphere_host_group/setup_a_resource_pool_in_vcenter/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Using Amazon Machine Images (AMIs)</title>
+      <link>/hostgroups/aws_host_groups/using_amazon_machine_images/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/hostgroups/aws_host_groups/using_amazon_machine_images/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Using Cloud-init</title>
+      <link>/hostgroups/container_host_setup/using_cloud_init/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/hostgroups/container_host_setup/using_cloud_init/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Create OpenStack Host Group</title>
+      <link>/hostgroups/openstack_host_groups/create_openstack_host_group/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/hostgroups/openstack_host_groups/create_openstack_host_group/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Create a vSphere Template</title>
+      <link>/hostgroups/vmware_vsphere_host_group/create_a_vsphere_template/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/hostgroups/vmware_vsphere_host_group/create_a_vsphere_template/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Direct Connect Hosts</title>
+      <link>/hostgroups/direct_connect_hosts/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/hostgroups/direct_connect_hosts/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Nirmata Agent Setup</title>
+      <link>/hostgroups/container_host_setup/nirmata_agent_setup/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/hostgroups/container_host_setup/nirmata_agent_setup/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Using Auto Scaling Groups (ASGs)</title>
+      <link>/hostgroups/aws_host_groups/using_auto_scaling_groups/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/hostgroups/aws_host_groups/using_auto_scaling_groups/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>AWS Host Groups</title>
+      <link>/hostgroups/aws_host_groups/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/hostgroups/aws_host_groups/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Create a VMware vSphere Cloud Provider</title>
+      <link>/hostgroups/vmware_vsphere_host_group/create_a_vmware_vsphere_cloud_provider/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/hostgroups/vmware_vsphere_host_group/create_a_vmware_vsphere_cloud_provider/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Host Labels</title>
+      <link>/hostgroups/container_host_setup/host_labels/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/hostgroups/container_host_setup/host_labels/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Using Spot Fleet Requests</title>
+      <link>/hostgroups/aws_host_groups/using_spot_fleet_requests/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/hostgroups/aws_host_groups/using_spot_fleet_requests/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Create a VMware vSphere Host Group</title>
+      <link>/hostgroups/vmware_vsphere_host_group/create_a_vmware_vsphere_host_group/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/hostgroups/vmware_vsphere_host_group/create_a_vmware_vsphere_host_group/_index/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

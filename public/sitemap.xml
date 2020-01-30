@@ -1,0 +1,1009 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/integrations/kubernetesstoragecsi/persistant-storage-with-rook/prerequisites/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/integrations/kubernetesstoragecsi/persistant-storage-with-rook/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/integrations/kubernetesstoragecsi/portworxportability/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/integrations/kubernetesstoragecsi/storage-integration-with-nutanix/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/integrations/security/hashicorp-vault/add-custom-resource-definitions-crd/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/integrations/security/hashicorp-vault/cluster-level-deployments/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/integrations/security/hashicorp-vault/create-a-kubernetes-cluster-using-nirmata/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/integrations/security/hashicorp-vault/deploying-vault-in-a-nirmata-kubernetes-cluster/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/integrations/security/hashicorp-vault/goals-and-key-steps-for-integration/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/integrations/security/hashicorp-vault/how-to-deploy-the-vault-cluster/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/integrations/security/hashicorp-vault/leveraging-the-vault-cluster/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/integrations/security/hashicorp-vault/prerequisites/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/_footer/</loc>
+  </url>
+  
+  <url>
+    <loc>/_header/</loc>
+  </url>
+  
+  <url>
+    <loc>/restapi/api_compatibility/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/introduction/about_nirmata/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/introduction/core_concepts/applications/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/restapi/api_basics/authentication/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/environments/managing_applications/change_management/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/clusters/cluster_panel/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/policies/config_maps/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/hostgroups/container_host_setup/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/hostgroups/openstack_host_groups/create_a_vm_template/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/policies/config_maps/creating_a_config_map_policy/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/policies/secrets/creating_a_secret_policy/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/applications/deployments/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/cloudproviders/direct_connect/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/clusters/manage_an_existing_kubernetes_cluster/dockerconfiguration/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/imageregistries/docker_hub/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/environments/environmentpanel/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/restapi/sample_operations/get_all_catalog_applications/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/clusters/managed_cluster_support/google_kubernetes_engine_gke/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/catalog/import_yaml_files/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/privateedition/how_to_install_nirmata_pe/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/integrations/kubernetesstoragecsi/persistant-storage-with-rook/introduction/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/integrations/kubernetesstoragecsi/portworxportability/introduction/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/integrations/kubernetesstoragecsi/storage-integration-with-nutanix/introduction/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/introduction/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/integrations/kubernetesstoragecsi/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/releasedocumentation/kubernetesversioning/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/privateedition/disasterrecovery/commonfailurescenarios/nirmatapeclusterdown/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/privateedition/disasterrecovery/achievingdisasterrecovery/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/hostgroups/vmware_vsphere_host_group/setup_a_resource_pool_in_vcenter/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/alarms/terminology/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/settings/users_and_roles/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/hostgroups/aws_host_groups/using_amazon_machine_images/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/hostgroups/container_host_setup/using_cloud_init/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/integrations/security/hashicorp-vault/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/usecases/wordpress-mysql-application-installation-on-kubernetes-cluster-with-vmware-vsphere/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/restapi/common_endpoints/descendants/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/restapi/url_parameters/mode/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/restapi/api_basics/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/cloudproviders/aws_cloud_provider/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/cloudproviders/aws_cloud_provider/cloud_edition/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/cloudproviders/aws_cloud_provider/private_edition/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/environments/addnewenvironment/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/alarms/alarm_types/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/clusters/managed_cluster_support/amazon_elastic_kubernetes_service_eks/cloud_edition/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/clusters/managed_cluster_support/amazon_elastic_kubernetes_service_eks/private_edition/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/clusters/managed_cluster_support/amazon_elastic_kubernetes_service_eks/cloud_edition/eks_cluster_role/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/clusters/managed_cluster_support/amazon_elastic_kubernetes_service_eks/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/introduction/core_concepts/application_components/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/policies/cluster_policies/apply_addon/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/integrations/backup-and-dr/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/integrations/cloud-providers-iaas/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/policies/cluster_policies/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/privateedition/disasterrecovery/commonfailurescenarios/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/policies/cluster_policies/configure_policy/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/hostgroups/openstack_host_groups/create_openstack_host_group/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/clusters/managed_cluster_support/amazon_elastic_kubernetes_service_eks/private_edition/create_user_for_eks_cluster/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/hostgroups/vmware_vsphere_host_group/create_a_vsphere_template/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/hostgroups/direct_connect_hosts/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/imageregistries/docker_private_registry/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/restapi/sample_operations/get_deployment_details/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/integrations/ingress-controllers/haproxy-setup/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/catalog/import_a_helm_chart/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/privateedition/disasterrecovery/commonfailurescenarios/kubernetesclusterdown/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/hostgroups/container_host_setup/nirmata_agent_setup/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/restapi/api_basics/operations/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/integrations/kubernetesstoragecsi/portworxportability/prerequisites/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/integrations/kubernetesstoragecsi/storage-integration-with-nutanix/prerequisites/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/environments/managing_applications/scaling_pods/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/policies/secrets/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/settings/single_signon_with_saml/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/introduction/solution_overview/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/applications/statefulsets/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/hostgroups/aws_host_groups/using_auto_scaling_groups/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/integrations/backup-and-dr/velero/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/restapi/common_endpoints/ancestors/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/restapi/url_parameters/query/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/hostgroups/aws_host_groups/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/alarms/alarm_notifier/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/imageregistries/amazon_ecr/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/environments/managing_applications/application_activity/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/clusters/managed_cluster_support/azure_kubernetes_service_aks/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/cloudproviders/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/hostgroups/vmware_vsphere_host_group/create_a_vmware_vsphere_cloud_provider/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/restapi/sample_operations/create_an_application/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/introduction/deployment_models/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/privateedition/disasterrecovery/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/introduction/core_concepts/environments/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/integrations/kubernetesstoragecsi/storage-integration-with-nutanix/goal-and-key-steps-for-integration/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/integrations/kubernetesstoragecsi/portworxportability/goalsandkeystepsforintegration/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/restapi/http_headers/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/restapi/api_basics/http_response_status_codes/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/hostgroups/container_host_setup/host_labels/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/privateedition/disasterrecovery/commonfailurescenarios/hostingsitedown/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/catalog/import_or_export_an_application/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/applications/ingresses/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/integrations/kubernetesstoragecsi/persistant-storage-with-rook/install-linux-packages/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/clusters/manage_an_existing_kubernetes_cluster/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/cloudproviders/microsoft_azure_cloud_provider/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/privateedition/disasterrecovery/morehelp/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/policies/patch_policy/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/environments/running_applications/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/integrations/security/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/settings/using_ca_signed_saml_signature_certificates/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/hostgroups/aws_host_groups/using_spot_fleet_requests/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/restapi/common_endpoints/ancestor/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/restapi/url_parameters/fields/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/catalog/access_controls/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/alarms/alarm/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/environments/managing_applications/application_metrics/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/introduction/core_concepts/clusters/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/integrations/kubernetesstoragecsi/persistant-storage-with-rook/configure-and-deploy-cluster.yaml/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/introduction/core_concepts/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/integrations/kubernetesstoragecsi/portworxportability/createkubernetesdaemonset/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/hostgroups/vmware_vsphere_host_group/create_a_vmware_vsphere_host_group/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/clusters/create_a_new_kubernetes_cluster/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/restapi/sample_operations/delete_an_application/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/integrations/kubernetesstoragecsi/storage-integration-with-nutanix/deploy-rbac-yaml-to-cluster/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/settings/enable_saml_sso_for_a_user/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/cloudproviders/gce_cloud_provider/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/hostgroups/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/integrations/image-registries/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/imageregistries/jfrog_artifactory/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/integrations/kubernetes-networking-cni/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/hostgroups/microsoft_azure_host_groups/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/applications/persistent_volume_claims/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/restapi/api_basics/resources/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/restapi/url_parameters/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/hostgroups/aws_host_groups/using_launch_configurations/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/restapi/common_endpoints/currentalarms/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/restapi/url_parameters/excludefields/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/releasedocumentation/2.6.0releasenotes/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/environments/access_controls/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/alarms/alarm_management/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/environments/managing_applications/application_events_tasks/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/clusters/cloud_provider_integrations/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/clusters/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/restapi/common_endpoints/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/applications/configmaps/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/integrations/kubernetesstoragecsi/storage-integration-with-nutanix/deploy-the-attacher-node-and-provisioner-yamls/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/hostgroups/gce_host_groups/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/restapi/sample_operations/get_the_uuid_of_an_application_named_helloworld_in_yaml_format/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/introduction/getting_started/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/hostgroups/container_host_setup/http_proxy/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/policies/network_policy/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/cloudproviders/oracle_cloud_provider/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/introduction/core_concepts/policies/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/settings/setup_ad_fs_for_use_with_nirmata/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/integrations/kubernetesstoragecsi/persistant-storage-with-rook/setup-storage-class-and-replica-pool/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/integrations/kubernetesstoragecsi/portworxportability/setupkubernetesthroughnirmata/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/restapi/url_parameters/count/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/restapi/common_endpoints/currentalarmcounts/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/cloudproviders/digital_ocean_cloud_provider/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/clusters/monitoring_a_kubernetes_cluster/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/applications/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/introduction/core_concepts/cloud_providers/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/environments/managing_applications/cloud_shell/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/integrations/kubernetesstoragecsi/storage-integration-with-nutanix/create-a-nginx-application/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/integrations/kubernetesstoragecsi/persistant-storage-with-rook/create-a-new-environment-and-run-application/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/hostgroups/aws_host_groups/creating_an_aws_host_group/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/integrations/kubernetesstoragecsi/portworxportability/generatedownloadspecfile/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/restapi/sample_operations/get_all_running_applications_ids_names_and_states/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/clusters/high_availability_ha_clusters/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/hostgroups/container_host_setup/host_networking/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/hostgroups/oracle_public_cloud_host_group/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/introduction/quick_start/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/restapi/resource_paths/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/applications/secrets/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/environments/update_policy/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/restapi/url_parameters/start/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/catalog/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/environments/managing_applications/container_logs/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/restapi/sample_operations/create_a_new_environment/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/integrations/kubernetesstoragecsi/portworxportability/deployportworxspecfileinnirmata/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/hostgroups/digital_ocean_host_group/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/introduction/core_concepts/host_groups/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/integrations/ingress-controllers/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/environments/managing_applications/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/applications/network_policies/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/restapi/sample_operations/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/hostgroups/aws_host_groups/troubleshooting_aws_host_creation/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/cloudproviders/vmware_vsphere_cloud_provider/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/integrations/kubernetesstoragecsi/persistant-storage-with-rook/verify-data-persistance-across-replication-in-a-host-failure-scenario/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/introduction/core_concepts/containers/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/applications/custom_and_other_resources/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/integrations/kubernetesstoragecsi/portworxportability/deploywpandmysqldb/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/integrations/kubernetesstoragecsi/persistant-storage-with-rook/disable-host-running-the-current-pod/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/environments/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/clusters/managing_pods/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/cloudproviders/openstack_cloud_provider/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/environments/resource_quota__limit_range/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/restapi/sample_operations/run_an_application_in_an_environment/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/hostgroups/vmware_vsphere_host_group/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/cloudproviders/bare_metal_servers/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/integrations/kubernetesstoragecsi/portworxportability/cleanupintegration/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/restapi/sample_operations/find_all_deployments_and_replica_counts_in_running_applications/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/introduction/core_concepts/image_registries/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/applications/kubernetes_references/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/hostgroups/openstack_host_groups/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/clusters/other_cluster_operations/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/policies/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/integrations/kubernetesstoragecsi/persistant-storage-with-rook/verify-data-in-the-new-pod/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/alarms/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/integrations/kubernetesstoragecsi/portworxportability/applicationportability/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/clusters/deleting_a_kubernetes_cluster/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/applications/jobs__cronjobs/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/hostgroups/monitoring_cloud_resources/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/cloudproviders/private_cloud/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/restapi/sample_operations/scale_a_deployment_in_a_running_application/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/clusters/view_cluster_resources/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/integrations/ci-cd/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/clusters/cluster_level_addon/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/restapi/sample_operations/get_the_image_versions_for_a_container/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/imageregistries/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/clusters/managed_cluster_support/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/clusters/cluster_level_prometheus/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/integrations/jirachangemanagement/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/settings/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/restapi/sample_operations/update_image_version_for_a_running_container/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/restapi/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/restapi/sample_operations/select_a_podtemplatespec_and_output_as_yaml/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/restapi/sample_operations/apply_yaml_updates_to_a_running_application/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/privateedition/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/restapi/sample_operations/get_cpu_and_memory_usage_for_all_clusters/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/integrations/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/integrations/monitoring/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/integrations/monitoring/prometheus/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/integrations/vmware-vcloud-director-kubernetes-extension/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/restapi/sample_operations/get_select_properties_of_all_hosts/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/restapi/sample_operations/create_a_new_kubernetes_cluster/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/usecases/kubernetes-audit-logging-with-nirmata/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/usecases/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/restapi/sample_operations/query_a_clusters_state/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/restapi/sample_operations/discover_attributes_and_relations/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/restapi/sample_operations/discover_the_rest_api_schema/_index/</loc>
+  </url>
+  
+  <url>
+    <loc>/releasedocumentation/_index/</loc>
+  </url>
+  
+</urlset>

@@ -1,0 +1,505 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Clusters on Your Site Title</title>
+    <link>/clusters/</link>
+    <description>Recent content in Clusters on Your Site Title</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© 2015 Copyright Text</copyright>
+    <atom:link href="/clusters/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Cluster Panel</title>
+      <link>/clusters/cluster_panel/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/clusters/cluster_panel/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Docker Configuration</title>
+      <link>/clusters/manage_an_existing_kubernetes_cluster/dockerconfiguration/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/clusters/manage_an_existing_kubernetes_cluster/dockerconfiguration/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Google Kubernetes Engine (GKE)</title>
+      <link>/clusters/managed_cluster_support/google_kubernetes_engine_gke/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/clusters/managed_cluster_support/google_kubernetes_engine_gke/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Amazon EKS - Cloud Edition</title>
+      <link>/clusters/managed_cluster_support/amazon_elastic_kubernetes_service_eks/cloud_edition/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/clusters/managed_cluster_support/amazon_elastic_kubernetes_service_eks/cloud_edition/_index/</guid>
+      <description>
+
+&lt;h4 id=&#34;eks-deploymnent-prerequisites:3976528693a0108357f4928017600865&#34;&gt;EKS: Deploymnent Prerequisites&lt;/h4&gt;
+
+&lt;p&gt;EKS Deployment requires a few things to be in-place before you deploy the cluster through Nirmata:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;VPC:&lt;/strong&gt; Create IP Address block for your EC2 instances.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Network Group:&lt;/strong&gt; Any AWS setup requires you to setup a network group with subnet policy which will be used to provide connectivity across your EC2 instances.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Security Group:&lt;/strong&gt; Security group defines that security policy for access into and between your EC2 instances. Security policy is core construct needed to setup your AWS services. For an EKS cluster, two security groups are recommended - control-plane security group for cluster operations and worker node security group for application traffic. For control plane security group, for inbound traffic, ports 443  from all nodes in worker security group are recommended. For outbound traffic, ports 1025-65535 are recommended to be open. Port 10250 is minimum requirement. For worker security group, port 443 and port-range 1025-65535 is recommended to be open. For outbound traffic, all ports can be open. &lt;a href=&#34;https://docs.aws.amazon.com/eks/latest/userguide/sec-group-reqs.html&#34;&gt;Click here for more information.&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Nirmata EC2 Role:&lt;/strong&gt;   An EC2 role that can provision EC2 instances through NIrmata is required for the cloud provider integration. You can &lt;a href=&#34;https://docs.nirmata.io/cloudproviders/aws_cloud_provider/&#34;&gt;create an EC2 IAM Role&lt;/a&gt; for Nirmata or use an existing one with right permissions.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Nirmata EKS Role:&lt;/strong&gt; AWS requires an additional role to create and manage the EKS cluster resources. &lt;a href=&#34;./eks_cluster_role/&#34;&gt;Click here&lt;/a&gt; for a step-by-step introduction on creating an IAM role for EKS.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;AWS account ID and access key credentials:&lt;/strong&gt; To make API calls into AWS resources, create an access key with an ID and secret key. You will use both to configure the Cloud Provider integration required for EKS setup.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Nirmata Cloud Provider:&lt;/strong&gt; In Nirmata UI, configure the Cloud Provider integration with options as shown below. Use the account ID and secret key previously configured.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/EKS-Deployment0.png&#34; alt=&#34;image&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;To access the &lt;em&gt;Edit Cloud Provider&lt;/em&gt; options, select &lt;em&gt;Cloud Providers&lt;/em&gt; from the sidebar menu. Then click on the &lt;em&gt;Edit&lt;/em&gt; icon.&lt;/p&gt;
+
+&lt;h4 id=&#34;eks-configuration-steps:3976528693a0108357f4928017600865&#34;&gt;EKS Configuration Steps&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/eks-1.png&#34; alt=&#34;image&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;To create an EKS cluster, select &lt;em&gt;Clusters&lt;/em&gt; from the sidebar menu and then click &lt;em&gt;+Add Cluster&lt;/em&gt;. Choose &lt;em&gt;Create EKS cluster.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/EKS-Deployment1.png&#34; alt=&#34;images&#34; /&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Cloud Provider&lt;/strong&gt;- This is the cloud provider configuration your created for API integration using the EC2 role defined. Choose the right option from the drop down menu.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Region&lt;/strong&gt; - Please pick the region where you would like to create the EKS cluster.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Kubenetes version&lt;/strong&gt; - Please pick an option from one of the EKS supported versions for Kubernetes.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;VPC ID&lt;/strong&gt; - This is the virtual private cloud ID you created when setting up your EC2 instance.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Networks&lt;/strong&gt; - Please pick from network groups you had created. You need to pick at least 2 groups.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Security group&lt;/strong&gt; - Please pick from drop down menu the security group configured in Step-3.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Cluster Role ARN&lt;/strong&gt; - This is the EKS cluster role you created in Step-5 for Nirmata to deploy EKS. Again, with cloud provider integration, you should see it in the drop down menu.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Then complete the following parameters:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/EKS-Deployment2.png&#34; alt=&#34;image&#34; /&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Instance Type:&lt;/strong&gt; Pick from EC2 instance type you would like to use for EK cluster.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Image ID:&lt;/strong&gt; Pick EKs compliant image supported for the intance type.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Autoscaling group desired capacity:&lt;/strong&gt; Configure desired number of nodes to begin the cluster setup.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Autoscaling group min size:&lt;/strong&gt; Configure minimum node scale required for the cluster.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Autoscaling group max size:&lt;/strong&gt; Configure maximum number of nodes required for the cluster.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;SSH Key&lt;/strong&gt;- Pick the SSH key ID from the drop-down menu.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Disk size&lt;/strong&gt;- Pick the disk size of the EKS cluster nodes.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;After complete the configuration steps, click &lt;em&gt;Create Cluster.&lt;/em&gt; Your new cluster will be ready in 10 to 15 minutes.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;NOTE: If you are creating a cluster in private address space and have not routed a connection back to the Nirmata controller, you will be able to create the cluster but not connect it back to Nirmata You will see a broken routing error.&lt;/strong&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Amazon EKS - Private Edition</title>
+      <link>/clusters/managed_cluster_support/amazon_elastic_kubernetes_service_eks/private_edition/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/clusters/managed_cluster_support/amazon_elastic_kubernetes_service_eks/private_edition/_index/</guid>
+      <description>
+
+&lt;h4 id=&#34;eks-deploymnent-prerequisites:3976528693a0108357f4928017600865&#34;&gt;EKS: Deploymnent Prerequisites&lt;/h4&gt;
+
+&lt;p&gt;EKS Deployment requires a few things to be in-place before you deploy the cluster through Nirmata:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;VPC:&lt;/strong&gt; Create IP Address block for your EC2 instances.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Network Group:&lt;/strong&gt; Any AWS setup requires you to setup a network group with subnet policy which will be used to provide connectivity across your EC2 instances.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Security Group:&lt;/strong&gt; Security group defines that security policy for access into and between your EC2 instances. Security policy is core construct needed to setup your AWS services. For an EKS cluster, two security groups are recommended - control-plane security group for cluster operations and worker node security group for application traffic. For control plane security group, for inbound traffic, ports 443  from all nodes in worker security group are recommended. For outbound traffic, ports 1025-65535 are recommended to be open. Port 10250 is minimum requirement. For worker security group, port 443 and port-range 1025-65535 is recommended to be open. For outbound traffic, all ports can be open. &lt;a href=&#34;https://docs.aws.amazon.com/eks/latest/userguide/sec-group-reqs.html&#34;&gt;Click here for more information.&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Nirmata EC2/EKS User:&lt;/strong&gt;   An EC2 user that can provision EKS control-plane and EC2 instances through Nirmata is required for the cloud provider integration. You can create an &lt;a href=&#34;./create_user_for_eks_cluster/&#34;&gt;EC2 user&lt;/a&gt; with necessary permission for Nirmata or use an existing user with right permissions.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Nirmata EKS Role:&lt;/strong&gt; AWS requires an additional role to create and manage the EKS cluster resources. &lt;a href=&#34;../cloud_edition/eks_cluster_role/&#34;&gt;Click here&lt;/a&gt; for a step-by-step introduction on creating an IAM role for EKS.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;AWS account ID and access key credentials:&lt;/strong&gt; To make API calls into AWS resources, create an access key with an ID and secret key for the EC2 user created. You will use both to configure the Cloud Provider integration required for EKS setup.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Nirmata Cloud Provider:&lt;/strong&gt; In Nirmata UI, configure the Cloud Provider integration with options as shown below. Use the account ID and secret key previously configured.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/EKS-Deployment0.png&#34; alt=&#34;image&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;To access the &lt;em&gt;Edit Cloud Provider&lt;/em&gt; options, select &lt;em&gt;Cloud Providers&lt;/em&gt; from the sidebar menu. Then click on the &lt;em&gt;Edit&lt;/em&gt; icon.&lt;/p&gt;
+
+&lt;h5 id=&#34;create-aws-user-for-nirmata-ec2-eks-configuration:3976528693a0108357f4928017600865&#34;&gt;Create AWS User for Nirmata EC2/EKS configuration&lt;/h5&gt;
+
+&lt;p&gt;Nirmata requires permissions to create EKS cluster control-plane and EKS compliant EC2 workder nodes. Those permissions are assigned to a user specifically created for this purpose. You can follow the instructions shared &lt;a href=&#34;./create_user_for_eks_cluster/&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h4 id=&#34;eks-configuration-steps:3976528693a0108357f4928017600865&#34;&gt;EKS Configuration Steps&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/eks-1.png&#34; alt=&#34;image&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;To create an EKS cluster, select &lt;em&gt;Clusters&lt;/em&gt; from the sidebar menu and then click &lt;em&gt;+Add Cluster&lt;/em&gt;. Choose &lt;em&gt;Create EKS cluster.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/EKS-Deployment1.png&#34; alt=&#34;images&#34; /&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Cloud Provider&lt;/strong&gt;- This is the cloud provider configuration your created for API integration using the EC2 role defined. Choose the right option from the drop down menu.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Region&lt;/strong&gt; - Please pick the region where you would like to create the EKS cluster.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Kubenetes version&lt;/strong&gt; - Please pick an option from one of the EKS supported versions for Kubernetes.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;VPC ID&lt;/strong&gt; - This is the virtual private cloud ID you created when setting up your EC2 instance.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Networks&lt;/strong&gt; - Please pick from network groups you had created. You need to pick at least 2 groups.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Security group&lt;/strong&gt; - Please pick from drop down menu the security group configured in Step-3.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Cluster Role ARN&lt;/strong&gt; - This is the EKS cluster role you created in Step-5 for Nirmata to deploy EKS. Again, with cloud provider integration, you should see it in the drop down menu.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Then complete the following parameters:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/EKS-Deployment2.png&#34; alt=&#34;image&#34; /&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Instance Type:&lt;/strong&gt; Pick from EC2 instance type you would like to use for EK cluster.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Image ID:&lt;/strong&gt; Pick EKs compliant image supported for the intance type.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Autoscaling group desired capacity:&lt;/strong&gt; Configure desired number of nodes to begin the cluster setup.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Autoscaling group min size:&lt;/strong&gt; Configure minimum node scale required for the cluster.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Autoscaling group max size:&lt;/strong&gt; Configure maximum number of nodes required for the cluster.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;SSH Key&lt;/strong&gt;- Pick the SSH key ID from the drop-down menu.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Disk size&lt;/strong&gt;- Pick the disk size of the EKS cluster nodes.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;After complete the configuration steps, click &lt;em&gt;Create Cluster.&lt;/em&gt; Your new cluster will be ready in 10 to 15 minutes.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;NOTE: If you are creating a cluster in private address space and have not routed a connection back to the Nirmata controller, you will be able to create the cluster but not connect it back to Nirmata You will see a broken routing error.&lt;/strong&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Amazon EKS Cluster Role</title>
+      <link>/clusters/managed_cluster_support/amazon_elastic_kubernetes_service_eks/cloud_edition/eks_cluster_role/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/clusters/managed_cluster_support/amazon_elastic_kubernetes_service_eks/cloud_edition/eks_cluster_role/_index/</guid>
+      <description>&lt;p&gt;In addition to adding AWS as a Cloud Provider, managing an EKS Cluster in Nirmata requires another role for EKS service in AWS.&lt;/p&gt;
+
+&lt;p&gt;To create this role required for EKS Cluster management in Nirmata, login to the AWS Management Console and select IAM Services.&lt;/p&gt;
+
+&lt;p&gt;Select Roles and then click on the button to Create Role.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/eks-4.png&#34; alt=&#34;image&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Select AWS Service and then select EKS under available services.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/eks-5.png&#34; alt=&#34;image&#34; /&gt; &lt;img src=&#34;/images/eks-6.png&#34; alt=&#34;image&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Look for EKS policies as shown below&lt;/p&gt;
+
+&lt;p&gt;]&lt;img src=&#34;/images/eks-7.png&#34; alt=&#34;image&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Apply the following policies to the role:&lt;/p&gt;
+
+&lt;p&gt;AmazonEKSClusterPolicy
+AmazonEKSServicePolicy&lt;/p&gt;
+
+&lt;p&gt;Locate each permission by entering the Permission Name into the Search box. Place a checkmark next to each required permission. After adding all permissions, click the Create Policy button.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/eks-8.png&#34; alt=&#34;image&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Complete the role creation process.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/eks-9.png&#34; alt=&#34;image&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In Nirmata, you will use this role in the EKS ARN role field as shown below.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/eks-10.png&#34; alt=&#34;image&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Amazon Elastic Kubernetes Service (EKS)</title>
+      <link>/clusters/managed_cluster_support/amazon_elastic_kubernetes_service_eks/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/clusters/managed_cluster_support/amazon_elastic_kubernetes_service_eks/_index/</guid>
+      <description>&lt;p&gt;EKS is Amazon Web Services Managed Kubernetes Cluster service that allows customers to run their containerized applications on AWS cloud.  Nirmata significantly simplifies EKS cluster deployment and management and takes away undifferentiated heavy lifting required to bring your AWS EKS cluster up. Nirmata provides significant constructs that helps customer leverage EKS deployments to their fullest. Some of those features include:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Policy Management:&lt;/strong&gt; Nirmata provides easy means to centrally manage policies for your clusters, namespaces, and applications.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Application Catalog:&lt;/strong&gt; Nirmata Kubernetes compliant application catalog that can help you easily model, deploy and manage your applications.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Governance:&lt;/strong&gt; Nirmata provides easy ways to offer virtual clusters from your EKS setup to  different teams and optimize the resource utilization of your cluster.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;CI/CD Integration:&lt;/strong&gt; Nirmata integrates with your approach and toolsets for CI/CD. Whether you want to use Jenkins, Bamboo, or Kustomize or want to   use GitOps style management or push based change management; even manage your applications through Jenkins or directly through Nirmata. The choice is yours, Nirmata just makes it easy.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Full Application Lifecycle Management:&lt;/strong&gt; Nirmata provides full application lifecycle management with visibility, operations, and troubleshooting capabilities right from single screen, across all of your clusters. This includes, logging, analytics across applications, cluster and namespaces, Dashboards and the ability to log into containers and pods to troubleshoot an application. All from a single place.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Nirmata provides easy integration both with Private and Cloud Edition. While Cloud Edition requires Nirmata Role configuration with necessary policies, Nirmata Private Edition uses an AWS user to provide the necessary permissions to nirmata to create EKS cluster control plane and associated workder nodes.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;./cloud_edition/&#34;&gt;Cloud Edition&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;./private_edition/&#34;&gt;Private Edition&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Create a User for Amazon EKS</title>
+      <link>/clusters/managed_cluster_support/amazon_elastic_kubernetes_service_eks/private_edition/create_user_for_eks_cluster/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/clusters/managed_cluster_support/amazon_elastic_kubernetes_service_eks/private_edition/create_user_for_eks_cluster/_index/</guid>
+      <description>&lt;p&gt;For Nirmata Private Edition, you will need to create an AWS User with necessary permissions to provision EC2 worker nodes as well as create EKS control plane. For the user, you will use the user access id and secret key to configure AWS Cloud Provider in Nirmata.&lt;/p&gt;
+
+&lt;p&gt;First, you need create a policy with specific permissions for the User. login to the AWS Management Console and select IAM Services. Click on Policies under AWS IAM screen and choose &amp;ldquo;Create Policy&amp;rdquo; button.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/Select-Policy-EKS-User.png&#34; alt=&#34;image&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Under Policy, choose JSON, and copy and paste the permissions as highlighted below -&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;{
+    &amp;quot;Version&amp;quot;: &amp;quot;2012-10-17&amp;quot;,
+    &amp;quot;Statement&amp;quot;: [
+        {
+            &amp;quot;Sid&amp;quot;: &amp;quot;VisualEditor0&amp;quot;,
+            &amp;quot;Effect&amp;quot;: &amp;quot;Allow&amp;quot;,
+            &amp;quot;Action&amp;quot;: [
+                &amp;quot;ec2:TerminateInstances&amp;quot;,
+                &amp;quot;ec2:StartInstances&amp;quot;,
+                &amp;quot;ec2:StopInstances&amp;quot;
+            ],
+            &amp;quot;Resource&amp;quot;: &amp;quot;arn:aws:ec2:*:094919933512:instance/*&amp;quot;,
+            &amp;quot;Condition&amp;quot;: {
+                &amp;quot;StringEquals&amp;quot;: {
+                    &amp;quot;ec2:ResourceTag/com.nirmata.createdBy&amp;quot;: &amp;quot;nirmata&amp;quot;
+                }
+            }
+        },
+        {
+            &amp;quot;Sid&amp;quot;: &amp;quot;VisualEditor1&amp;quot;,
+            &amp;quot;Effect&amp;quot;: &amp;quot;Allow&amp;quot;,
+            &amp;quot;Action&amp;quot;: [
+                &amp;quot;iam:GetPolicyVersion&amp;quot;,
+                &amp;quot;autoscaling:Describe*&amp;quot;,
+                &amp;quot;iam:ListInstanceProfilesForRole&amp;quot;,
+                &amp;quot;iam:PassRole&amp;quot;,
+                &amp;quot;iam:SimulateCustomPolicy&amp;quot;,
+                &amp;quot;iam:ListAttachedRolePolicies&amp;quot;,
+                &amp;quot;iam:ListAttachedUserPolicies&amp;quot;,
+                &amp;quot;iam:ListAttachedGroupPolicies&amp;quot;,
+                &amp;quot;iam:ListRolePolicies&amp;quot;,
+                &amp;quot;iam:ListPolicies&amp;quot;,
+                &amp;quot;iam:GetRole&amp;quot;,
+                &amp;quot;iam:GetPolicy&amp;quot;,
+                &amp;quot;iam:ListGroupPolicies&amp;quot;,
+                &amp;quot;ec2:CreateTags&amp;quot;,
+                &amp;quot;iam:ListRoles&amp;quot;,
+                &amp;quot;ec2:RunInstances&amp;quot;,
+                &amp;quot;iam:ListUserPolicies&amp;quot;,
+                &amp;quot;iam:ListInstanceProfiles&amp;quot;,
+                &amp;quot;ec2:Describe*&amp;quot;,
+                &amp;quot;iam:ListPolicyVersions&amp;quot;,
+                &amp;quot;iam:GetUserPolicy&amp;quot;,
+                &amp;quot;iam:ListGroupsForUser&amp;quot;,
+                &amp;quot;iam:ListUsers&amp;quot;,
+                &amp;quot;iam:GetGroupPolicy&amp;quot;,
+                &amp;quot;iam:GetUser&amp;quot;,
+                &amp;quot;iam:GetRolePolicy&amp;quot;,
+                &amp;quot;iam:GenerateCredentialReport&amp;quot;,
+                &amp;quot;iam:GenerateServiceLastAccessedDetails&amp;quot;,
+                &amp;quot;iam:Get*&amp;quot;,
+                &amp;quot;iam:List*&amp;quot;,
+                &amp;quot;iam:SimulateCustomPolicy&amp;quot;,
+                &amp;quot;iam:SimulatePrincipalPolicy&amp;quot;,
+                &amp;quot;iam:GetPolicyVersion&amp;quot;,
+                &amp;quot;iam:SimulateCustomPolicy&amp;quot;,
+                &amp;quot;iam:GenerateCredentialReport&amp;quot;,
+                &amp;quot;iam:GenerateServiceLastAccessedDetails&amp;quot;,
+                &amp;quot;iam:Get*&amp;quot;,
+                &amp;quot;iam:List*&amp;quot;,
+                &amp;quot;iam:SimulateCustomPolicy&amp;quot;,
+                &amp;quot;iam:SimulatePrincipalPolicy&amp;quot;,
+                &amp;quot;iam:CreateRole&amp;quot;,
+                &amp;quot;iam:DeleteRole&amp;quot;,
+                &amp;quot;iam:AttachRolePolicy&amp;quot;,
+                &amp;quot;iam:DetachRolePolicy&amp;quot;,
+                &amp;quot;iam:CreateInstanceProfile&amp;quot;,
+                &amp;quot;iam:DeleteInstanceProfile&amp;quot;,
+                &amp;quot;iam:AddRoleToInstanceProfile&amp;quot;,
+                &amp;quot;iam:RemoveRoleFromInstanceProfile&amp;quot;
+            ],
+            &amp;quot;Resource&amp;quot;: &amp;quot;*&amp;quot;
+        },
+        {
+            &amp;quot;Sid&amp;quot;: &amp;quot;VisualEditor2&amp;quot;,
+            &amp;quot;Effect&amp;quot;: &amp;quot;Allow&amp;quot;,
+            &amp;quot;Action&amp;quot;: [
+                &amp;quot;cloudformation:CreateStack&amp;quot;,
+                &amp;quot;cloudformation:DeleteStack&amp;quot;,
+                &amp;quot;cloudformation:CreateChangeSet&amp;quot;,
+                &amp;quot;cloudformation:UpdateStack&amp;quot;,
+                &amp;quot;cloudformation:ExecuteChangeSet&amp;quot;,
+                &amp;quot;cloudformation:Describe*&amp;quot;,
+                &amp;quot;cloudformation:EstimateTemplateCost&amp;quot;,
+                &amp;quot;cloudformation:Get*&amp;quot;,
+                &amp;quot;cloudformation:List*&amp;quot;,
+                &amp;quot;cloudformation:ValidateTemplate&amp;quot;,
+                &amp;quot;cloudformation:DetectStackDrift&amp;quot;,
+                &amp;quot;cloudformation:DetectStackResourceDrift&amp;quot;
+            ],
+            &amp;quot;Resource&amp;quot;: [
+                &amp;quot;*&amp;quot;
+            ]
+        },
+        {
+            &amp;quot;Sid&amp;quot;: &amp;quot;VisualEditor3&amp;quot;,
+            &amp;quot;Effect&amp;quot;: &amp;quot;Allow&amp;quot;,
+            &amp;quot;Action&amp;quot;: &amp;quot;eks:*&amp;quot;,
+            &amp;quot;Resource&amp;quot;: &amp;quot;*&amp;quot;
+        }
+    ]
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Click &amp;ldquo;Review Policy&amp;rdquo; and then save the policy.&lt;/p&gt;
+
+&lt;p&gt;Now, you can create a User required for EC2 and EKS Cluster management in Nirmata that will use this Policy. For that, login to the AWS Management Console and select IAM Services.&lt;/p&gt;
+
+&lt;p&gt;Select Users and then click on the button to Add a User.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/Add-User-EKS-PE.png&#34; alt=&#34;image&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Select programmatic access and then select &amp;ldquo;Next:Permission&amp;rdquo; button.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/User-EKS-prog-acccess.png&#34; alt=&#34;image&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Choose &amp;ldquo;Attach existing policies directly&amp;rdquo; and select the policy you created above.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/eks_add_user_select_policy.png&#34; alt=&#34;image&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Also add couple of AWS Managed Policies as well -&lt;/p&gt;
+
+&lt;p&gt;AmazonEC2FullAccess
+AmazonEC2ContainerRegistryReadOnly&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/permissions.png&#34; alt=&#34;image&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now click on &amp;ldquo;Security Credentials&amp;rdquo; tab on the User menu and click on &amp;ldquo;Create Access Key&amp;rdquo;. You can download the Access Key Id and secret key. You can add the Access Key ID and Nirmata&lt;/p&gt;
+
+&lt;p&gt;In Nirmata, you will use this role in the EKS ARN role field as shown below.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/AWS-Cloud-Provider-EKS.png&#34; alt=&#34;image&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Azure Kubernetes Service (AKS)</title>
+      <link>/clusters/managed_cluster_support/azure_kubernetes_service_aks/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/clusters/managed_cluster_support/azure_kubernetes_service_aks/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Manage an Existing Kubernetes Cluster</title>
+      <link>/clusters/manage_an_existing_kubernetes_cluster/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/clusters/manage_an_existing_kubernetes_cluster/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Create a new Kubernetes cluster</title>
+      <link>/clusters/create_a_new_kubernetes_cluster/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/clusters/create_a_new_kubernetes_cluster/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Cloud Provider Integrations</title>
+      <link>/clusters/cloud_provider_integrations/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/clusters/cloud_provider_integrations/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Clusters</title>
+      <link>/clusters/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/clusters/_index/</guid>
+      <description>
+
+&lt;p&gt;With Nirmata, you can easily deploy and operate Kubernetes Clusters on
+any cloud. You can compose a cluster from Host Groups. This flexible
+composition allows using heterogeneous resources, and even use different
+pricing strategies to provide resources for your cluster.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/concepts-clusters.png&#34; alt=&#34;image&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Nirmata can also easily &lt;em&gt;discover&lt;/em&gt; existing Kubernetes clusters to
+provide complete visibility and management. This capability allows you
+to use managed Kubernetes services from cloud providers (EKS, AKS, GKE,
+etc.) to create the clusters, and use Nirmata for policy-based workload
+management.&lt;/p&gt;
+
+&lt;h4 id=&#34;manage-an-existing-kubernetes-cluster:3976528693a0108357f4928017600865&#34;&gt;Manage an existing Kubernetes cluster&lt;/h4&gt;
+</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/clusters/monitoring_a_kubernetes_cluster/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/clusters/monitoring_a_kubernetes_cluster/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>High Availability (HA) Clusters</title>
+      <link>/clusters/high_availability_ha_clusters/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/clusters/high_availability_ha_clusters/_index/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

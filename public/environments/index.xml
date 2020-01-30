@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Environments on Your Site Title</title>
+    <link>/environments/</link>
+    <description>Recent content in Environments on Your Site Title</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© 2015 Copyright Text</copyright>
+    <atom:link href="/environments/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Change Management</title>
+      <link>/environments/managing_applications/change_management/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/environments/managing_applications/change_management/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Environments Panel</title>
+      <link>/environments/environmentpanel/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/environments/environmentpanel/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Add New Environment</title>
+      <link>/environments/addnewenvironment/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/environments/addnewenvironment/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Scaling Pods</title>
+      <link>/environments/managing_applications/scaling_pods/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/environments/managing_applications/scaling_pods/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Application Activity</title>
+      <link>/environments/managing_applications/application_activity/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/environments/managing_applications/application_activity/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Running Applications</title>
+      <link>/environments/running_applications/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/environments/running_applications/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Application Metrics</title>
+      <link>/environments/managing_applications/application_metrics/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/environments/managing_applications/application_metrics/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Access Controls</title>
+      <link>/environments/access_controls/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/environments/access_controls/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Application Events and Tasks</title>
+      <link>/environments/managing_applications/application_events_tasks/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/environments/managing_applications/application_events_tasks/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Cloud Shell</title>
+      <link>/environments/managing_applications/cloud_shell/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/environments/managing_applications/cloud_shell/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Update Policy</title>
+      <link>/environments/update_policy/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/environments/update_policy/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Container Logs</title>
+      <link>/environments/managing_applications/container_logs/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/environments/managing_applications/container_logs/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Managing Applications</title>
+      <link>/environments/managing_applications/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/environments/managing_applications/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Environments</title>
+      <link>/environments/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/environments/_index/</guid>
+      <description>
+
+&lt;p&gt;An Environment is a logical grouping of applications to which you can
+apply policies and common configuration. You can run an application in
+several Environments. Typically environments are created for lifecycle
+phases in you delivery pipeline (e.g. dev-test, staging, production).&lt;/p&gt;
+
+&lt;p&gt;You can create several environments on the same Kubernetes cluster, and
+each environment is fully contained in a cluster.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/concepts-environments.png&#34; alt=&#34;image&#34; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;run-application:3976528693a0108357f4928017600865&#34;&gt;Running Applications&lt;/h4&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Resource Quota &amp; Limit Range</title>
+      <link>/environments/resource_quota__limit_range/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/environments/resource_quota__limit_range/_index/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

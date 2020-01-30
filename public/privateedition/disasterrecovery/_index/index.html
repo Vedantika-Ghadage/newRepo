@@ -1,0 +1,883 @@
+
+<!doctype html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+  <title>Disaster Recovery</title>
+  <script src="//bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+  <link rel="import" href="//bower_components/iron-icons/iron-icons.html">
+  <link rel="import" href="//bower_components/paper-drawer-panel/paper-drawer-panel.html">
+  <link rel="import" href="//bower_components/paper-icon-button/paper-icon-button.html">
+  <link rel="import" href="//bower_components/paper-toolbar/paper-toolbar.html">
+  <link rel="import" href="//bower_components/paper-scroll-header-panel/paper-scroll-header-panel.html">
+  <link rel="import" href="//bower_components/paper-fab/paper-fab.html">
+  <link rel="import" href="//bower_components/paper-item/paper-item.html">
+  <link rel="import" href="//bower_components/paper-menu/paper-menu.html">
+  <link rel="import" href="//bower_components/iron-image/iron-image.html">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/default.min.css">
+  <style is="custom-style">
+    body {
+      font-family: 'Roboto', sans-serif;
+    }
+    .nav {
+      border-right: 1px solid #ccc;
+    }
+    
+    paper-scroll-header-panel {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: var(--paper-grey-200, #eee);
+       
+      --paper-scroll-header-panel-full-header: {
+        background-image: url(//images/cover.png);
+      };
+       
+      --paper-scroll-header-panel-condensed-header: {
+        background-image: url(//images/cover.png);
+      };
+    }
+    
+    paper-toolbar {
+       
+      height: 256px;
+      background-color: transparent;
+    }
+    .profile{
+      width: 100%;
+      padding-bottom: 20px;
+    }
+    .photo{
+      margin: 20px;
+      display: inline-block;
+      height: 64px; width: 64px;
+      border-radius: 50%;
+    }
+    .article{
+      border: 1px solid #bebebe;
+      padding: 16px;
+      margin: 16px;
+      border-radius: 5px;
+      background-color: #fff;
+    }
+    .title{
+      font-size: 22px;
+      padding: 8px 0 16px;
+    }
+    .description{
+      font-size: 16px;
+      padding-bottom: 8px;
+    }
+    .author{
+      font-size: 16px;
+      padding-left: 20px;
+      color: white;
+    }
+    .design{
+      font-size: 14px;
+    }
+    .copyright{
+      font-size: 16px;
+    }
+    paper-menu a {
+      text-decoration: none;
+      color: #212121;
+    }
+  </style>
+
+</head>
+<body>
+  <paper-drawer-panel id="drawerPanel" responsive-width="1280px">
+    <div class="nav scroll" drawer>
+    
+      <iron-image class="profile" sizing="cover" src="//images/profile.png">
+    
+        
+          <iron-image class="photo" sizing="cover" src="//images/photo.png"></iron-image>
+        
+          <div class="author">Your Name</div>
+      </iron-image>
+      <paper-menu>
+        <a href="/"><paper-item>
+          <iron-icon icon="home"></iron-icon>　<div class="flex">Home</div>
+          <iron-icon icon="chevron-right"></iron-icon>
+        </paper-item></a>
+        <a href="//categories/"><paper-item>
+          <iron-icon icon="drafts"></iron-icon>　<div class="flex">Categories</div>
+          <iron-icon icon="chevron-right"></iron-icon>
+        </paper-item></a>
+        <a href="//tags/"><paper-item>
+          <iron-icon icon="loyalty"></iron-icon>　<div class="flex">Tags</div>
+          <iron-icon icon="chevron-right"></iron-icon>
+        </paper-item></a>
+      </paper-menu>
+    </div>
+
+    <paper-scroll-header-panel main condenses header-height="256" condensed-header-height="64">
+
+      <paper-toolbar>
+
+        <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
+        <div class="bottom title">Your Site Title</div>
+        <div class="flex"></div>
+        
+          <a href="https://www.facebook.com/Your%20facebook%20Name"><paper-icon-button src="//images/facebook-dreamstale25.png"></paper-icon-button></a>
+        
+        
+          <a href="https://twitter.com/Your%20Twitter%20Name"><paper-icon-button src="//images/twitter-dreamstale71.png"></paper-icon-button></a>
+        
+        
+          <a href="https://google.com/+Your%20Google&#43;%20Name"><paper-icon-button src="//images/google+-dreamstale37.png"></paper-icon-button></a>
+        
+        
+          <a href="https://www.linkedin.com/in/Your%20linkedin%20Name"><paper-icon-button src="//images/linkedin-dreamstale45.png"></paper-icon-button></a>
+        
+        
+          <a href="https://github.com/Your%20Github%20Name"><paper-icon-button src="//images/github2-dreamstale35.png"></paper-icon-button></a>
+        
+          <a href="//index.xml"><paper-icon-button src="//images/feed-dreamstale27.png"></paper-icon-button></a>
+      
+      </paper-toolbar>
+
+
+
+<div class="content">
+
+  <div class="article">
+    <div class="title">Disaster Recovery</div>
+     
+    <div class="description">
+
+<h4 id="introduction:3976528693a0108357f4928017600865">Introduction</h4>
+
+<p>Utilize the content in this section to recover Nirmata Private Edition and Kubernetes clusters from a failed tate. After following these steps, high Aaailability configuration will be restored for enterprise-grade deployments.</p>
+
+<h4 id="nirmata-private-edition-platform-architecture:3976528693a0108357f4928017600865">Nirmata Private Edition Platform Architecture</h4>
+
+<p>Nirmata Private Edition (Nirmata PE) is comprised of two architectural components (service sets):</p>
+
+<ol>
+<li>Nirmata Core Services: cluster management, application management logic, and UI</li>
+<li>Nirmata Shared Services: third-party services for messaging, data storage, etc.; such as:</li>
+<li>Mongodb</li>
+<li>Zookeeper</li>
+<li>Kafka</li>
+<li>ElasticSearch</li>
+</ol>
+
+<p>Each service set contains multiple containerized microservices.</p>
+
+<h4 id="achieving-disaster-recovery:3976528693a0108357f4928017600865">Achieving Disaster Recovery</h4>
+
+<p>There are multiple ways in which a disasters occur and each requires specific actions to achieve restoration.</p>
+
+<p>The three failure scenarios covered represent the most common failures. Each failure scenario provides a description of the failure impact and the steps necessary to backup and restore servic</p>
+
+<p><img src="/images/disasterrecovery-1.png" alt="image" /></p>
+
+<h2 id="common-failure-scenarios:3976528693a0108357f4928017600865">Common Failure Scenarios</h2>
+
+<h3 id="scenario-1-nirmata-pe-cluster-is-down:3976528693a0108357f4928017600865">Scenario 1 - Nirmata PE Cluster is Down</h3>
+
+<h4 id="failure-impact-of-a-down-nirmata-pe-cluster:3976528693a0108357f4928017600865">Failure Impact of a Down Nirmata PE Cluster</h4>
+
+<p>When a Nirmata PE cluster loses service the Kubernetes cluster may not go down.</p>
+
+<p>Nirmata PE manages Kubernetes clusters through an API. Since the Nirmata PE cluster is deployed in a separate node from Kubernetes cluster, the Kubernetes cluster only goes down when the entire Pod or rack system goes down.</p>
+
+<p>Unless this happens, it is likely that the Kubernetes cluster will maintain service and operation, which means minimal impact to applications.</p>
+
+<p>Nirmata PE has a microservices based architecture and is built as a set of container services. This ensures that when a component goes down it comes right back up.</p>
+
+<p>In HA configuration, a Nirmata PE cluster will go down only when all three nodes that form the cluster go down.</p>
+
+<p>If  a specific component goes down, the Kubernetes cluster recreates the down pd and the service.</p>
+
+<h4 id="how-to-perform-a-backup-when-the-nirmata-pe-cluster-is-down:3976528693a0108357f4928017600865">How to Perform a Backup When the Nirmata PE Cluster is Down</h4>
+
+<p>To prepare Nirmata PE for recovery, start by backing-up and securing essential Nirmata PE installation configuration and state data.</p>
+
+<p>Backup the following key components:</p>
+
+<ol>
+<li>Nirmata PE certificates</li>
+<li>Nirmata PE installation configuration</li>
+<li>Nirmata PE state - which is stored in the MongoDB database as part of shared services in Nirmata PE</li>
+</ol>
+
+<p>Use the following process to backup the key components described:</p>
+
+<ol>
+<li>As a best practice, store certificate files in the installer directory and backup the original certificate files. These files are required to recover Nirmata PE in the correct configuration and will be  restored in the new installer directory.</li>
+<li>Configuration information is stored in the nirmata.conf file in the installer directory. Create a backup of this file.</li>
+<li>Nirmata PE utilizes its own CLI command to perform routine backups of the database. Use the Nirmata PE CLI Backup Command as part of a cronjob to force a backup.</li>
+</ol>
+
+<p><strong>Nirmata PE CLI Backup Command:</strong></p>
+
+<pre><code>nadm backup -n &lt;install-namespace&gt; -d &lt;backup-dir&gt;
+</code></pre>
+
+<h4 id="how-to-recover-from-a-nirmata-pe-cluster-failure:3976528693a0108357f4928017600865">How to Recover from a Nirmata PE Cluster Failure</h4>
+
+<p>After performing the backup steps described, complete the following service recovery steps:</p>
+
+<ol>
+<li>Restore the backed-up files and certificates in the installer directory.</li>
+<li>Install a new instance of Nirmata.</li>
+<li>Run the Nirmata PE Restore CLI Command to restore the database with th state information of the down cluster.</li>
+</ol>
+
+<p><strong>Nirmata PE Restore CLI Command:</strong></p>
+
+<pre><code>nadm restore
+</code></pre>
+
+<h3 id="scenario-2-kubernetes-cluster-is-down:3976528693a0108357f4928017600865">Scenario 2 - Kubernetes Cluster is Down</h3>
+
+<h4 id="failure-impact-of-a-down-kubernetes-cluster:3976528693a0108357f4928017600865">Failure Impact of a Down Kubernetes Cluster</h4>
+
+<p>If a Kubernetes cluster is installed in a High Availability configuration, the Kubernetes cluster will continue to operate until the last master node goes down.</p>
+
+<p>Even when the master node goes down, worker nodes may continue to operate and run the containers orchestrated on those nodes. If certain applications or pods were running on those master nodes, those applications and pods will go down. However, if another master node exists, Kubernetes will look to recreate those pods on other available nodes.</p>
+
+<p>Recovering from a master node failure is more complex than recovering from a worker node failure. However, master node failure does not mean that the cluster and all workloads are lost.</p>
+
+<p>The cluster and all workloads will continue running with exactly the same configuration as before the failure. Applications running in the Kubernetes cluster will still be usable. However, it is not possible to create new deployments or to recover from node failures without the master node.</p>
+
+<h4 id="how-to-perform-a-backup-when-a-kubernetes-cluster-is-down:3976528693a0108357f4928017600865">How to Perform a Backup When a Kubernetes Cluster is Down</h4>
+
+<p>There are several components required to recover a master node on a Kubernetes cluster:</p>
+
+<ol>
+<li>Certificates</li>
+<li>Secrets</li>
+<li>etcd Database</li>
+<li>Persistent Volumes (stateful containers only)</li>
+</ol>
+
+<h4 id="how-to-recover-from-a-kubernetes-cluster-failure:3976528693a0108357f4928017600865">How to Recover from a Kubernetes Cluster Failure</h4>
+
+<p>Currently, Kubernetes has the latest release 1.12 with snapshot and recovery capability in beta.</p>
+
+<p>Nirmata PE will support these features for backup and restore capability as they become generally available. Until snapshot recovery is available, Nirmata recommends using <a href="https://labs.consol.de/kubernetes/2018/05/25/kubeadm-backup.html">kubeadm</a> to recover.</p>
+
+<h3 id="scenario-3-site-hosting-nirmata-pe-and-kubernetes-cluster-is-down:3976528693a0108357f4928017600865">Scenario 3 - Site Hosting Nirmata PE and Kubernetes Cluster is Down</h3>
+
+<h4 id="failure-impact-of-a-down-site-with-nirmata-pe-and-kubernetes-cluster:3976528693a0108357f4928017600865">Failure Impact of a Down Site with Nirmata PE and Kubernetes Cluster</h4>
+
+<p>When the site hosting Nirmata PE and the Kubernetes cluster goes down, both Nirmata PE  and the Kubernetes Cluster must be restored.</p>
+
+<h4 id="how-to-perform-a-backup-when-the-site-hosting-nirmata-pe-and-the-kubernetes-cluster-goes-down:3976528693a0108357f4928017600865">How to Perform a Backup When the Site Hosting Nirmata PE and the Kubernetes Cluster Goes Down</h4>
+
+<p>When a site goes down and Nirmata PE and Kubernetes, are hosted in the site,
+backups for both Nirmata PE and Kubernetes cluster master nodes are required to restore the entire setup.</p>
+
+<p>As a best practice, store backups for Nirmata PE and Kubernetes clusters in more than one distinct data center across different regions. This ensures that disaster recovery is possible even when a region is down.</p>
+
+<p>Refer to:
+[How to Perform a Backup When the Nirmata PE Cluster is Down(Disaster_Recovery/Common_Failure_Scenarios/Scenario_1_Nirmata_Cluster_is_Down/_index.md)
+<a href="Disaster_Recovery/Common_Failure_Scenarios/Scenario_2_Kubernetes_Cluster_is_Down/_index.md">How to Perform a Backup When a Kubernetes PE Cluster is Down</a></p>
+
+<h4 id="how-to-recover-from-failure-when-the-site-hosting-nirmata-pe-and-the-kubernetes-cluster-goes-down:3976528693a0108357f4928017600865">How to Recover from Failure When the Site Hosting Nirmata PE and the Kubernetes Cluster Goes Down</h4>
+
+<p>When a site goes down and Nirmata PE and Kubernetes, are hosted in the site,
+both Nirmata PE and Kubernetes cluster master nodes must be recovered.</p>
+
+<p>Refer to:
+<a href="Disaster_Recovery/Common_Failure_Scenarios/Scenario_1_Nirmata_Cluster_is_Down/_index.md">How to Recover from a Nirmata PE Cluster Failure</a>
+<a href="Disaster_Recovery/Common_Failure_Scenarios/Scenario_2_Kubernetes_Cluster_is_Down/_index.md">How to Recover from a Kubernetes Cluster Failure</a></p>
+
+<h2 id="how-to-install-a-new-instance-of-nirmata-private-edition:3976528693a0108357f4928017600865">How To Install a New Instance of Nirmata Private Edition</h2>
+
+<p>Nirmata PE can be installed on virtual or physical servers</p>
+
+<h3 id="prerequisites:3976528693a0108357f4928017600865">Prerequisites</h3>
+
+<ul>
+<li><a href="https://www.ubuntu.com/download">Ubuntu 16.04+</a> (bare-metal)</li>
+<li><a href="https://www.docker.com/get-started">Docker 17.03</a> (recommended); Docker 1.11, 1.12, or 1.13 (minimum)</li>
+<li>Each node requires access to AWS S3 bucket and <a href="https://www.nirmata.com/">www.nirmata.com</a></li>
+</ul>
+
+<h3 id="step-1-download-nirmata-pe-installer:3976528693a0108357f4928017600865">Step 1: Download Nirmata PE Installer</h3>
+
+<p>Download the install package on a node. Un-archive the contents of the package:</p>
+
+<pre><code>tar xvf nirmata-pe-k8s-installer.tgz
+</code></pre>
+
+<h3 id="step-2-install-nirmata-private-edition:3976528693a0108357f4928017600865">Step 2: Install Nirmata Private Edition</h3>
+
+<p>Nirmata PE can be installed as a single replica, a multi-node Kubernetes Cluster, or as a High Availability Configuration on a 3-node cluster.</p>
+
+<h4 id="install-nirmata-pe-as-a-single-cell-replica:3976528693a0108357f4928017600865">Install Nirmata PE as a Single Cell Replica</h4>
+
+<p>To install a single node Kubernetes cluster, run the Install Single Node Kubernetes Cluster Command.</p>
+
+<p><strong>Install Single Node Kubernetes Command:</strong></p>
+
+<pre><code>nadm init
+nadm -n kube-system status -w
+</code></pre>
+
+<p>Verify that all pods are running by checking the system status.</p>
+
+<p><img src="/images/disasterrecovery-2.png" alt="image" /></p>
+
+<p>Next, install Nirmata PE on single node cluster by running the Install Nirmata PE on Single Node Cluster Command. Replace the namespace �sandbox� to reflect the applicable configuration.</p>
+
+<p><strong>Install Nirmata PE on Single Node Cluster Command:</strong></p>
+
+<pre><code>nadm install -n sandbox
+</code></pre>
+
+<p>Check the pod status by running the Check Pod Status Command.  Replace the namespace �sandbox� to reflect the applicable configuration.</p>
+
+<p><strong>Check Pod Status Command:</strong></p>
+
+<pre><code>nadm status -n sandbox
+</code></pre>
+
+<p><img src="/images/disasterrecovery-3.png" alt="image" /></p>
+
+<h4 id="install-nirmata-pe-as-a-multi-node-kubernetes-cluster:3976528693a0108357f4928017600865">Install Nirmata PE as a Multi-Node Kubernetes Cluster</h4>
+
+<p>To install Nirmata PE as a multi-node Kubernetes cluster, run the Install Multi-Node Kubernetes Cluster Command on the master node.</p>
+
+<p><strong>Install Multi-Node Kubernetes Cluster Command:</strong></p>
+
+<pre><code>$nadm init
+</code></pre>
+
+<p>It may take several minutes for the command to run. When complete, the output will display successful start message.</p>
+
+<p><img src="/images/disasterrecovery-4.png" alt="image" /></p>
+
+<p>To add new nodes to the cluster, run the command that was output by �nadm init.�</p>
+
+<p><img src="/images/disasterrecovery-5.png" alt="image" /></p>
+
+<p>After a node is added to the cluster, a confirmation message will display.</p>
+
+<p><img src="/images/disasterrecovery-6.png" alt="image" /></p>
+
+<p>To confirm that all of the components are running on the Kubernetes cluster, run a Check Status on Master Node command.</p>
+
+<p><strong>Check Status on Master Node Command:</strong></p>
+
+<pre><code>nadm -n kube-system status -w
+</code></pre>
+
+<p>After all pods have started, review the output to verify that all pods are running.</p>
+
+<p><img src="/images/disasterrecovery-7.png" alt="image" /></p>
+
+<h4 id="install-nirmata-pe-as-a-high-availability-configuration-on-a-3-node-cluster:3976528693a0108357f4928017600865">Install Nirmata PE as a High-Availability Configuration on a 3-Node Cluster</h4>
+
+<p>Before installing Nirmata PE as a High Availability Configuration on a 3-Node Cluster, verify that a 3-Node cluster exists by running Nirmata PE Node Status Command.</p>
+
+<p><strong>Nirmata PE Node Status Command:</strong></p>
+
+<pre><code>nadm status node
+</code></pre>
+
+<p>If three a 3-node cluster exists, the command will return an output that shows three nodes in <em>Ready</em> status.</p>
+
+<p><img src="/images/disasterrecovery-8.png" alt="image" /></p>
+
+<p>Generate three replica YAMLs for Nirmata PE by running the Replicate Nirmata PE Command.</p>
+
+<p><strong>Replicate Nirmata PE  Command:</strong></p>
+
+<pre><code>nadm generate --replicas=3
+</code></pre>
+
+<p>Verify that the three replica YAMLs generated in: opt/niramta/yamls-generate/</p>
+
+<p>Next, install Nirmata PE using the Install Nirmata PE Command and the path to the three newly generated replica YAMLs, i.e.: /opt/nirmata/yamls-generate/yamls-xx-xx-xx-xx/, in place of $PATH.</p>
+
+<p><strong>Install Nirmata PE Command:</strong></p>
+
+<pre><code>nadm install -d $PATH
+</code></pre>
+
+<p>After installing NirmataPE , check the pod status using the Check Pod Status Command.</p>
+
+<p><strong>Check Pod Status Command:</strong></p>
+
+<pre><code>nadm status -n nirmata
+</code></pre>
+
+<h2 id="uninstall-nirmata-private-edition:3976528693a0108357f4928017600865">Uninstall Nirmata Private Edition</h2>
+
+<p>Nirmata PE can be uninstalled from a directory or from the namespace using the Uninstall Nirmata PE Command.</p>
+
+<p>If installed as a Single Cell Replica or Multi-Node Kubernetes Cluster, uninstall Nirmata PE from the namespace.</p>
+
+<p>If installed as a High-Availability 3-Node Cluster, uninstall Nirmata PE from the directory.</p>
+
+<p><strong>Uninstall Nirmata PE Command (namespace):</strong></p>
+
+<pre><code>nadm uninstall -n sandbox --all  
+</code></pre>
+
+<p><strong><em>Remember</em></strong>: Replace the namespace <em>sandbox</em> to reflect the applicable configuration.</p>
+
+<p><strong>Uninstall Nirmata PE Command (directory):</strong></p>
+
+<pre><code>$ nadm uninstall -n sandbox -d $PATH
+</code></pre>
+
+<p><strong><em>Remember</em>:</strong> $PATH is the path to the three generated replica YAMLs, i.e.: /opt/nirmata/yamls-generate/yamls-xx-xx-xx-xx/, in place of $PATH.</p>
+
+<p>After uninstalling Nirmata PE, clean-up the cluster by running the Cluster Reset Command.</p>
+
+<p><strong>Cluster Reset Command:</strong></p>
+
+<pre><code>nadm reset
+</code></pre>
+
+<h3 id="step-3-install-a-x509-certificate-high-availability-configuration-only:3976528693a0108357f4928017600865">Step 3: Install a x509 Certificate (High-Availability Configuration ONLY)</h3>
+
+<p>When installed as a High- Availability Configuration on a 3-Node Cluster, Nirmata PE utilizes a load-balancer to communicate with Kubernetes clusters and users.</p>
+
+<p>The load-balancer requires a valid certificate for the URL that is used to access Nirmata PE. If a certificate is not available, generate a self-signed certificate.</p>
+
+<p>To generate a self-signed certificate, SSH to the node that will be used to run Nirmata Services. Then, create a directory to store the generated certificate.</p>
+
+<p><strong>Directory to Store Generated Certificate:</strong></p>
+
+<pre><code>sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout certificates/nginx.key -out certificates/nginx.crt
+</code></pre>
+
+<p><strong>Create Certificate Command:</strong></p>
+
+<pre><code>sudo mkdir certificates
+</code></pre>
+
+<p>Enter the required parameters:</p>
+
+<ul>
+<li>Country Name (2 letter code) [AU]:US</li>
+<li>State or Province Name (full name) [Some-State]:New York</li>
+<li>Locality Name (eg, city) []:New York City</li>
+<li>Organization Name (eg, company) [Internet Widgits Pty Ltd]:Acme</li>
+<li>Organizational Unit Name (eg, section) []:I.T</li>
+<li>Common Name (e.g. server FQDN or YOUR name) []:server_IP_address or DNS</li>
+<li>Email Address []:admin@your_domain.com</li>
+</ul>
+
+<h3 id="step-4-login-to-nirmata-pe:3976528693a0108357f4928017600865">Step 4: Login to Nirmata PE</h3>
+
+<p>When installed as a High- Availability Configuration on a 3-Node Cluster, Nirmata PE utilizes a load-balancer to communicate with Kubernetes clusters and users.</p>
+
+<p>The load-balancer requires a valid certificate for the URL that is used to access Nirmata PE. If a certificate is not available, generate a self-signed certificate.</p>
+
+<p>To generate a self-signed certificate, SSH to the node that will be used to run Nirmata Services. Then, create a directory to store the generated certificate.</p>
+
+<p><strong>Directory to Store Generated Certificate:</strong></p>
+
+<pre><code>sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout certificates/nginx.key -out certificates/nginx.crt
+</code></pre>
+
+<p><strong>Create Certificate Command:</strong></p>
+
+<pre><code>sudo mkdir certificates
+</code></pre>
+
+<p>Enter the required parameters:</p>
+
+<ul>
+<li>Country Name (2 letter code) [AU]:US</li>
+<li>State or Province Name (full name) [Some-State]:New York</li>
+<li>Locality Name (eg, city) []:New York City</li>
+<li>Organization Name (eg, company) [Internet Widgits Pty Ltd]:Acme</li>
+<li>Organizational Unit Name (eg, section) []:I.T</li>
+<li>Common Name (e.g. server FQDN or YOUR name) []:server_IP_address or DNS</li>
+<li>Email Address []:admin@your_domain.com</li>
+</ul>
+
+<h3 id="step-5-add-the-nirmata-pe-license:3976528693a0108357f4928017600865">Step 5:  Add the Nirmata PE License</h3>
+
+<p>After logging in to Nirmata PE, navigate to Account and select Settings. Update the license key.</p>
+
+<p>When a valid license key is added, the <em>Trial</em> message is removed.</p>
+
+<h4 id="docker-ce-installation-on-rhel-7:3976528693a0108357f4928017600865">Docker CE Installation on RHEL 7</h4>
+
+<p>Before installing Docker CE on RHEL 7, disable to firewall to prevent interference with Docker.</p>
+
+<p>To disable the firewall, run the Disable Firewall Command.</p>
+
+<p><strong>Disable Firewall Command:</strong></p>
+
+<pre><code>sudo systemctl disable firewalld
+</code></pre>
+
+<p>After disabling the firewall, setup the Docker CE repository on RHEL.</p>
+
+<pre><code>sudo yum install -y yum-utils
+sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+sudo yum makecache fast
+</code></pre>
+
+<p>Next, install the latest supported version of Docker CE on RHEL or a specified version of Docker CE.</p>
+
+<p>To install the latest supported version of Docker CE on RHEL, use the following command:</p>
+
+<pre><code>sudo yum -y install docker-ce-17.06.0.ce-1.fc25
+</code></pre>
+
+<p>To specify a version of Docker CE, use the following command and replace <em>version</em> and <em>release</em> with the appropriate version and release identifiers:</p>
+
+<pre><code>sudo yum -y install docker-ce-&lt;version&gt;-&lt;release&gt;
+</code></pre>
+
+<p>After installing Docker CE, start Docker using the Start Docker CE Command.</p>
+
+<p><strong>Start Docker CE Command:</strong></p>
+
+<pre><code>sudo systemctl start docker
+</code></pre>
+
+<p>Verify that the Docker CE installation is complete using the Test Docker CE Installation Command.</p>
+
+<p><strong>Test Docker CE Installation Command:</strong></p>
+
+<pre><code>sudo docker run hello-world
+</code></pre>
+
+<p>If SELinux is not already installed, use the following command instead to install SELinux and Docker CE:</p>
+
+<pre><code># pre-requisite for container-selinux-2.9-4.el7.noarch.rpm
+sudo yum install policycoreutils-python
+
+wget http://mirror.centos.org/centos/7/extras/x86_64/Packages/container-selinux-2.9-4.el7.noarch.rpm
+sudo rpm -i container-selinux-2.9-4.el7.noarch.rpm
+
+#Set up the Docker CE repository on RHEL:
+sudo yum install -y yum-utils
+sudo yum install -y device-mapper-persistent-data lvm2
+sudo yum-config-manager --enable rhel-7-server-extras-rpms
+sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+sudo yum makecache fast
+
+# Install the latest supported version of Docker CE on RHEL:
+sudo yum -y install docker-ce-17.06.0.ce-1.fc25
+
+#Start Docker:
+sudo systemctl start docker
+
+#Test your Docker CE installation:
+sudo docker run hello-world
+
+# configure Docker to start on boot
+sudo systemctl enable docker
+
+# add user to the Docker group
+sudo usermod -aG docker jethro
+
+# install Docker Compose:
+# install python-pip
+wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+
+sudo yum install ./epel-release-latest-7.noarch.rpm
+sudo yum install -y python-pip
+
+sudo pip install docker-compose
+
+# upgrade your Python packages:
+sudo yum upgrade python*
+</code></pre>
+
+<h4 id="how-to-set-log-limits-on-docker-ce-container-logs:3976528693a0108357f4928017600865">How to Set Log Limits on Docker CE Container Logs</h4>
+
+<p>By default, container logs are not configured to rotate data or store to a limited maximum size. In some, long-running containers, a log file can grow so large that it compromises disk space.</p>
+
+<p>To set log limits for the containers on a host, configure <code>--log-opt</code> with a <code>max-size</code> and <code>max-file</code>. When configured this way, container logs are rolled over after reaching the specified limit and only the specified number of files are saved.</p>
+
+<p>To generate a list of the largest files to confirm that the log files are using a large percent of the disk space run the File List Command.</p>
+
+<p><strong>File List Command:</strong></p>
+
+<pre><code># find /var/lib/docker/ -name &quot;*.log&quot; -exec ls -sh {} \; | sort -n -r | head -20
+# du -aSh /var/lib/docker/ | sort -n -r | head -n 10
+To remove a log file on the host, run the Remove File Command to clear the contents and reduce the file size.
+</code></pre>
+
+<p><strong>Remove File Command:</strong></p>
+
+<pre><code># cat /dev/null &gt; /var/lib/docker/containers/CONTAINER_ID/CONTAINER_ID-json.log
+</code></pre>
+
+<p>OR</p>
+
+<pre><code># cat /dev/null &gt;  $(docker inspect --format='{{.LogPath}}'  CONTAINER_ID)
+</code></pre>
+
+<p>Use the Configure File Size Command to specify maximum file size and number.</p>
+
+<p><strong>Configure File Size Command:</strong></p>
+
+<pre><code># cat /etc/sysconfig/docker 
+OPTIONS='--insecure-registry=172.30.0.0/16 --selinux-enabled --log-opt max-size=50m --log-opt max-file=5'
+</code></pre>
+
+<p>File size configuration changes will take effect after a Docker CE restart. To restart Docker CE, use the Restart Docker CE Command.</p>
+
+<p><strong>Restart Docker CE Command:</strong></p>
+
+<pre><code># systemctl restart docker 
+</code></pre>
+
+<p>For more information on setting file log limits, click <a href="https://access.redhat.com/solutions/2334181#">here</a>.</p>
+
+<h4 id="troubleshooting-nirmata-pe-installation:3976528693a0108357f4928017600865">Troubleshooting Nirmata PE Installation</h4>
+
+<p>To troubleshooting a Nirmata PE installation check through the following common issues. Contact Nirmata Support if the problem persists.</p>
+
+<h4 id="kafka-container-fails-to-start-or-keeps-restarting:3976528693a0108357f4928017600865">Kafka Container Fails to Start or Keeps Restarting</h4>
+
+<p>Kafka containers experience failure or restart issues when Kafka cannot connect to Zookeeper.</p>
+
+<p>First, verify that Zookeeper is running using check Zookeeper Command.</p>
+
+<p><strong>Check Zookeeper Command:</strong></p>
+
+<pre><code>kubectl exec zookeeper-0 -n nirmata-shared bin/zkServer.sh status
+</code></pre>
+
+<p>If Zookeeper is running, the command will return the following:</p>
+
+<p><img src="/images/disasterrecovery-9.png" alt="image" /></p>
+
+<h4 id="web-console-cannot-be-reached:3976528693a0108357f4928017600865">Web Console Cannot Be Reached</h4>
+
+<p>Verify that all the services are running using <code>docker ps</code> or <code>kubectl get pods</code> command.</p>
+
+<p>Restart any services that are not running.</p>
+
+<p>Verify that the  the frontend load balancer is reachable using the Curl Command.</p>
+
+<p><strong>Curl Command:</strong></p>
+
+<pre><code>curl https://&lt;nirmata-url&gt;/webclient
+</code></pre>
+
+<p>Review the frontend load balancer logs for errors. To view the logs run the View Logs Command.</p>
+
+<p><strong>View Logs Command:</strong></p>
+
+<pre><code>docker logs -f nginx
+</code></pre>
+
+<p>If errors are found, restart the load balancer,</p>
+
+<p>If the any services or the load balancer cannot be restarted, contact Nirmata Support.</p>
+
+<h4 id="unable-to-login-to-nirmata-pe:3976528693a0108357f4928017600865">Unable to login to Nirmata PE</h4>
+
+<p>Verify that all the services are running using <code>docker ps</code> or <code>kubectl get pods</code> command.</p>
+
+<p>Review User Service and Security Service logs for errors. Restart any User Service or Security Service with errors.</p>
+
+<p>If the User Service or Security Service cannot be restarted, contact Nirmata Support.</p>
+
+<h5 id="setup-virtual-machine-template:3976528693a0108357f4928017600865">Setup Virtual Machine Template</h5>
+
+<p>To setup a virtual machine (VM) template, run the Skip Broken and Install Commands.</p>
+
+<p><strong>Skip Broken Command:</strong></p>
+
+<pre><code>yum update --skip-broken -y
+</code></pre>
+
+<p><strong>Install Command:</strong></p>
+
+<pre><code>yum install net-tools
+</code></pre>
+
+<p>Before saving the VM as a template, remove the file: _/opt/nirmata/conf/host<em>agent.id and the directory: /opt/nirmata/db/</em></p>
+
+<p><em>/etc/sysconfig/network-scripts/ifcfg-<em>nameofmaininterface</em> and remove the UUID</em></p>
+
+<p>The configuration line should look like - UUID=&ldquo;&rdquo;</p>
+
+<p>Next, install Docker and the Nirmata agent using the Docker.sh Command.</p>
+
+<p><strong>Docker.sh Command:</strong></p>
+
+<pre><code>#!/bin/bash -x
+# Install Docker
+sudo yum update -y
+
+sudo tee /etc/yum.repos.d/docker.repo &lt;&lt;-'EOF'
+[dockerrepo]
+name=Docker Repository
+baseurl=https://yum.dockerproject.org/repo/main/centos/7/
+enabled=1
+gpgcheck=1
+gpgkey=https://yum.dockerproject.org/gpg
+EOF
+
+sudo mount -o remount,rw '/sys/fs/cgroup'
+sudo ln -s /sys/fs/cgroup/cpu,cpuacct /sys/fs/cgroup/cpuacct,cpu
+
+sudo yum install -y docker-engine
+sudo systemctl enable docker.service
+sudo systemctl start docker
+</code></pre>
+
+<p>After installing Docker and the Nirmata agent, run an Install Cleanup Command.</p>
+
+<p><strong>Install Cleanup Command:</strong></p>
+
+<pre><code># Stop and remove any running containers
+sudo docker stop $(sudo docker ps | grep &quot;flannel&quot; | gawk '{print $1}')
+sudo docker stop $(sudo docker ps | grep &quot;nirmata&quot; | gawk '{print $1}')
+
+sudo docker stop $(sudo docker ps | grep &quot;kube&quot; | gawk '{print $1}')
+sudo docker rm  $(sudo docker ps -a | grep &quot;Exit&quot; |gawk '{print $1}')
+
+# Remove any cni plugins
+sudo rm -rf /etc/cni/*
+sudo rm -rf /opt/cni/*
+
+# Clear IP Tables
+sudo iptables --flush
+sudo iptables -tnat --flush
+
+# Restart docker
+sudo systemctl stop docker
+sudo systemctl start docker
+sudo docker ps
+
+# Deletes the cni interface
+sudo ifconfig cni0 down
+sudo brctl delbr cni0
+sudo ifconfig flannel.1 down
+sudo ip link delete cni0
+sudo ip link delete flannel.1
+
+# Remove cluster database
+sudo rm -rf /data
+</code></pre>
+
+<p>If setting up CentOS or RHEL, disable SELinux and setup iptables.</p>
+
+<p>To disable SELinux, navigate to: edit/etc/selinux/config</p>
+
+<p>Set
+SELINUX=disabled</p>
+
+<p>Reboot for the changes to take effect.</p>
+
+<p>Verify that SELinux is disabled using a Sestatus Command:</p>
+
+<p><strong>SELinux Status Command:</strong></p>
+
+<pre><code>sestatus
+</code></pre>
+
+<p>Configure the iptables on the VM template node with following commands:</p>
+
+<pre><code>sudo iptables --policy INPUT ACCEPT
+sudo iptables --policy OUTPUT ACCEPT
+sudo iptables --policy FORWARD ACCEPT
+sudo iptables -Z
+sudo iptables -F
+sudo iptables -X
+</code></pre>
+
+<p>Finally, configure disk enable.UUID=TRUE in the VM Configuration.</p>
+
+<p>For more information on enabling disk UUID on virtual machines, <a href="https://sort.veritas.com/public/documents/sfha/6.2/vmwareesx/productguides/html/sfhas_virtualization/ch10s05s01.htm">click here</a>.</p>
+
+<h4 id="more-nirmata-setup-help:3976528693a0108357f4928017600865">More Nirmata Setup Help</h4>
+
+<p><a href="https://docs.nirmata.io/cloudproviders/">Setup vSphere Private Cloud-Provider</a></p>
+
+<p><a href="https://docs.nirmata.io/cloudproviders/vmware_vsphere_cloud_provider/">Setup a vSphere private-cloud provider</a></p>
+
+<p><a href="https://docs.nirmata.io/hostgroups/vmware_vsphere_host_group/">Setup vSphere Host-Group</a></p>
+
+<p><a href="https://docs.nirmata.io/clusters/high_availability_ha_clusters/">Setup Nodes and Load-Balancer for HA configuration</a></p>
+
+<p><a href="https://docs.nirmata.io/clusters/cluster_policies/">Configure Storage-Class for vSphere Cluster Policy</a></p>
+
+<p><a href="https://docs.nirmata.io/clusters/create_a_new_kubernetes_cluster/">Configure Kubernetes Cluster on vSphere</a></p>
+
+<p><strong>Add Storage Class Template:</strong></p>
+
+<pre><code>metadata:
+  name: filesystem
+  selfLink: /apis/storage.k8s.io/v1/storageclasses/filesystem
+  labels:
+    nirmata.io/storageclass.name: filesystem
+provisioner: kubernetes.io/vsphere-volume
+apiVersion: storage.k8s.io/v1
+reclaimPolicy: Retain
+kind: StorageClass
+parameters:
+  diskformat: thin
+</code></pre>
+</div>
+    <div class="tags">
+      1 Jan 0001
+       
+    </div>
+    
+      <div id="disqus_thread"></div>
+<script type="text/javascript">
+     
+    var disqus_shortname = 'Your Disqus Name';
+    
+     
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    
+  </div>
+
+</div>
+
+<paper-item>
+  
+    <a href="/introduction/deployment_models/_index/"><paper-fab icon="chevron-left"><a></a></paper-fab></a>
+  
+    <div class="flex"></div>
+  
+    <a href="/introduction/core_concepts/environments/_index/"><paper-fab icon="chevron-right"></paper-fab></a>
+  
+</paper-item>
+
+      <paper-item>
+        <div class="copyright">© 2015 Copyright Text</div>
+        <div class="flex"></div>
+        <div class="design">Design <a href="http://pdevty.github.io/blog/">pdevty</a></div>
+      </paper-item>
+    </paper-scroll-header-panel>
+  </paper-drawer-panel>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'Your Analytics User Id', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</body>
+</html>

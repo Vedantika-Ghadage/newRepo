@@ -1,0 +1,352 @@
+
+<!doctype html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+  <title>2.6.0 Release Notes</title>
+  <script src="//bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+  <link rel="import" href="//bower_components/iron-icons/iron-icons.html">
+  <link rel="import" href="//bower_components/paper-drawer-panel/paper-drawer-panel.html">
+  <link rel="import" href="//bower_components/paper-icon-button/paper-icon-button.html">
+  <link rel="import" href="//bower_components/paper-toolbar/paper-toolbar.html">
+  <link rel="import" href="//bower_components/paper-scroll-header-panel/paper-scroll-header-panel.html">
+  <link rel="import" href="//bower_components/paper-fab/paper-fab.html">
+  <link rel="import" href="//bower_components/paper-item/paper-item.html">
+  <link rel="import" href="//bower_components/paper-menu/paper-menu.html">
+  <link rel="import" href="//bower_components/iron-image/iron-image.html">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/default.min.css">
+  <style is="custom-style">
+    body {
+      font-family: 'Roboto', sans-serif;
+    }
+    .nav {
+      border-right: 1px solid #ccc;
+    }
+    
+    paper-scroll-header-panel {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: var(--paper-grey-200, #eee);
+       
+      --paper-scroll-header-panel-full-header: {
+        background-image: url(//images/cover.png);
+      };
+       
+      --paper-scroll-header-panel-condensed-header: {
+        background-image: url(//images/cover.png);
+      };
+    }
+    
+    paper-toolbar {
+       
+      height: 256px;
+      background-color: transparent;
+    }
+    .profile{
+      width: 100%;
+      padding-bottom: 20px;
+    }
+    .photo{
+      margin: 20px;
+      display: inline-block;
+      height: 64px; width: 64px;
+      border-radius: 50%;
+    }
+    .article{
+      border: 1px solid #bebebe;
+      padding: 16px;
+      margin: 16px;
+      border-radius: 5px;
+      background-color: #fff;
+    }
+    .title{
+      font-size: 22px;
+      padding: 8px 0 16px;
+    }
+    .description{
+      font-size: 16px;
+      padding-bottom: 8px;
+    }
+    .author{
+      font-size: 16px;
+      padding-left: 20px;
+      color: white;
+    }
+    .design{
+      font-size: 14px;
+    }
+    .copyright{
+      font-size: 16px;
+    }
+    paper-menu a {
+      text-decoration: none;
+      color: #212121;
+    }
+  </style>
+
+</head>
+<body>
+  <paper-drawer-panel id="drawerPanel" responsive-width="1280px">
+    <div class="nav scroll" drawer>
+    
+      <iron-image class="profile" sizing="cover" src="//images/profile.png">
+    
+        
+          <iron-image class="photo" sizing="cover" src="//images/photo.png"></iron-image>
+        
+          <div class="author">Your Name</div>
+      </iron-image>
+      <paper-menu>
+        <a href="/"><paper-item>
+          <iron-icon icon="home"></iron-icon>　<div class="flex">Home</div>
+          <iron-icon icon="chevron-right"></iron-icon>
+        </paper-item></a>
+        <a href="//categories/"><paper-item>
+          <iron-icon icon="drafts"></iron-icon>　<div class="flex">Categories</div>
+          <iron-icon icon="chevron-right"></iron-icon>
+        </paper-item></a>
+        <a href="//tags/"><paper-item>
+          <iron-icon icon="loyalty"></iron-icon>　<div class="flex">Tags</div>
+          <iron-icon icon="chevron-right"></iron-icon>
+        </paper-item></a>
+      </paper-menu>
+    </div>
+
+    <paper-scroll-header-panel main condenses header-height="256" condensed-header-height="64">
+
+      <paper-toolbar>
+
+        <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
+        <div class="bottom title">Your Site Title</div>
+        <div class="flex"></div>
+        
+          <a href="https://www.facebook.com/Your%20facebook%20Name"><paper-icon-button src="//images/facebook-dreamstale25.png"></paper-icon-button></a>
+        
+        
+          <a href="https://twitter.com/Your%20Twitter%20Name"><paper-icon-button src="//images/twitter-dreamstale71.png"></paper-icon-button></a>
+        
+        
+          <a href="https://google.com/+Your%20Google&#43;%20Name"><paper-icon-button src="//images/google+-dreamstale37.png"></paper-icon-button></a>
+        
+        
+          <a href="https://www.linkedin.com/in/Your%20linkedin%20Name"><paper-icon-button src="//images/linkedin-dreamstale45.png"></paper-icon-button></a>
+        
+        
+          <a href="https://github.com/Your%20Github%20Name"><paper-icon-button src="//images/github2-dreamstale35.png"></paper-icon-button></a>
+        
+          <a href="//index.xml"><paper-icon-button src="//images/feed-dreamstale27.png"></paper-icon-button></a>
+      
+      </paper-toolbar>
+
+
+
+<div class="content">
+
+  <div class="article">
+    <div class="title">2.6.0 Release Notes</div>
+     
+    <div class="description">
+
+<h4 id="what-s-new-in-nirmata-2-6-0:3976528693a0108357f4928017600865">What&rsquo;s New in Nirmata 2.6.0</h4>
+
+<ul>
+<li><a href="https://docs.nirmata.io/environments/addnewenvironment/">Environmental Management Enhancements</a></li>
+<li><a href="https://docs.nirmata.io/clusters/view_cluster_resources/">Cluster Resource Viewing</a></li>
+<li><a href="https://docs.nirmata.io/clusters/cluster_level_addon/">Cluster Level Add-ons</a></li>
+<li><a href="https://docs.nirmata.io/clusters/cluster_level_prometheus/">Cluster Level Prometheus</a></li>
+<li><a href="https://docs.nirmata.io/clusters/cluster_policies/apply_addon/">Add-on Enhancements</a></li>
+<li><a href="https://docs.nirmata.io/policies/network_policy/">Network Policies</a></li>
+<li><a href="https://docs.nirmata.io/environments/environmentalpanel/">Environment Panel Organization</a></li>
+<li><a href="https://docs.nirmata.io/clusters/cluster_panel/">Cluster Panel Organization</a></li>
+<li><a href="https://docs.nirmata.io/alarms/alarm_panel/">Alarm Panel Organization</a></li>
+<li><a href="https://docs.nirmata.io/integrations/jirachangemanagement/">Jira Change Management Integration</a></li>
+<li><a href="https://docs.nirmata.io/clusters/high_availability_ha_clusters/">High Availability Cluster Enhancement</a></li>
+<li><a href="https://docs.nirmata.io/settings/synch_unmanaged_namespaces/">Synchronize Unmanaged Namespaces</a></li>
+</ul>
+
+<h4 id="fixes:3976528693a0108357f4928017600865">Fixes</h4>
+
+<ul>
+<li>Show activity around this time&rsquo; link does not display activity data&rsquo;s for 5hrs and above old activities.</li>
+<li>Alarm clear not discernible from web hook notification</li>
+<li>Duplicate alarms are created sometimes</li>
+<li>scope information not available in web hook notification</li>
+<li>Add HPA form doesn&rsquo;t show Stateful Sets in the Target drop-down menu</li>
+<li>Add support for dynamic tunnels</li>
+<li>After rebooting devtest2 host, nirmata-kube-controller keeps connecting/disconnecting</li>
+<li>Agent cannot reconnect after wss timeout</li>
+<li>AKS cluster is not getting created in production</li>
+<li>AKS Kubernetes Version is hard coded</li>
+<li>AKS regions are hard coded</li>
+<li>Alarm notification emails contain incorrect user in Last Modified by field</li>
+<li>Application clone does not work</li>
+<li>Backend allows Duplicate alarms to be added.</li>
+<li>Cannot delete an environment in devtest</li>
+<li>Cannot scale activity service</li>
+<li>check if cert/key directories are correct</li>
+<li>Check the content of cert/key, needs to be base64 encoded</li>
+<li>Cluster &amp; Environments services failed to connect to ProSoft qa-cluster</li>
+<li>Cluster activity is showing global activity also.(in devtest2)</li>
+<li>ContainerVMSizeTypes is hardcoded in a class</li>
+<li>Creation of AKS provider managed cluster was failed.(in production account)</li>
+<li>Crumbs don&rsquo;t render in the container template view (Uncaught TypeError)</li>
+<li>Deployment in &ldquo;Unknown&rdquo; state when pods are running</li>
+<li>EKS cluster created but not connected.</li>
+<li>Email notifications are sent for disabled alarms</li>
+<li>Enable alarm option is Blocked</li>
+<li>Endpoint label mismatch</li>
+<li>Environment name should allow &ldquo;-&rdquo;</li>
+<li>Environment name should not allow space.</li>
+<li>Environment shows Cluster Connect Status for a Disabled cluster</li>
+<li>Existing logic for selecting a workload controller doesn&rsquo;t work properly in case of Jobs</li>
+<li>HA testing causes SaaS deployment to hangup when bringing back 2 nodes out of 3</li>
+<li>If we try to retrieve more activity data same data&rsquo;s are being repeated.</li>
+<li>Improve events viewer</li>
+<li>Inconsistent arrangement of cards</li>
+<li>incorrect validation error for EnVars using configmap keys or secrets</li>
+<li>Informational alarms are emails but filter was set to Critical</li>
+<li>Invalid configuration is generated for EKS cluster</li>
+<li>Invalid DNS name is shown on the Pod</li>
+<li>Jira settings must be visible only in GA2 accounts, not in GA accounts</li>
+<li>Jobs that has been created by a Cron Job are showing as Active in the UI, even though they&rsquo;re completed</li>
+<li>Links in the drop-down menu for Jobs and Cron Jobs (in crumbs) are not working</li>
+<li>Login to Nirmata intermittently fails</li>
+<li>nadm - add a &ldquo;local-storage&rdquo; command or use a dynamic hostpath provisioner</li>
+<li>nadm config path incorrect</li>
+<li>nadm scale orchestrater scaled down all services</li>
+<li>nadm should reserve resources for kubernetes components when deploying nirmata</li>
+<li>namespace discovery does works for the shopme deals deployment</li>
+<li>nirmata agent crash on startup</li>
+<li>Not able to add aws Hostgroup in devtest2.</li>
+<li>NullPointerException when applying ResourcePatch</li>
+<li>One task fails during the creation of a managed cluster on aws: failed to apply ingress controller yaml</li>
+<li>Pod template labels are not rendering in the Cron Job view</li>
+<li>Pod yaml is not loaded and the dialog just shows Fetching..</li>
+<li>Possible multi-tenancy issue</li>
+<li>Progress bar is showing only 10% while creating discovered cluster.(devtest)</li>
+<li>registrycreation in pending state</li>
+<li>Render a Workload Controller info for job pods and cron job pods in PodSummaryTabview</li>
+<li>Reserve resources for kubernetes containers and system services when deploying cluster</li>
+<li>Rest api call to fetch the AKS maximum node count associated with VM size</li>
+<li>Retain more logs and events (for prod environments)</li>
+<li>Service versions are incorrect</li>
+<li>signing up with google account using an already existing email doesn&rsquo;t work</li>
+<li>Some tunnel connections were down</li>
+<li>State of applications takes long to update in Catalog view after adding or deleting an application (in production)</li>
+<li>the new buildnotify API doesn&rsquo;t work</li>
+<li>Tunnel Client - add support for dynamic tunnels</li>
+<li>UI - Pods appear in the application that it doesn&rsquo;t belong to</li>
+<li>Unable to generate API key in devtest2,getting 401 error.</li>
+<li>Uncaught type error in the Running Cron Job view (active crumb doesn&rsquo;t show up)</li>
+<li>Update curator to 4.2.0 to potentially solve the problem of locks piling up.</li>
+<li>Use Kustomize for YAML customizations</li>
+<li>User is able to Delete cloud provider with connected HostGroup and Cluster</li>
+<li>Vault secrets should work when put in root directory</li>
+<li>When nirmata pods are edited, anti-affinity of required v/s preferred stops pods from running</li>
+<li>When running two applications in a shared namespace, failure notification of one application show in another.</li>
+<li>Duplicate aarm types are allowed - causing processing errors</li>
+<li>Failed to deploy Rook - Ceph</li>
+<li>addRelationList function adds an extra line that shouldn&rsquo;t be added</li>
+<li>An asterisk sign is required for &lsquo;Amazon Machine Image (AMI) Id&rsquo; field in the Settings-tab of Host Group.</li>
+<li>An asterisk sign is required for &lsquo;Instance Type&rsquo; field in the Settings-tab of Host-Group.</li>
+<li>An error message displayed as &ldquo;An Image is required&rdquo; rather than &lsquo;Amazon Machine Image (AMI) Id is required&rsquo; in the UserData-tab of the Host Groups.</li>
+<li>Application catalog should not allow application run name to have space</li>
+<li>Do not allow spaces in application run name</li>
+<li>environments service on master branch doesn&rsquo;t start after changing the model</li>
+<li>Issue with etcd components on Dev server again</li>
+<li>Patch policy is not applied when a change is made in the catalog</li>
+<li>Pods created by Prometheus operator are not discovered</li>
+<li>Application catalog should not allow application run name to have space</li>
+<li>Issue with etcd components on Dev server again</li>
+<li>Deployment in &ldquo;Unknown&rdquo; state when pods are running</li>
+<li>Endpoint label mismatch</li>
+<li>Retain more logs and events (for prod environments)</li>
+<li>signing up with google account using an already existing email doesn&rsquo;t work</li>
+<li>Vault secrets should work when put in root directory</li>
+<li>When nirmata pods are edited, anti-affinity of required v/s preferred stops pods from running</li>
+<li>Nirmata not coming up - after kubelet shutdown</li>
+<li>Nirmata UI having issue while bringing up controller service</li>
+<li>&ldquo;Host not connected&rdquo; on Nirmata while server looks good</li>
+<li>Cluster Service throw error - failing to create/update the node</li>
+<li>Vault Integration: Data not populated when Vault is enabled for the cluster</li>
+<li>kubectl commands sometimes fail</li>
+<li>Controller yaml issue</li>
+<li>90 days of audit history</li>
+<li>NIBR aqua scan - fix file permissions</li>
+<li>Check when deleting catalog application</li>
+<li>Environment Services did not come up properly after bringing down 2 out of 3 master nodes in base cluster</li>
+<li>For a deployed application registry always points to dockerhub</li>
+<li>Nadm Restore Logic</li>
+<li>direct connect nodes in unknown status</li>
+<li>Vault secrets should use EmptyDir instead of hostpath</li>
+<li>Vault secrets should work when put in root directory</li>
+<li>Changes to catalog are not reflecting after push</li>
+<li>Issue with etcd components on Dev server again</li>
+</ul>
+
+<h4 id="known-issues:3976528693a0108357f4928017600865">Known Issues</h4>
+
+<ul>
+<li>Security &amp; webclient status servlets are throwing exception (sometimes)</li>
+<li>Login for SAML login is broken in 2.6.1</li>
+</ul>
+</div>
+    <div class="tags">
+      1 Jan 0001
+       
+    </div>
+    
+      <div id="disqus_thread"></div>
+<script type="text/javascript">
+     
+    var disqus_shortname = 'Your Disqus Name';
+    
+     
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    
+  </div>
+
+</div>
+
+<paper-item>
+  
+    <a href="/restapi/url_parameters/excludefields/_index/"><paper-fab icon="chevron-left"><a></a></paper-fab></a>
+  
+    <div class="flex"></div>
+  
+    <a href="/environments/access_controls/_index/"><paper-fab icon="chevron-right"></paper-fab></a>
+  
+</paper-item>
+
+      <paper-item>
+        <div class="copyright">© 2015 Copyright Text</div>
+        <div class="flex"></div>
+        <div class="design">Design <a href="http://pdevty.github.io/blog/">pdevty</a></div>
+      </paper-item>
+    </paper-scroll-header-panel>
+  </paper-drawer-panel>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'Your Analytics User Id', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</body>
+</html>

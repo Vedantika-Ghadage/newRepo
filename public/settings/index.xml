@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Settings on Your Site Title</title>
+    <link>/settings/</link>
+    <description>Recent content in Settings on Your Site Title</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© 2015 Copyright Text</copyright>
+    <atom:link href="/settings/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Users and Roles</title>
+      <link>/settings/users_and_roles/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/settings/users_and_roles/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Single Sign-On with SAML</title>
+      <link>/settings/single_signon_with_saml/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/settings/single_signon_with_saml/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Using CA signed SAML Signature Certificates</title>
+      <link>/settings/using_ca_signed_saml_signature_certificates/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/settings/using_ca_signed_saml_signature_certificates/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Enable SAML SSO for a User</title>
+      <link>/settings/enable_saml_sso_for_a_user/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/settings/enable_saml_sso_for_a_user/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Setup AD FS for use with Nirmata</title>
+      <link>/settings/setup_ad_fs_for_use_with_nirmata/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/settings/setup_ad_fs_for_use_with_nirmata/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Settings</title>
+      <link>/settings/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/settings/_index/</guid>
+      <description>
+
+&lt;h4 id=&#34;users-and-roles:3976528693a0108357f4928017600865&#34;&gt;Users and Roles&lt;/h4&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

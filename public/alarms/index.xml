@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Alarms on Your Site Title</title>
+    <link>/alarms/</link>
+    <description>Recent content in Alarms on Your Site Title</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© 2015 Copyright Text</copyright>
+    <atom:link href="/alarms/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Terminology</title>
+      <link>/alarms/terminology/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/alarms/terminology/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Alarm Types</title>
+      <link>/alarms/alarm_types/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/alarms/alarm_types/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Alarm Notifier</title>
+      <link>/alarms/alarm_notifier/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/alarms/alarm_notifier/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Alarm</title>
+      <link>/alarms/alarm/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/alarms/alarm/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Alarm Management</title>
+      <link>/alarms/alarm_management/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/alarms/alarm_management/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Alarms</title>
+      <link>/alarms/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/alarms/_index/</guid>
+      <description>
+
+&lt;p&gt;Nirmata offers comprehensive Alarm management capabilities to alert
+users of any unexpected condition in their application or
+infrastructure.&lt;/p&gt;
+
+&lt;h4 id=&#34;terminology:3976528693a0108357f4928017600865&#34;&gt;Terminology&lt;/h4&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

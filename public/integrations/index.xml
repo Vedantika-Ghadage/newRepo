@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Integrations on Your Site Title</title>
+    <link>/integrations/</link>
+    <description>Recent content in Integrations on Your Site Title</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© 2015 Copyright Text</copyright>
+    <atom:link href="/integrations/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title></title>
+      <link>/integrations/kubernetesstoragecsi/persistant-storage-with-rook/prerequisites/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/integrations/kubernetesstoragecsi/persistant-storage-with-rook/prerequisites/_index/</guid>
+      <description>&lt;p&gt;﻿+++
+title = &amp;ldquo;Prerequisites&amp;rdquo;
+description = &amp;ldquo;&amp;rdquo;
+weight=20
++++&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/integrations/kubernetesstoragecsi/persistant-storage-with-rook/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/integrations/kubernetesstoragecsi/persistant-storage-with-rook/_index/</guid>
+      <description>&lt;p&gt;﻿+++
+title = &amp;ldquo;Persistant Storage with Rook&amp;rdquo;
+description = &amp;ldquo;&amp;rdquo;
+weight=10
++++&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/integrations/kubernetesstoragecsi/portworxportability/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/integrations/kubernetesstoragecsi/portworxportability/_index/</guid>
+      <description>&lt;p&gt;﻿+++
+title = &amp;ldquo;Application Portability with PortWorx&amp;rdquo;
+description = &amp;ldquo;&amp;rdquo;
+weight=30
++++&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/integrations/kubernetesstoragecsi/storage-integration-with-nutanix/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/integrations/kubernetesstoragecsi/storage-integration-with-nutanix/_index/</guid>
+      <description>&lt;p&gt;﻿+++
+title = &amp;ldquo;Storage Integration with Nutanix&amp;rdquo;
+description = &amp;ldquo;&amp;rdquo;
+weight=20
++++&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/integrations/security/hashicorp-vault/add-custom-resource-definitions-crd/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/integrations/security/hashicorp-vault/add-custom-resource-definitions-crd/_index/</guid>
+      <description>&lt;p&gt;﻿+++
+title = &amp;ldquo;Add Custom Resource Definitions&amp;rdquo;
+description = &amp;ldquo;&amp;rdquo;
+weight=60
++++&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/integrations/security/hashicorp-vault/cluster-level-deployments/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/integrations/security/hashicorp-vault/cluster-level-deployments/_index/</guid>
+      <description>&lt;p&gt;﻿+++
+title = &amp;ldquo;Cluster Level Deployments&amp;rdquo;
+description = &amp;ldquo;&amp;rdquo;
+weight=50
++++&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/integrations/security/hashicorp-vault/create-a-kubernetes-cluster-using-nirmata/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/integrations/security/hashicorp-vault/create-a-kubernetes-cluster-using-nirmata/_index/</guid>
+      <description>&lt;p&gt;﻿+++
+title = &amp;ldquo;Create a Kubernetes Cluster using Nirmata&amp;rdquo;
+description = &amp;ldquo;&amp;rdquo;
+weight=40
++++&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/integrations/security/hashicorp-vault/deploying-vault-in-a-nirmata-kubernetes-cluster/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/integrations/security/hashicorp-vault/deploying-vault-in-a-nirmata-kubernetes-cluster/_index/</guid>
+      <description>&lt;p&gt;﻿+++
+title = &amp;ldquo;Deploying Vault in a Nirmata Kubernetes Cluster&amp;rdquo;
+description = &amp;ldquo;&amp;rdquo;
+weight=30
++++&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/integrations/security/hashicorp-vault/goals-and-key-steps-for-integration/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/integrations/security/hashicorp-vault/goals-and-key-steps-for-integration/_index/</guid>
+      <description>&lt;p&gt;﻿+++
+title = &amp;ldquo;Goals and Key Steps for Integration&amp;rdquo;
+description = &amp;ldquo;&amp;rdquo;
+weight=20
++++&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/integrations/security/hashicorp-vault/how-to-deploy-the-vault-cluster/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/integrations/security/hashicorp-vault/how-to-deploy-the-vault-cluster/_index/</guid>
+      <description>&lt;p&gt;﻿+++
+title = &amp;ldquo;How to Deploy the Vault Cluster&amp;rdquo;
+description = &amp;ldquo;&amp;rdquo;
+weight=70
++++&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/integrations/security/hashicorp-vault/leveraging-the-vault-cluster/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/integrations/security/hashicorp-vault/leveraging-the-vault-cluster/_index/</guid>
+      <description>&lt;p&gt;﻿+++
+title = &amp;ldquo;Leveraging the Vault Cluster&amp;rdquo;
+description = &amp;ldquo;&amp;rdquo;
+weight=80
++++&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/integrations/security/hashicorp-vault/prerequisites/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/integrations/security/hashicorp-vault/prerequisites/_index/</guid>
+      <description>&lt;p&gt;﻿+++
+title = &amp;ldquo;Prerequisites&amp;rdquo;
+description = &amp;ldquo;&amp;rdquo;
+weight=10
++++&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Introduction</title>
+      <link>/integrations/kubernetesstoragecsi/persistant-storage-with-rook/introduction/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/integrations/kubernetesstoragecsi/persistant-storage-with-rook/introduction/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Introduction</title>
+      <link>/integrations/kubernetesstoragecsi/portworxportability/introduction/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/integrations/kubernetesstoragecsi/portworxportability/introduction/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Introduction</title>
+      <link>/integrations/kubernetesstoragecsi/storage-integration-with-nutanix/introduction/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/integrations/kubernetesstoragecsi/storage-integration-with-nutanix/introduction/_index/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

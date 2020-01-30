@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Applications on Your Site Title</title>
+    <link>/applications/</link>
+    <description>Recent content in Applications on Your Site Title</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© 2015 Copyright Text</copyright>
+    <atom:link href="/applications/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Deployments</title>
+      <link>/applications/deployments/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/applications/deployments/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>StatefulSets</title>
+      <link>/applications/statefulsets/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/applications/statefulsets/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ingresses</title>
+      <link>/applications/ingresses/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/applications/ingresses/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Persistent Volume Claims</title>
+      <link>/applications/persistent_volume_claims/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/applications/persistent_volume_claims/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ConfigMaps</title>
+      <link>/applications/configmaps/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/applications/configmaps/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Applications</title>
+      <link>/applications/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/applications/_index/</guid>
+      <description>
+
+&lt;p&gt;An Application is composed of one or more Components, where each
+Component maps to a construct in the Kubernetes Workloads API. In most
+cases an Application contains Kubernetes controllers like Deployments
+and StatefulSets, exposed as Services. The number of components will
+depend on your application architecture. For example some 3-tier
+applications may have a few components, or even a single component,
+where as Microservices style applications may have hundreds of services.&lt;/p&gt;
+
+&lt;p&gt;Applications are defined and stored in the Catalog. Once defined, an
+Application can be run in one or more Environments.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/catalog-model-application.png&#34; alt=&#34;image&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Changes made to an Application in the Catalog, can be propagated to
+Application instances running in Environments, based on the
+Environment&amp;rsquo;s Update Policy.&lt;/p&gt;
+
+&lt;p&gt;Here are some of the common constructs you can use to build Kubernetes
+applications with Nirmata:&lt;/p&gt;
+
+&lt;h4 id=&#34;deployments-stateless-components:3976528693a0108357f4928017600865&#34;&gt;Deployments (stateless components)&lt;/h4&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Secrets</title>
+      <link>/applications/secrets/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/applications/secrets/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Network Policies</title>
+      <link>/applications/network_policies/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/applications/network_policies/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Custom and Other Resources</title>
+      <link>/applications/custom_and_other_resources/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/applications/custom_and_other_resources/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Kubernetes References</title>
+      <link>/applications/kubernetes_references/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/applications/kubernetes_references/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Jobs &amp; CronJobs</title>
+      <link>/applications/jobs__cronjobs/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/applications/jobs__cronjobs/_index/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

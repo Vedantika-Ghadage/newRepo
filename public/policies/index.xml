@@ -1,0 +1,610 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Policies on Your Site Title</title>
+    <link>/policies/</link>
+    <description>Recent content in Policies on Your Site Title</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© 2015 Copyright Text</copyright>
+    <atom:link href="/policies/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Config Maps</title>
+      <link>/policies/config_maps/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/policies/config_maps/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Creating a ConfigMap Policy</title>
+      <link>/policies/config_maps/creating_a_config_map_policy/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/policies/config_maps/creating_a_config_map_policy/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Creating a Secret Policy</title>
+      <link>/policies/secrets/creating_a_secret_policy/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/policies/secrets/creating_a_secret_policy/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Apply Add-On to Cluster Policy</title>
+      <link>/policies/cluster_policies/apply_addon/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/policies/cluster_policies/apply_addon/_index/</guid>
+      <description>
+
+&lt;h2 id=&#34;apply-an-add-on-to-a-cluster-policy:3976528693a0108357f4928017600865&#34;&gt;Apply an Add-on to a Cluster Policy&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Click the policy you wish to modify.&lt;/li&gt;
+&lt;li&gt;Click the + button in the Add-ons panel. The Add Add-on overlay appears.&lt;/li&gt;
+&lt;li&gt;Choose the add-on from the Select Add-on drop-down list.&lt;/li&gt;
+&lt;li&gt;Modify the Name to make it unique if needed.&lt;/li&gt;
+&lt;li&gt;Click the Add button to add the new add-on or click the cancel button to return to the Policy Details page.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;view-add-on-tasks:3976528693a0108357f4928017600865&#34;&gt;View Add-on Tasks&lt;/h2&gt;
+
+&lt;p&gt;Add-on tasks are jobs must be completed by the add-on.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;To view a list of Add-on tasks and each task’s state, click on the Tasks icon on the right.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/clusterpaddon-1.png&#34; style=&#34;max-width: 80%; height: auto;&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;The System Tasks page is displayed.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/clusterpaddon-2.png&#34; style=&#34;max-width: 80%; height: auto;&#34;&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Cluster Policies</title>
+      <link>/policies/cluster_policies/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/policies/cluster_policies/_index/</guid>
+      <description>
+
+&lt;p&gt;Users must create and configure a cluster policy before creating a Kubernetes cluster.  Cluster policies are reusable, and may be to multiple clusters. Cluster policy reuse simplifies cluster configuration.&lt;/p&gt;
+
+&lt;p&gt;Nirmata provides default cluster policies for all major cloud providers. Use the default polices as-is, or customize them to suit your needs.&lt;/p&gt;
+
+&lt;h2 id=&#34;create-cluster-policy:3976528693a0108357f4928017600865&#34;&gt;Create Cluster Policy&lt;/h2&gt;
+
+&lt;p&gt;To create a Cluster Policy:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Click Policies in the left navigation and select Cluster Policies.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/cluster_menu.png&#34; style=&#34;max-width:30%;
+height: auto;&#34;&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Click on Add Cluster Policy.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/add_cluster_policy.png&#34; style=&#34;max-width:50%;
+height: auto;&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;The add cluster policy overlay appears.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/add_cluster_policy_overlay.png&#34; style=&#34;max-width:80%;
+height: auto;&#34;&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Enter a Name for the new cluster policy.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Enter a Description for the new cluster policy.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Select Cluster Type from the drop down menu. Options include:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Existing Clusters&lt;/li&gt;
+&lt;li&gt;Installed Clusters&lt;/li&gt;
+&lt;li&gt;Managed Clusters (EKS, AKS, GKE)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Select the cluster type most applicable to the policy you are creating.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Choose a Cloud Provider from the drop-down list.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/add_cluster_policy_overlay_edits.png&#34; style=&#34;max-width: 80%; height: auto;&#34;&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Click the Next button.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Select a Kubernetes version for the new cluster policy from the drop down list.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Check the box if you wish to Disable Scheduling on Master Nodes.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/add_cluster_policy_k8version.png&#34; style=&#34;max-width:80%; height: auto;&#34;&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Click the Next button.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Choose the cluster add-ons you want applied to the cluster policy by checking the box to the right for each add-on selected.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/add_cluster_policy_addons.png&#34; style=&#34;max-width:80%; height: auto;&#34;&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Click the Finish button to continue.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Nirmata creates the new cluster policy and returns the user to the Cluster Policy Details page.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/new_cluster_policy.png&#34; style=&#34;max-width:80%; height: auto;&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; if Cloud Provider is not specified, Nirmata creates the policy using AWS as the default provider.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Next steps:&lt;/strong&gt; configure the new cluster policy. See &lt;a href=&#34;/policies/cluster_policies/configure_policy/&#34;&gt;Configuring Cluster Policies&lt;/a&gt; for additional details.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Configuring Cluster Policies</title>
+      <link>/policies/cluster_policies/configure_policy/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/policies/cluster_policies/configure_policy/_index/</guid>
+      <description>
+
+&lt;p&gt;To update an existing cluster policy:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Select Cluster Polices from the Policies menu.&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Find and click the name of the policy you wish to edit in the Cluster Policies list.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/select_cluster_policy.png&#34; style=&#34;max-width:50%; height: auto;&#34;&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;After configuring the policy, you can use it when deploying a Kubernetes cluster.&lt;/p&gt;
+
+&lt;h2 id=&#34;policy-details-page:3976528693a0108357f4928017600865&#34;&gt;Policy Details Page&lt;/h2&gt;
+
+&lt;p&gt;Configure the policy from the Policy Details page.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/cluster_policy_details_page.png&#34; style=&#34;max-width:80%; height: auto;&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;The Policy Details page contains the following sections:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#summary&#34;&gt;Summary&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#add-ons&#34;&gt;Add-ons&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#components&#34;&gt;Components&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#controller-settings&#34;&gt;Controller Settings&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#ingress-controller&#34;&gt;Ingress Controller&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#network-plugins&#34;&gt;Network Plugins&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#proxy-settings&#34;&gt;Proxy Settings&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#storage&#34;&gt;Storage&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;summary:3976528693a0108357f4928017600865&#34;&gt;Summary&lt;/h3&gt;
+
+&lt;p&gt;The Summary section enables users to change the Version, Cloud Provider, and Master Node Scheduling Flag for a policy.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/cluster_policy_summary.png&#34; style=&#34;max-width:50%; height: auto;&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;Edit the Summary settings by clicking the Edit icon in the upper right corner of the Summary section.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/edit_cluster_policy_overlay.png&#34; style=&#34;max-width:50%; height: auto;&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;From the Edit Policy Details overlay, users can:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Change the policy Name.&lt;/li&gt;
+&lt;li&gt;Enter a policy Description.&lt;/li&gt;
+&lt;li&gt;Choose a different service Version from the drop-down list.&lt;/li&gt;
+&lt;li&gt;Choose a different Cloud provider from the drop-down list.&lt;/li&gt;
+&lt;li&gt;Check the box for the Disable Schedule On Master Nodes setting. Checking the box enables this setting.&lt;/li&gt;
+&lt;li&gt;Click the Save button to save your changes or click the Cancel button to return to the Policy Details page.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; users should check the Disable Schedule On Master Nodes box to enable this setting for their cluster policies. Users should turn on Disable Schedule to avoid having the control-plane and applications running on the same nodes.&lt;/p&gt;
+
+&lt;h3 id=&#34;add-ons:3976528693a0108357f4928017600865&#34;&gt;Add-ons&lt;/h3&gt;
+
+&lt;p&gt;The Add-ons section lists all Cluster Add-ons selected when creating the cluster policy.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/cluster_policy_add_ons.png&#34; style=&#34;max-width:50%; height: auto;&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;The DNS add-on is a default add-on for new cluster policies. You can choose a different add-on if you like.&lt;/p&gt;
+
+&lt;p&gt;Some available add-ons include:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Prometheus monitoring&lt;/li&gt;
+&lt;li&gt;Vault authentication agent&lt;/li&gt;
+&lt;li&gt;Velero backup and restore&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;adding-more-add-ons:3976528693a0108357f4928017600865&#34;&gt;Adding More Add-ons&lt;/h4&gt;
+
+&lt;p&gt;To add more add-ons to a cluster policy:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Click the + in the upper right corner of the Add-ons section.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/cluster_policy_add_on_add.png&#34; style=&#34;max-width:50%; height: auto;&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;The Add Add-on overlay appears.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/cluster_add_add_on_overlay.png&#34; style=&#34;max-width:50%; height: auto;&#34;&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Choose an add-on from the Select Add-on drop-down list. Available options are Prometheus monitoring and the Vault authentication agent.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/cluster_select_add_on.png&#34; style=&#34;max-width:50%; height: auto;&#34;&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Enter a Name to identify the add-on instance. The default is the name of the selected add-on.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Click the Add button add the add-on instance or click Cancel to return to the Police Details page.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&#34;removing-add-ons:3976528693a0108357f4928017600865&#34;&gt;Removing Add-ons&lt;/h4&gt;
+
+&lt;p&gt;To remove add-ons:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Click the red X to the right of the add-on name.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/cluster_remove_add_on.png&#34; style=&#34;max-width:50%; height: auto;&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;A confirmation overlay appears.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/policy_confirm_add_on_delete.png&#34; style=&#34;max-width:50%; height: auto;&#34;&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Click the Delete button to delete the add-on from the cluster policy. Click the Cancel button to return to the Policy Details page.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;components:3976528693a0108357f4928017600865&#34;&gt;Components&lt;/h3&gt;
+
+&lt;p&gt;The Components section displays all default &lt;a href=&#34;/introduction/core_concepts/application_components/&#34;&gt;Application Components&lt;/a&gt; configured for a cluster policy. You may add, edit, or delete arguments for cluster components.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/cluster_components.png&#34; style=&#34;max-width:80%; height: auto;&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;Each application component displayed includes the Name, Image, and Arguments for the component. You may edit a Component Specification to add, edit, or delete its Arguments.&lt;/p&gt;
+
+&lt;h4 id=&#34;adding-a-component-specification-argument:3976528693a0108357f4928017600865&#34;&gt;Adding a Component Specification Argument&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;To add a component specification argument, click the Edit icon on the right side of the Component section. Be sure to click the icon next to the component you wish to change.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/cluster_add_component_spec_arg.png&#34; style=&#34;max-width:80%; height: auto;&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;The Edit Component Spec overlay appears. There are two sections in this overlay: Image and Args.&lt;/p&gt;
+
+&lt;p&gt;The Image field specifies the component image used. Args is the list of key-value pairs (arguments) used by the component.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Click + Add Item at the bottom of the Args table.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Enter the Key name.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Select a Type from the drop-down list. Options are String, Number, and Object.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/cluster_component_spec_type.png&#34; style=&#34;max-width:80%; height: auto;&#34;&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Enter the value for the new key-value pair.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Click the Save button to save the new key-value pair or click Cancel to return to the Policy Details page.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&#34;editing-component-specification-arguments:3976528693a0108357f4928017600865&#34;&gt;Editing Component Specification Arguments&lt;/h4&gt;
+
+&lt;p&gt;To edit a component specification argument, click the Edit icon on the right side of the Component section. Be sure to click the icon next to the component you wish to change.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Click inside the field containing the value you wish to modify.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/cluster_edit_component_spec.png&#34; style=&#34;max-width:80%; height: auto;&#34;&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Enter the new value for the key.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Click the Save button to save your changes, or click Cancel to return to the Policy Details page without saving your changes.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&#34;deleting-component-specification-arguments:3976528693a0108357f4928017600865&#34;&gt;Deleting Component Specification Arguments&lt;/h4&gt;
+
+&lt;p&gt;To delete a component specification argument, click the Edit icon on the right side of the Component section. Be sure to click the icon next to the component you wish to change.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Click the X on the right side of the argument you wish to delete.&lt;/li&gt;
+&lt;li&gt;Click the Save button to save your changes, or click Cancel to return to the Policy Details page without saving.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/cluster_delete_component_spec.png&#34; style=&#34;max-width:80%; height: auto;&#34;&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;controller-settings:3976528693a0108357f4928017600865&#34;&gt;Controller Settings&lt;/h3&gt;
+
+&lt;p&gt;The Controller Settings Panel allows you to enable or disable these cluster policy settings:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Is Insecure&lt;/li&gt;
+&lt;li&gt;Use HTTP Proxy&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/cluster_controller_settings.png&#34; style=&#34;max-width:50%; height: auto;&#34;&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;editing-controller-settings:3976528693a0108357f4928017600865&#34;&gt;Editing Controller Settings&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;To change Controller Settings, click the Edit icon on the right side of the Controller Settings section.&lt;/p&gt;
+
+&lt;p&gt;The Edit Controller Spec overlay appears.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/controller_edit_settings.png&#34; style=&#34;max-width:50%; height: auto;&#34;&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;To enable insecure HTTP connections, check the box next to Is Insecure.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;To use an HTTP proxy, check the box next to Use Http Proxy.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Click the Save button, or click Cancel to return to the Policy Details page without saving.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;To disable either or both controller settings, uncheck the box and save the updated settings.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; you must enable the Is Insecure setting if you are using a self-signed SSL certificate for your application.&lt;/p&gt;
+
+&lt;h3 id=&#34;network:3976528693a0108357f4928017600865&#34;&gt;Network&lt;/h3&gt;
+
+&lt;p&gt;The Network panel allows you to manage ingress controllers and network plugins for the cluster. From the Policy Details page, you may view, download, and add ingress controller specifications for a cluster policy. The default Nirmata ingress controller is for HAProxy.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; you may only have one Ingress controller spec at a time for a Cluster Policy. Uploading a new one replaces the existing default spec.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/cluster_policy_network_panel.png&#34; style=&#34;max-width: 50%; height: auto;&#34;&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;viewing-or-downloading-an-existing-ingress-controller-specification:3976528693a0108357f4928017600865&#34;&gt;Viewing or Downloading an Existing Ingress Controller Specification&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;To view or download an existing ingress controller specification, click on the name of the specification in the Name column of the Ingress Controller section of the Network panel.&lt;/p&gt;
+
+&lt;p&gt;The YAML file viewer for the selected Ingress controller appears.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/download_ingress_controller_yaml.png&#34; style=&#34;max-width: 80%; height: auto;&#34;&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Scroll to view the entire file.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Click the Download button to download a zip file containing the YAML controller specification.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Click the Cancel button to close the overlay and return to the Policy Details page.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;You may use the downloaded YAML controller specification file as a template for creating a new one.&lt;/p&gt;
+
+&lt;h4 id=&#34;adding-ingress-controller-specifications:3976528693a0108357f4928017600865&#34;&gt;Adding Ingress Controller Specifications&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;First, create a YAML controller specification file with the desired settings.&lt;/li&gt;
+&lt;li&gt;Click the + button on the right in the Ingress Controller section of the Network panel.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;The Add Ingress Controller Spec appears.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/add_ingress_controller_spec.png&#34; style=&#34;max-width: 50%; height: auto;&#34;&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Enter a Name for the new ingress controller spec.&lt;/li&gt;
+&lt;li&gt;Upload your YAML controller specification file. Click inside the dotted line field to select and upload your file, or drag the file inside the dotted line field.&lt;/li&gt;
+&lt;li&gt;Click the Add button to add the ingress controller spec, or click Cancel to return to the Policy Details page.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; you may only have one ingress controller spec at a time for a Cluster Policy. Uploading a new one replaces the existing default spec.&lt;/p&gt;
+
+&lt;h4 id=&#34;deleting-ingress-controller-specifications:3976528693a0108357f4928017600865&#34;&gt;Deleting Ingress Controller Specifications&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Click the red X to the right of the Ingress controller specification.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/cluster_delete_ingress_controller.png&#34; style=&#34;max-width: 50%; height: auto;&#34;&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;network-plugins:3976528693a0108357f4928017600865&#34;&gt;Network Plugins&lt;/h3&gt;
+
+&lt;p&gt;Nirmata packages Flannel by default, and uses the CNIs provided by cloud providers for Kubernetes networking. Customers wishing to use a different CNI  can add the plugin YAML using the Network panel.&lt;/p&gt;
+
+&lt;h4 id=&#34;adding-network-plugins:3976528693a0108357f4928017600865&#34;&gt;Adding Network Plugins&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;To add a network plugin, you must first get a plugin YAML file.&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Click Add Network (CNI) Plugin in the Network panel.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/cluster_add_network_plugin.png&#34; style=&#34;max-width: 50%; height: auto;&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;The Add a Network (CNI) Plugin overlay appears.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/cluster_add_network_plugin_overlay.png&#34; style=&#34;max-width: 50%; height: auto;&#34;&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Enter a Name for the network plugin.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Upload your plugin YAML file. Click inside the dotted line field to select and upload your file, or drag the file inside the dotted line field.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Click the Add button to add the new network plugin spec or click Cancel to return to the Policy Details page.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;proxy-settings:3976528693a0108357f4928017600865&#34;&gt;Proxy Settings&lt;/h3&gt;
+
+&lt;p&gt;Proxy settings allow you to specify the IP addresses Kubernetes uses for proxies for your cluster policy.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/cluster_proxy_settings.png&#34; style=&#34;max-width: 50%; height: auto;&#34;&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;adding-proxy-settings:3976528693a0108357f4928017600865&#34;&gt;Adding Proxy Settings&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;To add proxy settings, click the edit icon on the upper right of the Proxy Settings section of Policy Details.&lt;/p&gt;
+
+&lt;p&gt;The Edit Proxy Settings Spec overlay appears.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/cluster_edit_proxy_settings.png&#34; style=&#34;max-width: 50%; height: auto;&#34;&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Enter the IP address for an HTTP proxy in the HTTP Proxy field.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Enter the IP address for an HTTPS proxy in the HTTPS Proxy field.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Enter the IP address used when there is no proxy.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Click the Save button to save your changes or click Cancel to return to the Policy Details page.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&#34;editing-proxy-settings:3976528693a0108357f4928017600865&#34;&gt;Editing Proxy Settings&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;To edit proxy settings, click the edit icon on the upper right of the Proxy Settings section of Policy Details.&lt;/li&gt;
+&lt;li&gt;Change the IP address values.&lt;/li&gt;
+&lt;li&gt;Click the Save button to save your changes or click Cancel to return to the Policy Details page.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&#34;deleting-proxy-settings:3976528693a0108357f4928017600865&#34;&gt;Deleting Proxy Settings&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;To delete proxy settings, click the edit icon on the upper right of the Proxy Settings section of Policy Details.&lt;/li&gt;
+&lt;li&gt;Delete the IP address values.&lt;/li&gt;
+&lt;li&gt;Click the Save button to save your changes or click Cancel to return to the Policy Details Page.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;storage:3976528693a0108357f4928017600865&#34;&gt;Storage&lt;/h3&gt;
+
+&lt;p&gt;You can add, view, download, or delete storage class plugins from your cluster policy. By default, Nirmata picks a storage class based on infrastructure type. For public clouds, it uses default block storage class available for respective public clouds.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/cluster_storage_class.png&#34; style=&#34;max-width: 50%; height: auto;&#34;&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;viewing-and-downloading-storage-class-plugin:3976528693a0108357f4928017600865&#34;&gt;Viewing and Downloading Storage Class Plugin&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;To view and download the storage plugin YAML file click on the name of the storage class in the Name column of the Storage panel.&lt;/p&gt;
+
+&lt;p&gt;The YAML file viewer for the selected storage class appears.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/cluster_storage_class_yaml.png&#34; style=&#34;max-width: 80%; height: auto;&#34;&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Click the Download button to download a zipped copy of the YAML file or click Cancel to return to Policy Details.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;You may use the downloaded YAML storage class plugin file as a template for creating a new plugin YAML file.&lt;/p&gt;
+
+&lt;h4 id=&#34;adding-a-storage-class-plugin:3976528693a0108357f4928017600865&#34;&gt;Adding a Storage Class Plugin&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;To add a storage class plugin, you must supply a plugin YAML file.&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Click Add Storage (CSI) Plugin in the Storage panel.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/cluster_storage_class_add_plugin.png&#34; style=&#34;max-width: 50%; height: auto;&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;The Add Storage Class Spec overlay appears.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/cluster_add_storage_class_spec_overlay.png&#34; style=&#34;max-width: 50%; height: auto;&#34;&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Enter a Name for the storage plugin spec.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Upload your plugin YAML file. Click inside the dotted line field to select and upload your file, or drag the file inside the dotted line field.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Click the Add button to add the new storage class plugin spec or click Cancel to return to Policy Details.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;The newly added storage class plugin appears in the Storage Plugins section of the Storage panel.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/cluster_storage_plugin.png&#34; style=&#34;max-width: 50%; height: auto;&#34;&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;deleting-a-storage-class-plugin:3976528693a0108357f4928017600865&#34;&gt;Deleting a Storage Class Plugin&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Click the red X to the right of the storage class plugin spec you wish to remove.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/cluster_delete_storage_class_plugin.png&#34; style=&#34;max-width: 50%; height: auto;&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;A confirmation Overlay appears.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/cluster_delete_storage_plugin_confirm.png&#34; style=&#34;max-width: 50%; height: auto;&#34;&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Click the Delete button to delete the storage class plugin spec, or click Cancel to return to Policy Details.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Secrets</title>
+      <link>/policies/secrets/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/policies/secrets/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Patch Policy</title>
+      <link>/policies/patch_policy/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/policies/patch_policy/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Network Policies</title>
+      <link>/policies/network_policy/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/policies/network_policy/_index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Policies</title>
+      <link>/policies/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/policies/_index/</guid>
+      <description>
+
+&lt;p&gt;Nirmata offers a rich set of policies that can be used to decouple
+environment specific information from application definition. This
+allows your application to be more portable across clusters and across
+cloud providers.&lt;/p&gt;
+
+&lt;p&gt;Here is a summary of the available policies. Each one of these is
+described in more detail in the sections below.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Policy&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Config Maps&lt;/td&gt;
+&lt;td&gt;Used to provide environment specific configuration for your applications&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Secrets&lt;/td&gt;
+&lt;td&gt;Used to provide environment specific secrets for your applications&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Patch Policies&lt;/td&gt;
+&lt;td&gt;Used to override properties in the application configuration based on the environment&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Cluster Policies&lt;/td&gt;
+&lt;td&gt;Used to create new Kubernetes Clusters&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&#34;config-maps-policy:3976528693a0108357f4928017600865&#34;&gt;Config Maps&lt;/h4&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

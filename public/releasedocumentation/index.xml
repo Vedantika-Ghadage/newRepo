@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ReleaseDocumentations on Your Site Title</title>
+    <link>/releasedocumentation/</link>
+    <description>Recent content in ReleaseDocumentations on Your Site Title</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© 2015 Copyright Text</copyright>
+    <atom:link href="/releasedocumentation/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Kubernetes Versioning</title>
+      <link>/releasedocumentation/kubernetesversioning/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/releasedocumentation/kubernetesversioning/_index/</guid>
+      <description>
+
+&lt;h4 id=&#34;kubernetes-api-version-support:3976528693a0108357f4928017600865&#34;&gt;Kubernetes API Version Support&lt;/h4&gt;
+
+&lt;p&gt;Nirmata supports the current release of Kubernetes plus three prior releases. The current default Kubernetes version in Nirmata is 1.12.&lt;/p&gt;
+
+&lt;p&gt;Users can install and deploy unsupported versions; however, Nirmata has only tested and validated those versions listed below.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;Kubernetes 1.12&lt;/th&gt;
+&lt;th&gt;Kubernetes 1.13&lt;/th&gt;
+&lt;th&gt;Kubernetes 1.14&lt;/th&gt;
+&lt;th&gt;Kubernetes 1.15&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Nirmata 2.5.0&lt;/td&gt;
+&lt;td&gt;Yes&lt;/td&gt;
+&lt;td&gt;No&lt;/td&gt;
+&lt;td&gt;No&lt;/td&gt;
+&lt;td&gt;No&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Nirmata 2.6.0&lt;/td&gt;
+&lt;td&gt;Yes&lt;/td&gt;
+&lt;td&gt;Yes&lt;/td&gt;
+&lt;td&gt;No&lt;/td&gt;
+&lt;td&gt;No&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Nirmata 2.7.0&lt;/td&gt;
+&lt;td&gt;Yes&lt;/td&gt;
+&lt;td&gt;Yes&lt;/td&gt;
+&lt;td&gt;Yes&lt;/td&gt;
+&lt;td&gt;No&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Nirmata 2.8.0&lt;/td&gt;
+&lt;td&gt;Yes&lt;/td&gt;
+&lt;td&gt;Yes&lt;/td&gt;
+&lt;td&gt;Yes&lt;/td&gt;
+&lt;td&gt;Yes&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h5 id=&#34;how-to-use-other-kubernetes-versions:3976528693a0108357f4928017600865&#34;&gt;How to Use Other Kubernetes Versions&lt;/h5&gt;
+
+&lt;p&gt;Other versions of Kubernetes may be deployed with Nirmata. However, it is recommended that non-supported versions be deployed only outside of production environments.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2.6.0 Release Notes</title>
+      <link>/releasedocumentation/2.6.0releasenotes/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/releasedocumentation/2.6.0releasenotes/_index/</guid>
+      <description>
+
+&lt;h4 id=&#34;what-s-new-in-nirmata-2-6-0:3976528693a0108357f4928017600865&#34;&gt;What&amp;rsquo;s New in Nirmata 2.6.0&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.nirmata.io/environments/addnewenvironment/&#34;&gt;Environmental Management Enhancements&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.nirmata.io/clusters/view_cluster_resources/&#34;&gt;Cluster Resource Viewing&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.nirmata.io/clusters/cluster_level_addon/&#34;&gt;Cluster Level Add-ons&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.nirmata.io/clusters/cluster_level_prometheus/&#34;&gt;Cluster Level Prometheus&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.nirmata.io/clusters/cluster_policies/apply_addon/&#34;&gt;Add-on Enhancements&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.nirmata.io/policies/network_policy/&#34;&gt;Network Policies&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.nirmata.io/environments/environmentalpanel/&#34;&gt;Environment Panel Organization&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.nirmata.io/clusters/cluster_panel/&#34;&gt;Cluster Panel Organization&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.nirmata.io/alarms/alarm_panel/&#34;&gt;Alarm Panel Organization&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.nirmata.io/integrations/jirachangemanagement/&#34;&gt;Jira Change Management Integration&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.nirmata.io/clusters/high_availability_ha_clusters/&#34;&gt;High Availability Cluster Enhancement&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.nirmata.io/settings/synch_unmanaged_namespaces/&#34;&gt;Synchronize Unmanaged Namespaces&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;fixes:3976528693a0108357f4928017600865&#34;&gt;Fixes&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Show activity around this time&amp;rsquo; link does not display activity data&amp;rsquo;s for 5hrs and above old activities.&lt;/li&gt;
+&lt;li&gt;Alarm clear not discernible from web hook notification&lt;/li&gt;
+&lt;li&gt;Duplicate alarms are created sometimes&lt;/li&gt;
+&lt;li&gt;scope information not available in web hook notification&lt;/li&gt;
+&lt;li&gt;Add HPA form doesn&amp;rsquo;t show Stateful Sets in the Target drop-down menu&lt;/li&gt;
+&lt;li&gt;Add support for dynamic tunnels&lt;/li&gt;
+&lt;li&gt;After rebooting devtest2 host, nirmata-kube-controller keeps connecting/disconnecting&lt;/li&gt;
+&lt;li&gt;Agent cannot reconnect after wss timeout&lt;/li&gt;
+&lt;li&gt;AKS cluster is not getting created in production&lt;/li&gt;
+&lt;li&gt;AKS Kubernetes Version is hard coded&lt;/li&gt;
+&lt;li&gt;AKS regions are hard coded&lt;/li&gt;
+&lt;li&gt;Alarm notification emails contain incorrect user in Last Modified by field&lt;/li&gt;
+&lt;li&gt;Application clone does not work&lt;/li&gt;
+&lt;li&gt;Backend allows Duplicate alarms to be added.&lt;/li&gt;
+&lt;li&gt;Cannot delete an environment in devtest&lt;/li&gt;
+&lt;li&gt;Cannot scale activity service&lt;/li&gt;
+&lt;li&gt;check if cert/key directories are correct&lt;/li&gt;
+&lt;li&gt;Check the content of cert/key, needs to be base64 encoded&lt;/li&gt;
+&lt;li&gt;Cluster &amp;amp; Environments services failed to connect to ProSoft qa-cluster&lt;/li&gt;
+&lt;li&gt;Cluster activity is showing global activity also.(in devtest2)&lt;/li&gt;
+&lt;li&gt;ContainerVMSizeTypes is hardcoded in a class&lt;/li&gt;
+&lt;li&gt;Creation of AKS provider managed cluster was failed.(in production account)&lt;/li&gt;
+&lt;li&gt;Crumbs don&amp;rsquo;t render in the container template view (Uncaught TypeError)&lt;/li&gt;
+&lt;li&gt;Deployment in &amp;ldquo;Unknown&amp;rdquo; state when pods are running&lt;/li&gt;
+&lt;li&gt;EKS cluster created but not connected.&lt;/li&gt;
+&lt;li&gt;Email notifications are sent for disabled alarms&lt;/li&gt;
+&lt;li&gt;Enable alarm option is Blocked&lt;/li&gt;
+&lt;li&gt;Endpoint label mismatch&lt;/li&gt;
+&lt;li&gt;Environment name should allow &amp;ldquo;-&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;Environment name should not allow space.&lt;/li&gt;
+&lt;li&gt;Environment shows Cluster Connect Status for a Disabled cluster&lt;/li&gt;
+&lt;li&gt;Existing logic for selecting a workload controller doesn&amp;rsquo;t work properly in case of Jobs&lt;/li&gt;
+&lt;li&gt;HA testing causes SaaS deployment to hangup when bringing back 2 nodes out of 3&lt;/li&gt;
+&lt;li&gt;If we try to retrieve more activity data same data&amp;rsquo;s are being repeated.&lt;/li&gt;
+&lt;li&gt;Improve events viewer&lt;/li&gt;
+&lt;li&gt;Inconsistent arrangement of cards&lt;/li&gt;
+&lt;li&gt;incorrect validation error for EnVars using configmap keys or secrets&lt;/li&gt;
+&lt;li&gt;Informational alarms are emails but filter was set to Critical&lt;/li&gt;
+&lt;li&gt;Invalid configuration is generated for EKS cluster&lt;/li&gt;
+&lt;li&gt;Invalid DNS name is shown on the Pod&lt;/li&gt;
+&lt;li&gt;Jira settings must be visible only in GA2 accounts, not in GA accounts&lt;/li&gt;
+&lt;li&gt;Jobs that has been created by a Cron Job are showing as Active in the UI, even though they&amp;rsquo;re completed&lt;/li&gt;
+&lt;li&gt;Links in the drop-down menu for Jobs and Cron Jobs (in crumbs) are not working&lt;/li&gt;
+&lt;li&gt;Login to Nirmata intermittently fails&lt;/li&gt;
+&lt;li&gt;nadm - add a &amp;ldquo;local-storage&amp;rdquo; command or use a dynamic hostpath provisioner&lt;/li&gt;
+&lt;li&gt;nadm config path incorrect&lt;/li&gt;
+&lt;li&gt;nadm scale orchestrater scaled down all services&lt;/li&gt;
+&lt;li&gt;nadm should reserve resources for kubernetes components when deploying nirmata&lt;/li&gt;
+&lt;li&gt;namespace discovery does works for the shopme deals deployment&lt;/li&gt;
+&lt;li&gt;nirmata agent crash on startup&lt;/li&gt;
+&lt;li&gt;Not able to add aws Hostgroup in devtest2.&lt;/li&gt;
+&lt;li&gt;NullPointerException when applying ResourcePatch&lt;/li&gt;
+&lt;li&gt;One task fails during the creation of a managed cluster on aws: failed to apply ingress controller yaml&lt;/li&gt;
+&lt;li&gt;Pod template labels are not rendering in the Cron Job view&lt;/li&gt;
+&lt;li&gt;Pod yaml is not loaded and the dialog just shows Fetching..&lt;/li&gt;
+&lt;li&gt;Possible multi-tenancy issue&lt;/li&gt;
+&lt;li&gt;Progress bar is showing only 10% while creating discovered cluster.(devtest)&lt;/li&gt;
+&lt;li&gt;registrycreation in pending state&lt;/li&gt;
+&lt;li&gt;Render a Workload Controller info for job pods and cron job pods in PodSummaryTabview&lt;/li&gt;
+&lt;li&gt;Reserve resources for kubernetes containers and system services when deploying cluster&lt;/li&gt;
+&lt;li&gt;Rest api call to fetch the AKS maximum node count associated with VM size&lt;/li&gt;
+&lt;li&gt;Retain more logs and events (for prod environments)&lt;/li&gt;
+&lt;li&gt;Service versions are incorrect&lt;/li&gt;
+&lt;li&gt;signing up with google account using an already existing email doesn&amp;rsquo;t work&lt;/li&gt;
+&lt;li&gt;Some tunnel connections were down&lt;/li&gt;
+&lt;li&gt;State of applications takes long to update in Catalog view after adding or deleting an application (in production)&lt;/li&gt;
+&lt;li&gt;the new buildnotify API doesn&amp;rsquo;t work&lt;/li&gt;
+&lt;li&gt;Tunnel Client - add support for dynamic tunnels&lt;/li&gt;
+&lt;li&gt;UI - Pods appear in the application that it doesn&amp;rsquo;t belong to&lt;/li&gt;
+&lt;li&gt;Unable to generate API key in devtest2,getting 401 error.&lt;/li&gt;
+&lt;li&gt;Uncaught type error in the Running Cron Job view (active crumb doesn&amp;rsquo;t show up)&lt;/li&gt;
+&lt;li&gt;Update curator to 4.2.0 to potentially solve the problem of locks piling up.&lt;/li&gt;
+&lt;li&gt;Use Kustomize for YAML customizations&lt;/li&gt;
+&lt;li&gt;User is able to Delete cloud provider with connected HostGroup and Cluster&lt;/li&gt;
+&lt;li&gt;Vault secrets should work when put in root directory&lt;/li&gt;
+&lt;li&gt;When nirmata pods are edited, anti-affinity of required v/s preferred stops pods from running&lt;/li&gt;
+&lt;li&gt;When running two applications in a shared namespace, failure notification of one application show in another.&lt;/li&gt;
+&lt;li&gt;Duplicate aarm types are allowed - causing processing errors&lt;/li&gt;
+&lt;li&gt;Failed to deploy Rook - Ceph&lt;/li&gt;
+&lt;li&gt;addRelationList function adds an extra line that shouldn&amp;rsquo;t be added&lt;/li&gt;
+&lt;li&gt;An asterisk sign is required for &amp;lsquo;Amazon Machine Image (AMI) Id&amp;rsquo; field in the Settings-tab of Host Group.&lt;/li&gt;
+&lt;li&gt;An asterisk sign is required for &amp;lsquo;Instance Type&amp;rsquo; field in the Settings-tab of Host-Group.&lt;/li&gt;
+&lt;li&gt;An error message displayed as &amp;ldquo;An Image is required&amp;rdquo; rather than &amp;lsquo;Amazon Machine Image (AMI) Id is required&amp;rsquo; in the UserData-tab of the Host Groups.&lt;/li&gt;
+&lt;li&gt;Application catalog should not allow application run name to have space&lt;/li&gt;
+&lt;li&gt;Do not allow spaces in application run name&lt;/li&gt;
+&lt;li&gt;environments service on master branch doesn&amp;rsquo;t start after changing the model&lt;/li&gt;
+&lt;li&gt;Issue with etcd components on Dev server again&lt;/li&gt;
+&lt;li&gt;Patch policy is not applied when a change is made in the catalog&lt;/li&gt;
+&lt;li&gt;Pods created by Prometheus operator are not discovered&lt;/li&gt;
+&lt;li&gt;Application catalog should not allow application run name to have space&lt;/li&gt;
+&lt;li&gt;Issue with etcd components on Dev server again&lt;/li&gt;
+&lt;li&gt;Deployment in &amp;ldquo;Unknown&amp;rdquo; state when pods are running&lt;/li&gt;
+&lt;li&gt;Endpoint label mismatch&lt;/li&gt;
+&lt;li&gt;Retain more logs and events (for prod environments)&lt;/li&gt;
+&lt;li&gt;signing up with google account using an already existing email doesn&amp;rsquo;t work&lt;/li&gt;
+&lt;li&gt;Vault secrets should work when put in root directory&lt;/li&gt;
+&lt;li&gt;When nirmata pods are edited, anti-affinity of required v/s preferred stops pods from running&lt;/li&gt;
+&lt;li&gt;Nirmata not coming up - after kubelet shutdown&lt;/li&gt;
+&lt;li&gt;Nirmata UI having issue while bringing up controller service&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;Host not connected&amp;rdquo; on Nirmata while server looks good&lt;/li&gt;
+&lt;li&gt;Cluster Service throw error - failing to create/update the node&lt;/li&gt;
+&lt;li&gt;Vault Integration: Data not populated when Vault is enabled for the cluster&lt;/li&gt;
+&lt;li&gt;kubectl commands sometimes fail&lt;/li&gt;
+&lt;li&gt;Controller yaml issue&lt;/li&gt;
+&lt;li&gt;90 days of audit history&lt;/li&gt;
+&lt;li&gt;NIBR aqua scan - fix file permissions&lt;/li&gt;
+&lt;li&gt;Check when deleting catalog application&lt;/li&gt;
+&lt;li&gt;Environment Services did not come up properly after bringing down 2 out of 3 master nodes in base cluster&lt;/li&gt;
+&lt;li&gt;For a deployed application registry always points to dockerhub&lt;/li&gt;
+&lt;li&gt;Nadm Restore Logic&lt;/li&gt;
+&lt;li&gt;direct connect nodes in unknown status&lt;/li&gt;
+&lt;li&gt;Vault secrets should use EmptyDir instead of hostpath&lt;/li&gt;
+&lt;li&gt;Vault secrets should work when put in root directory&lt;/li&gt;
+&lt;li&gt;Changes to catalog are not reflecting after push&lt;/li&gt;
+&lt;li&gt;Issue with etcd components on Dev server again&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;known-issues:3976528693a0108357f4928017600865&#34;&gt;Known Issues&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Security &amp;amp; webclient status servlets are throwing exception (sometimes)&lt;/li&gt;
+&lt;li&gt;Login for SAML login is broken in 2.6.1&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Release Notes</title>
+      <link>/releasedocumentation/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/releasedocumentation/_index/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;No page found with path or logical name &#34;KubernetesVersioning&#34;.
+&#34;&gt;Kubernetes Version Support&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://docs.nirmata.io/releasedocumentation/2.6.0releasenotes/&#34;&gt;Release 2.6.0&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

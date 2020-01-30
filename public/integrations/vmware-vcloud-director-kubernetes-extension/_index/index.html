@@ -1,0 +1,514 @@
+
+<!doctype html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+  <title>VMWare vCloud Director Kubernetes extension</title>
+  <script src="//bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+  <link rel="import" href="//bower_components/iron-icons/iron-icons.html">
+  <link rel="import" href="//bower_components/paper-drawer-panel/paper-drawer-panel.html">
+  <link rel="import" href="//bower_components/paper-icon-button/paper-icon-button.html">
+  <link rel="import" href="//bower_components/paper-toolbar/paper-toolbar.html">
+  <link rel="import" href="//bower_components/paper-scroll-header-panel/paper-scroll-header-panel.html">
+  <link rel="import" href="//bower_components/paper-fab/paper-fab.html">
+  <link rel="import" href="//bower_components/paper-item/paper-item.html">
+  <link rel="import" href="//bower_components/paper-menu/paper-menu.html">
+  <link rel="import" href="//bower_components/iron-image/iron-image.html">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/default.min.css">
+  <style is="custom-style">
+    body {
+      font-family: 'Roboto', sans-serif;
+    }
+    .nav {
+      border-right: 1px solid #ccc;
+    }
+    
+    paper-scroll-header-panel {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: var(--paper-grey-200, #eee);
+       
+      --paper-scroll-header-panel-full-header: {
+        background-image: url(//images/cover.png);
+      };
+       
+      --paper-scroll-header-panel-condensed-header: {
+        background-image: url(//images/cover.png);
+      };
+    }
+    
+    paper-toolbar {
+       
+      height: 256px;
+      background-color: transparent;
+    }
+    .profile{
+      width: 100%;
+      padding-bottom: 20px;
+    }
+    .photo{
+      margin: 20px;
+      display: inline-block;
+      height: 64px; width: 64px;
+      border-radius: 50%;
+    }
+    .article{
+      border: 1px solid #bebebe;
+      padding: 16px;
+      margin: 16px;
+      border-radius: 5px;
+      background-color: #fff;
+    }
+    .title{
+      font-size: 22px;
+      padding: 8px 0 16px;
+    }
+    .description{
+      font-size: 16px;
+      padding-bottom: 8px;
+    }
+    .author{
+      font-size: 16px;
+      padding-left: 20px;
+      color: white;
+    }
+    .design{
+      font-size: 14px;
+    }
+    .copyright{
+      font-size: 16px;
+    }
+    paper-menu a {
+      text-decoration: none;
+      color: #212121;
+    }
+  </style>
+
+</head>
+<body>
+  <paper-drawer-panel id="drawerPanel" responsive-width="1280px">
+    <div class="nav scroll" drawer>
+    
+      <iron-image class="profile" sizing="cover" src="//images/profile.png">
+    
+        
+          <iron-image class="photo" sizing="cover" src="//images/photo.png"></iron-image>
+        
+          <div class="author">Your Name</div>
+      </iron-image>
+      <paper-menu>
+        <a href="/"><paper-item>
+          <iron-icon icon="home"></iron-icon>　<div class="flex">Home</div>
+          <iron-icon icon="chevron-right"></iron-icon>
+        </paper-item></a>
+        <a href="//categories/"><paper-item>
+          <iron-icon icon="drafts"></iron-icon>　<div class="flex">Categories</div>
+          <iron-icon icon="chevron-right"></iron-icon>
+        </paper-item></a>
+        <a href="//tags/"><paper-item>
+          <iron-icon icon="loyalty"></iron-icon>　<div class="flex">Tags</div>
+          <iron-icon icon="chevron-right"></iron-icon>
+        </paper-item></a>
+      </paper-menu>
+    </div>
+
+    <paper-scroll-header-panel main condenses header-height="256" condensed-header-height="64">
+
+      <paper-toolbar>
+
+        <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
+        <div class="bottom title">Your Site Title</div>
+        <div class="flex"></div>
+        
+          <a href="https://www.facebook.com/Your%20facebook%20Name"><paper-icon-button src="//images/facebook-dreamstale25.png"></paper-icon-button></a>
+        
+        
+          <a href="https://twitter.com/Your%20Twitter%20Name"><paper-icon-button src="//images/twitter-dreamstale71.png"></paper-icon-button></a>
+        
+        
+          <a href="https://google.com/+Your%20Google&#43;%20Name"><paper-icon-button src="//images/google+-dreamstale37.png"></paper-icon-button></a>
+        
+        
+          <a href="https://www.linkedin.com/in/Your%20linkedin%20Name"><paper-icon-button src="//images/linkedin-dreamstale45.png"></paper-icon-button></a>
+        
+        
+          <a href="https://github.com/Your%20Github%20Name"><paper-icon-button src="//images/github2-dreamstale35.png"></paper-icon-button></a>
+        
+          <a href="//index.xml"><paper-icon-button src="//images/feed-dreamstale27.png"></paper-icon-button></a>
+      
+      </paper-toolbar>
+
+
+
+<div class="content">
+
+  <div class="article">
+    <div class="title">VMWare vCloud Director Kubernetes extension</div>
+     
+    <div class="description">
+
+<h3 id="introduction:3976528693a0108357f4928017600865">Introduction</h3>
+
+<p>The Nirmata Kubernetes Extension for vCloud Director (VCD) enables Service Providers and Tenants to manage Kubernetes clusters using VCD Web UI.</p>
+
+<h3 id="prerequisites:3976528693a0108357f4928017600865">Prerequisites</h3>
+
+<ol>
+<li>vCloud Director (version 9.0+).</li>
+<li>Rabbit MQ.</li>
+<li>Container Services Extension (CSE v2.5.0) (<a href="https://vmware.github.io/container-service-extension">https://vmware.github.io/container-service-extension</a>).</li>
+<li>Nirmata Kubernetes Extension (client and server extensions).</li>
+</ol>
+
+<h4 id="nirmata-cloud-edition-nirmata-io-installation:3976528693a0108357f4928017600865">Nirmata Cloud Edition (nirmata.io) Installation</h4>
+
+<h5 id="prerequisites-1:3976528693a0108357f4928017600865">Prerequisites</h5>
+
+<p>Follow the instructions to install the Container Services Extension and verify that it is working. Download the Nirmata Kubernetes Extension UI plugin and the container image.</p>
+
+<h5 id="nirmata-io-account-creation:3976528693a0108357f4928017600865">Nirmata.io Account Creation</h5>
+
+<p>A Nirmata integration account is required to to integrate with the VMWare CSE with Nirmata. Please send an email to customersuccess@nirmata.com with your email id to get a tenant created. Nirmata shall get back to you within a few hours with your tenant and account information. Use this account information in the next steps to set up the integration with vCD and VMWare CSE.</p>
+
+<h5 id="nirmata-extension-installation:3976528693a0108357f4928017600865">Nirmata Extension installation</h5>
+
+<p>Nirmata Kubernetes Extension can be installed on any node that has docker engine running. It can be installed on the same node as RabbitMQ or CSE.</p>
+
+<p>Before starting the extension, create the following folders:</p>
+
+<pre><code>/nirmata-ext                           (parent folder)
+/nirmata-ext/vcd-ext-db         (stores db)
+/nirmata-ext/vcd-config          (stores config file)
+</code></pre>
+
+<p>In /nirmata-ext/vcd-config, create a config file: nirmata-vcd-ext.yaml with the following:
+vcd:</p>
+
+<pre><code>
+ host: &lt;vcd-address&gt;
+ username: &lt;vcd-username&gt;
+ password: &lt;vcd-password&gt;
+rabbitmq:
+ host: &lt;rabbitmq-host&gt;
+ username: &lt;rabbitmq-username&gt;
+ password: &lt;rabbitmq-password&gt;
+nirmata:
+ url: &lt;nirmata-host:port&gt;
+ defaultPassword: &lt;default-tenant-password&gt;
+</code></pre>
+
+<p>Update the file with information about VCD, RabbitMQ and Nirmata URL and save it (in /nirmata-ext/vcd-config)</p>
+
+<p>Next, run the Nirmata server extension using the command:</p>
+
+<pre><code>docker run -d -v /nirmata-ext/vcd-ext-db:/vcd-ext-db -v /nirmata-ext/vcd-config:/config -e CONFIG_FILE=/config/nirmata-vcd-ext.yaml nirmata/nirmata-vcd-ext:v0.2.5
+</code></pre>
+
+<p>Note: You can change the path in the docker run command based on the directories you created earlier.</p>
+
+<p>Check the container logs for any errors.</p>
+
+<h4 id="vcd-client-ui-plugin:3976528693a0108357f4928017600865">VCD Client UI Plugin</h4>
+
+<p>Install the UI plugin by downloading the plugin.zip file and install it using the ‘Customize Portal’ option. You will need to be a Service Provider admin for this operation.</p>
+
+<p>Once the plugin is installed, you can Publish it to the Tenants</p>
+
+<p>Next, configure the nirmata extension in VCD using CLI:</p>
+
+<p>vcd system extension create nirmata nirmata nirmata nirmataext &lsquo;/api/nirmata, /api/nirmata/.<em>, /api/nirmata/.</em>/.*&rsquo;</p>
+
+<h5 id="service-provider-settings:3976528693a0108357f4928017600865">Service Provider Settings</h5>
+
+<p>Now you can log in as a Service Provider admin and select Kubernetes from the menu to update the Service Provider Settings.</p>
+
+<p>Settings</p>
+
+<pre><code>  - Use the Service Provider admin user id (provided to you)
+  - Enter the URL for Nirmata (e.g. www.nirmata.io)
+  - Enter the username and password for service provider admin (provided to you)
+</code></pre>
+
+<p>If the &lsquo;Add Existing Tenants&rsquo; box is checked, VCD tenants will be automatically provisioned in Nirmata.</p>
+
+<p>Next, you should be able to log in as Tenant Admin and register your Kubernetes clusters to manage in VCD.</p>
+
+<h4 id="register-clusters:3976528693a0108357f4928017600865">Register Clusters</h4>
+
+<p>To register new cluster, you can go to the Kubernetes-&gt;Clusters panel and click on the Register button</p>
+
+<p>Once the cluster is registered, you can view the details and perform other operations</p>
+
+<h3 id="nirmata-private-edition-on-prem-installation:3976528693a0108357f4928017600865">Nirmata Private Edition (on-prem) Installation</h3>
+
+<h4 id="prerequisites-2:3976528693a0108357f4928017600865">Prerequisites</h4>
+
+<p>Host resource requirements -</p>
+
+<ul>
+<li>32GB memory + 8 vCPUs + 120GB storage</li>
+<li>Operating System</li>
+<li>Ubuntu 18.04 or Centos7</li>
+<li>Container Engine - Docker 18.06.2  is recommended, but 1.11, 1.12, 1.13 and 18.09 are known to work as well. (docker installation: <a href="https://kubernetes.io/docs/setup/cri/#docker">https://kubernetes.io/docs/setup/cri/#docker</a>)</li>
+<li>Disable swap on the host
+<code>sudo swapoff -a</code></li>
+<li>Remove any swap entries from:  <code>/etc/fstab</code></li>
+<li>Become root - <code>sudo su -</code></li>
+<li>Internet access to repos like Docker Hub and gcr.io</li>
+</ul>
+
+<h4 id="nirmata-pe-installation-steps:3976528693a0108357f4928017600865">Nirmata PE Installation Steps</h4>
+
+<p>Import the OVF template into center and launch a VM using this OVF template.
+Power-on the VM and access the VM with following credentials with credentials that were shared with you.</p>
+
+<p>In order to run nadm you will need to &ldquo;sudo -i&rdquo; to become root. With root privilege, run &ldquo;nadm install&rdquo; to install Nirmata.</p>
+
+<p>Below are steps for Nirmata install -</p>
+
+<p>To install Nirmata, run command -</p>
+
+<pre><code>root#nadm install
+During installation, you will be asked for following  - 
+root@ciops1# ./nadm install
+*** Setup for your Nirmata install. Hit enter to use default values ***
+No network proxy settings found. Proceed without a proxy? (y/n: y):y
+Registry for Nirmata images [index.docker.io]: [Press Enter]
+Registry (index.docker.io) username: nirmatainstaller
+Registry (index.docker.io) password: NirmataPE
+Registry (index.docker.io) confirm password: 
+Kubernetes namespace for Nirmata [nirmata]:
+URL for Nirmata (e.g. https://nirmata.company.com):https://&lt;your-ip&gt;:31443 (URL for Nirmata)
+[ Generate a self-signed certificate for Nirmata? (y/n: y):y
+Generating default certificate and key...Generating a 2048 bit RSA private key
+...................................................+++
+.........................................................................................................................................+++
+writing new private key to '/root/.nirmata-nadm/ssl/server.key'
+-----
+Default volume capacity of Elasticsearch is 50Gi. Proceed? (y/n: y): y
+Install a Kubernetes Cluster for Nirmata? (y/n: n):y
+Install for high-availability (requires 3 nodes)? (y/n: n): n
+Nirmata volumes require 80 GB to be available, mount path for Nirmata volumes [/var/nirmata]. Proceed? (y/n: y): y
+
+Nirmata will install Kubernetes Cluster for you. You should see the following output - 
+[cluster-init] Provisioning master node
+[cluster-init] Installing cluster
+[init] Using Kubernetes version: v1.15.1
+[preflight] Running pre-flight checks
+	[WARNING IsDockerSystemdCheck]: detected &quot;cgroupfs&quot; as the Docker cgroup driver. The recommended driver is &quot;systemd&quot;. Please follow the guide at https://kubernetes.io/docs/setup/cri/
+[preflight] Pulling images required for setting up a Kubernetes cluster
+[preflight] This might take a minute or two, depending on the speed of your internet connection
+[preflight] You can also perform this action in beforehand using 'kubeadm config images pull'
+[kubelet-start] Writing kubelet environment file with flags to file &quot;/var/lib/kubelet/kubeadm-flags.env&quot;
+[kubelet-start] Writing kubelet configuration to file &quot;/var/lib/kubelet/config.yaml&quot;
+[kubelet-start] Activating the kubelet service
+[certs] Using certificateDir folder &quot;/etc/kubernetes/pki&quot;
+[certs] Generating &quot;front-proxy-ca&quot; certificate and key
+[certs] Generating &quot;front-proxy-client&quot; certificate and key
+[certs] Generating &quot;etcd/ca&quot; certificate and key
+[certs] Generating &quot;etcd/healthcheck-client&quot; certificate and key
+[certs] Generating &quot;apiserver-etcd-client&quot; certificate and key
+[certs] Generating &quot;etcd/server&quot; certificate and key
+[certs] etcd/server serving cert is signed for DNS names [ciops1 localhost] and IPs [10.10.1.193 127.0.0.1 ::1]
+[certs] Generating &quot;etcd/peer&quot; certificate and key
+[certs] etcd/peer serving cert is signed for DNS names [ciops1 localhost] and IPs [10.10.1.193 127.0.0.1 ::1]
+[certs] Generating &quot;ca&quot; certificate and key
+[certs] Generating &quot;apiserver&quot; certificate and key
+[certs] apiserver serving cert is signed for DNS names [ciops1 kubernetes kubernetes.default kubernetes.default.svc kubernetes.default.svc.cluster.local] and IPs [10.96.0.1 10.10.1.193]
+[certs] Generating &quot;apiserver-kubelet-client&quot; certificate and key
+[certs] Generating &quot;sa&quot; key and public key
+[kubeconfig] Using kubeconfig folder &quot;/etc/kubernetes&quot;
+[kubeconfig] Writing &quot;admin.conf&quot; kubeconfig file
+[kubeconfig] Writing &quot;kubelet.conf&quot; kubeconfig file
+[kubeconfig] Writing &quot;controller-manager.conf&quot; kubeconfig file
+[kubeconfig] Writing &quot;scheduler.conf&quot; kubeconfig file
+[control-plane] Using manifest folder &quot;/etc/kubernetes/manifests&quot;
+[control-plane] Creating static Pod manifest for &quot;kube-apiserver&quot;
+[control-plane] Creating static Pod manifest for &quot;kube-controller-manager&quot;
+[control-plane] Creating static Pod manifest for &quot;kube-scheduler&quot;
+[etcd] Creating static Pod manifest for local etcd in &quot;/etc/kubernetes/manifests&quot;
+[wait-control-plane] Waiting for the kubelet to boot up the control plane as static Pods from directory &quot;/etc/kubernetes/manifests&quot;. This can take up to 4m0s
+[kubelet-check] Initial timeout of 40s passed.
+[apiclient] All control plane components are healthy after 40.506321 seconds
+[upload-config] Storing the configuration used in ConfigMap &quot;kubeadm-config&quot; in the &quot;kube-system&quot; Namespace
+[kubelet] Creating a ConfigMap &quot;kubelet-config-1.15&quot; in namespace kube-system with the configuration for the kubelets in the cluster
+[upload-certs] Storing the certificates in Secret &quot;kubeadm-certs&quot; in the &quot;kube-system&quot; Namespace
+[upload-certs] Using certificate key:
+e60088ed4df72bf3ec7222b676828dcdb438449ce806566b46418101b2e223c0
+[mark-control-plane] Marking the node ciops1 as control-plane by adding the label &quot;node-role.kubernetes.io/master=''&quot;
+[mark-control-plane] Marking the node ciops1 as control-plane by adding the taints [node-role.kubernetes.io/master:NoSchedule]
+[bootstrap-token] Using token: vslj4v.czd4gy5edpyy32wy
+[bootstrap-token] Configuring bootstrap tokens, cluster-info ConfigMap, RBAC Roles
+[bootstrap-token] configured RBAC rules to allow Node Bootstrap tokens to post CSRs in order for nodes to get long term certificate credentials
+[bootstrap-token] configured RBAC rules to allow the csrapprover controller automatically approve CSRs from a Node Bootstrap Token
+[bootstrap-token] configured RBAC rules to allow certificate rotation for all node client certificates in the cluster
+[bootstrap-token] Creating the &quot;cluster-info&quot; ConfigMap in the &quot;kube-public&quot; namespace
+[addons] Applied essential addon: CoreDNS
+[addons] Applied essential addon: kube-proxy
+[cluster-init] Starting cluster
+node/ciops1 untainted
+
+Your Kubernetes cluster has initialized successfully!
+NAME     STATUS   ROLES    AGE   VERSION
+ciops1   Ready    master   37s   v1.15.1
+
+To start using your cluster, you need to run the following as a regular user:
+
+  mkdir -p $HOME/.kube
+  sudo cp -i /root/.nirmata-nadm/.kube/config $HOME/.kube/config
+  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+</code></pre>
+
+<p>Once cluster is up, the installer will ask to proceed with Nirmata installation. Press y and proceed -</p>
+
+<pre><code>Proceed to install Nirmata? (y/n: y):y
+[validation-checks] Found cluster:
+CURRENT   NAME                          CLUSTER      AUTHINFO           NAMESPACE
+*         kubernetes-admin@kubernetes   kubernetes   kubernetes-admin   
+[validation-checks] Using cluster context [kubernetes-admin@kubernetes], proceed (y/n: y):y
+namespace/nirmata created
+storageclass hostpath created
+provisioner hostpath created
+secret/nirmata-registry created
+serviceaccount/default configured
+priorityclass.scheduling.k8s.io/nirmata-data-critical created
+priorityclass.scheduling.k8s.io/nirmata-data-lower created
+priorityclass.scheduling.k8s.io/nirmata-app-critical created
+priorityclass.scheduling.k8s.io/nirmata-app-lower created
+zk created, waiting for pod to run...done
+mongodb created, waiting for pod to run...done
+elasticsearch created, waiting for pod to run...done
+kafka created, waiting for pod to run...done
+Volumes patched
+Creating Nirmata services (This might take a few minutes or longer if the Nirmata images have to be pulled)
+activity created, waiting for pod to run...done
+analytics created, waiting for pod to run...done
+catalog created, waiting for pod to run...done
+client-gateway created, waiting for pod to run...done
+cluster created, waiting for pod to run...done
+config created, waiting for pod to run...done
+environments created, waiting for pod to run...done
+host-gateway created, waiting for pod to run...done
+orchestrator created, waiting for pod to run...done
+security created, waiting for pod to run...done
+static-files created, waiting for pod to run...done
+tunnel created, waiting for pod to run...done
+users created, waiting for pod to run...done
+webclient created, waiting for pod to run...done
+haproxy created, waiting for pod to run...done
+Checking connection...
+
+
+	Nirmata is running! You can now login to Nirmata via:
+
+		https://10.10.1.193:31443
+
+To start using your cluster, you need to run the following as a regular user:
+
+  mkdir -p $HOME/.kube
+  sudo cp -i /root/.nirmata-nadm/.kube/config $HOME/.kube/config
+  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+  
+</code></pre>
+
+<p>Configure Cluster Access for the Regular User
+Setup kubectl</p>
+
+<pre><code>   	
+
+ mkdir -p $HOME/.kube
+  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+
+</code></pre>
+
+<h4 id="post-nirmata-pe-installation-steps:3976528693a0108357f4928017600865">Post Nirmata PE Installation Steps</h4>
+
+<ol>
+<li>Once Nirmata install is completed, access the Nirmata UI at https://&lt;your-ipaddress-for-nirmata:31443 and create the admin user.</li>
+<li>Next, create a Service Provider Admin by editing the nirmata-vcd-ext/bin/create-sp.sh script with Nirmata URL, super admin username and password and running the script.</li>
+<li>Save the Service Provider admin user id generated by the script.</li>
+</ol>
+
+<h4 id="nirmata-pe-extension-installation:3976528693a0108357f4928017600865">Nirmata PE Extension Installation</h4>
+
+<p>Follow the same steps as described in the Nirmata Extension Installation section.</p>
+
+<p>Nirmata PE vCD Client UI Plugin Installation
+Follow the same steps as described in the vCD Client UI Plugin Installation section.</p>
+
+<h3 id="clean-up:3976528693a0108357f4928017600865">Clean Up</h3>
+
+<p>Uninstall Nirmata
+nadm uninstall</p>
+
+<p>Uninstall from a directory:
+nadm uninstall -f $PATH</p>
+
+<p>Clean up cluster
+nadm reset</p>
+
+<p>Remove download binary
+Centos7
+yum remove -y kubeadm kubelet kubectl docker-ce
+Ubuntu
+apt-get remove kubeadm kubelet kubectl docker-ce</p>
+</div>
+    <div class="tags">
+      1 Jan 0001
+       
+    </div>
+    
+      <div id="disqus_thread"></div>
+<script type="text/javascript">
+     
+    var disqus_shortname = 'Your Disqus Name';
+    
+     
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    
+  </div>
+
+</div>
+
+<paper-item>
+  
+    <a href="/integrations/monitoring/prometheus/_index/"><paper-fab icon="chevron-left"><a></a></paper-fab></a>
+  
+    <div class="flex"></div>
+  
+    <a href="/restapi/sample_operations/get_select_properties_of_all_hosts/_index/"><paper-fab icon="chevron-right"></paper-fab></a>
+  
+</paper-item>
+
+      <paper-item>
+        <div class="copyright">© 2015 Copyright Text</div>
+        <div class="flex"></div>
+        <div class="design">Design <a href="http://pdevty.github.io/blog/">pdevty</a></div>
+      </paper-item>
+    </paper-scroll-header-panel>
+  </paper-drawer-panel>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'Your Analytics User Id', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</body>
+</html>
